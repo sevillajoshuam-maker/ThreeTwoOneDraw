@@ -12,4 +12,8 @@ public abstract class AbstractCard
         IMAGE = filePath;
     }
 
+    public override string ToString(){
+        return NAME;
+    }
+
 }
