@@ -1,2 +1,2 @@
 # ThreeTwoOneDraw
-The demo for the deckbuilding game "Three Two One...Draw"
+The demo for the deckbuilding game "Three Two One...Draw." This demo will include a functioning combat encounter against a default enemy. It will include a default deck and enemy's default deck that will be passed to an Encounter class. The Card, Deck, Enemy, etc classes used will be made for the purpose of a simple proof of concept but will be broad in implementation as to be used when actual development starts. 
