@@ -6,9 +6,12 @@ public class Demo : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Encounter demo = new Encounter(Player.deck, new List<AbstractCard>());
-        Debug.Log("Current Player Deck: " + demo.currDeck);
-        Debug.Log("Current Enemy Deck: " + demo.enemyDeck);   
+        for(int i = 0; i < 6; i++){
+            Player.deck.Add(new SixShooterBullet());
+        }
+        
+        Encounter demo = new Encounter(Player.deck, new List<AbstractCard>{new SixShooterBullet()});
+        Debug.Log(demo);   
     }
 
     // Update is called once per frame
