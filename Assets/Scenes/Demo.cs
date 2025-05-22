@@ -8,6 +8,10 @@ public class Demo : MonoBehaviour
     {
         for(int i = 0; i < 6; i++){
             Player.deck.Add(new SixShooterBullet());
+            if(i % 2 == 0){
+                Player.deck.Add(new Defend());
+                Player.deck.Add(new TakeAim());
+            }
         }
         
         Encounter demo = new Encounter(Player.deck, new List<AbstractCard>{new SixShooterBullet()});
