@@ -25,6 +25,8 @@ public class Encounter
             hand.Add(this.currDeck[num]);
             this.currDeck.RemoveAt(num);
         }
+
+        Debug.Log(this);
     }
 
     public override string ToString(){
