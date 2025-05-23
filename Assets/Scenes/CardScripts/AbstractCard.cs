@@ -4,13 +4,13 @@ public abstract class AbstractCard
 {
     public readonly string NAME;
     public readonly int COST;
-    private readonly string IMAGE;
+    public readonly Sprite IMAGE;
     private readonly string DESC;
 
-    public AbstractCard(string name, int cost, string filePath, string description){
+    public AbstractCard(string name, int cost, Sprite image, string description){
         NAME = name;
         COST = cost;
-        IMAGE = filePath;
+        IMAGE = image;
         DESC = description;
     }
 

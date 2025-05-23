@@ -15,7 +15,7 @@ public class Demo : MonoBehaviour
         }
         
         Encounter demo = new Encounter(Player.deck, new List<AbstractCard>{new SixShooterBullet()});
-        Debug.Log(demo);   
+           
     }
 
     // Update is called once per frame
