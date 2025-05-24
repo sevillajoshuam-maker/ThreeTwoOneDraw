@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 public class Demo : MonoBehaviour
 {
+    public EncounterControl encounterControl;
+    public CardPrefab cardBlueprint;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        encounterControl = gameObject.AddComponent<EncounterControl>();
+        encounterControl.cardBlueprint = this.cardBlueprint;
+
         for(int i = 0; i < 6; i++){
             Player.deck.Add(new SixShooterBullet());
             if(i % 2 == 0){
@@ -13,8 +19,8 @@ public class Demo : MonoBehaviour
                 Player.deck.Add(new TakeAim());
             }
         }
-        
-        Encounter demo = new Encounter(Player.deck, new List<AbstractCard>{new SixShooterBullet()});
+
+        encounterControl.startEncounter(new Encounter(Player.deck, new List<AbstractCard> {new SixShooterBullet()}));
            
     }
 
