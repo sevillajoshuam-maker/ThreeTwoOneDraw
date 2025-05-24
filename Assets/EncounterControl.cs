@@ -1,8 +1,20 @@
 using UnityEngine;
 public class EncounterControl : MonoBehaviour
 {
-    public static Encounter currEncounter;
-    public CardPrefab cardBlueprint;
+    public static EncounterControl Instance {get; private set;}
+
+    public Encounter currEncounter;
+    [SerializeField]
+    private CardPrefab cardBlueprint;
+
+    public void Awake(){
+        if (Instance != null && Instance != this){
+            Destroy(this);
+        }
+        else{
+            Instance = this;
+        }
+    }
 
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
