@@ -414,8 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022af44458bb2604f877274fef8beb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encounterControl: {fileID: 201181782}
-  cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
 --- !u!4 &763859151
 Transform:
   m_ObjectHideFlags: 0
