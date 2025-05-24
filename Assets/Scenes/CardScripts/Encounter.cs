@@ -12,21 +12,20 @@ public class Encounter
 
     private int handsize = 3;
 
-    public Encounter(List<AbstractCard> currDeck, List<AbstractCard> enemyDeck){
-        this.currDeck = new List<AbstractCard>(currDeck);
-        this.enemyDeck = new List<AbstractCard>(enemyDeck);
+    public Encounter(List<AbstractCard> startDeck, List<AbstractCard> startEnemyDeck){
+        currDeck = new List<AbstractCard>(startDeck);
+        enemyDeck = new List<AbstractCard>(startEnemyDeck);
 
         System.Random rand = new System.Random();
 
         hand = new List<AbstractCard>();
         for(int i = 0; i < handsize; i++)
         {
-            int num = rand.Next(0, this.currDeck.Count);
-            hand.Add(this.currDeck[num]);
-            this.currDeck.RemoveAt(num);
+            int num = rand.Next(0, currDeck.Count);
+            hand.Add(currDeck[num]);
+            currDeck.RemoveAt(num);
         }
-
-        Debug.Log(this);
+ 
     }
 
     public override string ToString(){
