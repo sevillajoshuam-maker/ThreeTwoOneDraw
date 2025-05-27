@@ -18,12 +18,20 @@ public class EncounterControl : MonoBehaviour
 
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
-
-        Debug.Log(currEncounter);
-
-        CardPrefab newCard = Instantiate(cardBlueprint, new Vector2(0,0), Quaternion.identity) as CardPrefab;
-        newCard.setData(new TakeAim());
-        Debug.Log(newCard.ToString());
+        reapplyHand();
+        
     }
+
+    public void reapplyHand(){
+        for(int i = 0; i < currEncounter.hand.Count; i++){
+            CardPrefab newCard = Instantiate(cardBlueprint, cardPosition(i), Quaternion.identity) as CardPrefab;
+            newCard.setData(currEncounter.hand[i]);
+        }
+    }
+
+    public Vector2 cardPosition(int num){
+        return new Vector2((3/ (float)(currEncounter.hand.Count - 1) * (num - 1)), -4);
+    }
+
 
 }
