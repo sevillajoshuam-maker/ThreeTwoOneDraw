@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 public class EncounterControl : MonoBehaviour
 {
     public static EncounterControl Instance {get; private set;}
@@ -6,6 +8,7 @@ public class EncounterControl : MonoBehaviour
     public Encounter currEncounter;
     [SerializeField]
     private CardPrefab cardBlueprint;
+    public CardPrefab hoveredCard;
 
     public void Awake(){
         if (Instance != null && Instance != this){
@@ -24,21 +27,38 @@ public class EncounterControl : MonoBehaviour
     }
 
     public void reapplyHand(){
+        GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
+        foreach(GameObject card in visibleCards){
+            Destroy(card);
+        }
+
         for(int i = 0; i < currEncounter.hand.Count; i++){
             CardPrefab newCard = Instantiate(cardBlueprint, cardPosition(i), Quaternion.identity) as CardPrefab;
-            newCard.setData(currEncounter.hand[i]);
+            newCard.setData(currEncounter.hand[i], i);
         }
     }
 
     public Vector2 cardPosition(int num){
-        return new Vector2((3/ (float)(currEncounter.hand.Count - 1) * (num - 1)), -4);
+        if(currEncounter.hand.Count > 1){
+            return new Vector2((currEncounter.hand.Count*1.45F)/ (float)(currEncounter.hand.Count - 1) * (num - ((float)(currEncounter.hand.Count)/3)), -4);
+        }
+        else{
+            return new Vector2(0,-4);
+        }
+        
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-        currEncounter.Draw();
-        Debug.Log(currEncounter);
+            currEncounter.Draw();
+            Debug.Log(currEncounter);
+            reapplyHand();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+            currEncounter.Remove();
+            Debug.Log(currEncounter);
+            reapplyHand();
         }
     }
 

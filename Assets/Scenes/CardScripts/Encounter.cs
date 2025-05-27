@@ -13,6 +13,7 @@ public class Encounter
     System.Random rand;
 
     private int handsize = 3;
+    private int maxHandSize = 8;
 
     public Encounter(List<AbstractCard> startDeck, List<AbstractCard> startEnemyDeck){
         currDeck = new List<AbstractCard>(startDeck);
@@ -31,10 +32,18 @@ public class Encounter
     }
 
     public void Draw(){
-        if(currDeck.Count > 0){
+        if(currDeck.Count > 0 && hand.Count < maxHandSize){
             int num = rand.Next(0, currDeck.Count);
             hand.Add(currDeck[num]);
             currDeck.RemoveAt(num);
+        }
+    }
+
+    public void Remove(){
+        if(hand.Count > 0){
+            int num = rand.Next(0, hand.Count);
+            currDeck.Add(hand[num]);
+            hand.RemoveAt(num);
         }
     }
 
