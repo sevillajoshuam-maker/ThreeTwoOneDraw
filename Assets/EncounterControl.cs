@@ -10,6 +10,8 @@ public class EncounterControl : MonoBehaviour
     private CardPrefab cardBlueprint;
     public CardPrefab hoveredCard;
 
+    public GameObject deckPlaceholder;
+
     public void Awake(){
         if (Instance != null && Instance != this){
             Destroy(this);
@@ -21,9 +23,9 @@ public class EncounterControl : MonoBehaviour
 
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
+        deckPlaceholder.SetActive(true);
         reapplyHand();
         Debug.Log(currEncounter);
-        
     }
 
     public void reapplyHand(){

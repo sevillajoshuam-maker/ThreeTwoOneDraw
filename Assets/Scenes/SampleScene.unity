@@ -148,7 +148,8 @@ Transform:
   m_LocalPosition: {x: -0.541439, y: 0.09388588, z: 0.0053688297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1189465483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &201181782
@@ -165,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
   hoveredCard: {fileID: 0}
+  deckPlaceholder: {fileID: 1189465481}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1189465482
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -510,12 +512,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189465481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.9349, y: -2.7871, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.3934608, y: -2.880986, z: -0.0053688297}
   m_LocalScale: {x: 2.8026133, y: 3.5881584, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 201181781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1484532715
 GameObject:
@@ -570,4 +572,3 @@ SceneRoots:
   - {fileID: 763859151}
   - {fileID: 1484532717}
   - {fileID: 201181781}
-  - {fileID: 1189465483}
