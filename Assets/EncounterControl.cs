@@ -19,6 +19,7 @@ public class EncounterControl : MonoBehaviour
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
         reapplyHand();
+        Debug.Log(currEncounter);
         
     }
 
@@ -33,5 +34,12 @@ public class EncounterControl : MonoBehaviour
         return new Vector2((3/ (float)(currEncounter.hand.Count - 1) * (num - 1)), -4);
     }
 
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+        currEncounter.Draw();
+        Debug.Log(currEncounter);
+        }
+    }
 
 }

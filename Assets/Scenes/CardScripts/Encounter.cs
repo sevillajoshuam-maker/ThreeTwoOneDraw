@@ -10,13 +10,15 @@ public class Encounter
 
     public List<AbstractCard> hand;
 
+    System.Random rand;
+
     private int handsize = 3;
 
     public Encounter(List<AbstractCard> startDeck, List<AbstractCard> startEnemyDeck){
         currDeck = new List<AbstractCard>(startDeck);
         enemyDeck = new List<AbstractCard>(startEnemyDeck);
 
-        System.Random rand = new System.Random();
+        rand = new System.Random();
 
         hand = new List<AbstractCard>();
         for(int i = 0; i < handsize; i++)
@@ -28,6 +30,14 @@ public class Encounter
  
     }
 
+    public void Draw(){
+        if(currDeck.Count > 0){
+            int num = rand.Next(0, currDeck.Count);
+            hand.Add(currDeck[num]);
+            currDeck.RemoveAt(num);
+        }
+    }
+
     public override string ToString(){
         string deck1 = "[";
         for(int i = 0; i < currDeck.Count; i++){
@@ -35,10 +45,8 @@ public class Encounter
             if(i != currDeck.Count-1){
                 deck1 += ", ";
             }
-            else{
-                deck1 += "]";
-            }
         }
+        deck1 += "]";
 
         string handString = "[";
         for (int i = 0; i < hand.Count; i++)
@@ -48,11 +56,8 @@ public class Encounter
             {
                 handString += ", ";
             }
-            else
-            {
-                handString += "]";
-            }
         }
+        handString += "]";
 
         string deck2 = "[";
         for(int i = 0; i < enemyDeck.Count; i++){
@@ -60,10 +65,8 @@ public class Encounter
             if(i != enemyDeck.Count-1){
                 deck2 += ", ";
             }
-            else{
-                deck2 += "]";
-            }
         }
+        deck2 += "]";
 
         return "Player Deck: " + deck1 + "\nPlayer Hand: " + handString + "\nEnemy Deck"+deck2;
     }
