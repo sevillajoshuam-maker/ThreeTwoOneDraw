@@ -8,12 +8,13 @@ public class CardPrefab : MonoBehaviour
     private int originalOrder;
 
 
-    public void setData(AbstractCard card){
+    public void setData(AbstractCard card, int num){
 
         thisCard = card;
         rendr = gameObject.GetComponent<SpriteRenderer>();
         rendr.size += new Vector2(10f, 10f);
 
+        rendr.sortingOrder = num;
         originalOrder = rendr.sortingOrder;
         rendr.sprite = thisCard.IMAGE;
     }
@@ -23,14 +24,16 @@ public class CardPrefab : MonoBehaviour
     }
 
     void OnMouseEnter(){
-        gameObject.transform.position += new Vector3(0, 2, 0);
-        rendr.sortingOrder = 10;
+        EncounterControl.Instance.hoveredCard = this;
+        gameObject.transform.position += new Vector3(0, 1, 0);
+        rendr.sortingOrder = 100;
     }
 
     void OnMouseExit(){
-        gameObject.transform.position -= new Vector3(0, 2, 0);
+        gameObject.transform.position -= new Vector3(0, 1, 0);
         rendr.sortingOrder = originalOrder;
     }
+
 
 
 }
