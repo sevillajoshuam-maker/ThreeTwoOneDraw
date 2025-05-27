@@ -32,6 +32,7 @@ public class CardPrefab : MonoBehaviour
     void OnMouseExit(){
         gameObject.transform.position -= new Vector3(0, 1, 0);
         rendr.sortingOrder = originalOrder;
+        EncounterControl.Instance.hoveredCard = null;
     }
 
 
