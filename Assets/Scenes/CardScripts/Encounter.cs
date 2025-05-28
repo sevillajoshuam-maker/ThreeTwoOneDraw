@@ -7,6 +7,7 @@ public class Encounter
 {
     public List<AbstractCard> currDeck;
     public List<AbstractCard> enemyDeck;
+    public List<AbstractCard> discardPile;
 
     public List<AbstractCard> hand;
 
@@ -18,6 +19,7 @@ public class Encounter
     public Encounter(List<AbstractCard> startDeck, List<AbstractCard> startEnemyDeck){
         currDeck = new List<AbstractCard>(startDeck);
         enemyDeck = new List<AbstractCard>(startEnemyDeck);
+        discardPile = new List<AbstractCard>();
 
         rand = new System.Random();
 
@@ -39,11 +41,10 @@ public class Encounter
         }
     }
 
-    public void Remove(){
-        if(hand.Count > 0){
-            int num = rand.Next(0, hand.Count);
-            currDeck.Add(hand[num]);
-            hand.RemoveAt(num);
+    public void Discard(AbstractCard discardedCard){
+        if(discardedCard != null){
+            discardPile.Add(discardedCard);
+            hand.Remove(discardedCard);
         }
     }
 
