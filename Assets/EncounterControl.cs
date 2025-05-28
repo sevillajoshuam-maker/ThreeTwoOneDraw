@@ -8,12 +8,15 @@ public class EncounterControl : MonoBehaviour
     public Encounter currEncounter;
     [SerializeField]
     private CardPrefab cardBlueprint;
-    public CardPrefab hoveredCard;
+    public CardPrefab hoveredCard {private get; set;}
 
     public GameObject deckPlaceholder;
     public GameObject discardPilePlaceholder;
+    public GameObject platformPlaceholder;
+    public GameObject playerSpritePlaceholder;
+    public GameObject enemySpritePlaceholder;
 
-    public SpriteRenderer discardSpriteRenderer;
+    private SpriteRenderer discardSpriteRenderer;
 
     public void Awake(){
         if (Instance != null && Instance != this){
@@ -26,9 +29,8 @@ public class EncounterControl : MonoBehaviour
 
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
+        setUI(true);
 
-        deckPlaceholder.SetActive(true);
-        discardPilePlaceholder.SetActive(true);
         discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
 
         reapplyHand();
@@ -66,7 +68,7 @@ public class EncounterControl : MonoBehaviour
             }
             else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space)){
                 hoveredCard.use();
-                
+
                 discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
                 currEncounter.Discard(hoveredCard.thisCard);
                 
@@ -74,6 +76,14 @@ public class EncounterControl : MonoBehaviour
             }
         }
         
+    }
+
+    private void setUI(bool state){
+        deckPlaceholder.SetActive(state);
+        discardPilePlaceholder.SetActive(state);
+        platformPlaceholder.SetActive(state);
+        playerSpritePlaceholder.SetActive(state);
+        enemySpritePlaceholder.SetActive(state);
     }
 
 }
