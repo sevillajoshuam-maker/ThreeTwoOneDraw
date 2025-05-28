@@ -51,17 +51,23 @@ public class EncounterControl : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            currEncounter.Draw();
-            Debug.Log(currEncounter);
-            reapplyHand();
+        if(currEncounter != null){
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                currEncounter.Draw();
+                Debug.Log(currEncounter);
+                reapplyHand();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+                currEncounter.Remove();
+                Debug.Log(currEncounter);
+                reapplyHand();
+            }
+            else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space)){
+                hoveredCard.use();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-            currEncounter.Remove();
-            Debug.Log(currEncounter);
-            reapplyHand();
-        }
+        
     }
 
 }

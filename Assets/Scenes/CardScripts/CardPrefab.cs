@@ -19,6 +19,10 @@ public class CardPrefab : MonoBehaviour
         rendr.sprite = thisCard.IMAGE;
     }
 
+    public void use(){
+        thisCard.use();
+    }
+
     public override string ToString(){
         return thisCard.ToString();
     }
