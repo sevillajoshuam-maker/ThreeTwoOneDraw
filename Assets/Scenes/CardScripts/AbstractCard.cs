@@ -18,4 +18,6 @@ public abstract class AbstractCard
         return NAME;
     }
 
+    public abstract void use();
+
 }
