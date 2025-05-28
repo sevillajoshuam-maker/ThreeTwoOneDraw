@@ -11,6 +11,9 @@ public class EncounterControl : MonoBehaviour
     public CardPrefab hoveredCard;
 
     public GameObject deckPlaceholder;
+    public GameObject discardPilePlaceholder;
+
+    public SpriteRenderer discardSpriteRenderer;
 
     public void Awake(){
         if (Instance != null && Instance != this){
@@ -23,7 +26,11 @@ public class EncounterControl : MonoBehaviour
 
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
+
         deckPlaceholder.SetActive(true);
+        discardPilePlaceholder.SetActive(true);
+        discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
+
         reapplyHand();
         Debug.Log(currEncounter);
     }
@@ -55,16 +62,15 @@ public class EncounterControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 currEncounter.Draw();
-                Debug.Log(currEncounter);
-                reapplyHand();
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-                currEncounter.Remove();
-                Debug.Log(currEncounter);
                 reapplyHand();
             }
             else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space)){
                 hoveredCard.use();
+                
+                discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
+                currEncounter.Discard(hoveredCard.thisCard);
+                
+                reapplyHand();
             }
         }
         
