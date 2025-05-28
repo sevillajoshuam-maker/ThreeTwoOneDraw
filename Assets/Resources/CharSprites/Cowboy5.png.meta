@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy5_0: 8778085450618422611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
