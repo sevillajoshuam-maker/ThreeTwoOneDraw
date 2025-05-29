@@ -169,13 +169,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
-  hoveredCard: {fileID: 0}
   deckPlaceholder: {fileID: 1189465481}
   discardPilePlaceholder: {fileID: 1380360579}
   platformPlaceholder: {fileID: 751108161}
   playerSpritePlaceholder: {fileID: 1577900648}
   enemySpritePlaceholder: {fileID: 1656953158}
-  discardSpriteRenderer: {fileID: 0}
+  playerTurn: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +745,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1544027551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544027553}
+  - component: {fileID: 1544027552}
+  m_Layer: 0
+  m_Name: BulletManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1544027552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544027551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff00a6374f7ba545a6cf0c4abdf0a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletBlueprint: {fileID: 4631780675409196377, guid: 06f1a4fa741520a489284f1f4339442c, type: 3}
+--- !u!4 &1544027553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544027551}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.33149886, y: -0.74024576, z: 0.0040626153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577900648
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,3 +973,4 @@ SceneRoots:
   - {fileID: 763859151}
   - {fileID: 1484532717}
   - {fileID: 201181781}
+  - {fileID: 1544027553}

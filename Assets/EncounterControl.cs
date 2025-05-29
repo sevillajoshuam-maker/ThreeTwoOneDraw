@@ -20,7 +20,6 @@ public class EncounterControl : MonoBehaviour
     private SpriteRenderer discardSpriteRenderer;
 
     public bool playerTurn;
-    private double distance = 11.53;
 
     public void Awake(){
         if (Instance != null && Instance != this){
@@ -37,10 +36,8 @@ public class EncounterControl : MonoBehaviour
         playerTurn = true;
 
         discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
-        Debug.Log(enemySpritePlaceholder.transform.position.x - playerSpritePlaceholder.transform.position.x);
 
         reapplyHand();
-        Debug.Log(currEncounter);
     }
 
     public void reapplyHand(){
@@ -81,6 +78,9 @@ public class EncounterControl : MonoBehaviour
                 
                 reapplyHand();
             }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+                BulletManager.Instance.fire("ENEMY", new SixShooterBullet());
+            }
         }
         
     }
@@ -98,5 +98,4 @@ public class EncounterControl : MonoBehaviour
         yield return new WaitForSeconds(sec);
         EncounterControl.Instance.playerTurn = true;
     }
-
 }
