@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class EncounterControl : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
+    public bool playerTurn;
+    private double distance = 11.53;
+
     public void Awake(){
         if (Instance != null && Instance != this){
             Destroy(this);
@@ -30,8 +34,10 @@ public class EncounterControl : MonoBehaviour
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
         setUI(true);
+        playerTurn = true;
 
         discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
+        Debug.Log(enemySpritePlaceholder.transform.position.x - playerSpritePlaceholder.transform.position.x);
 
         reapplyHand();
         Debug.Log(currEncounter);
@@ -66,8 +72,9 @@ public class EncounterControl : MonoBehaviour
                 currEncounter.Draw();
                 reapplyHand();
             }
-            else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space)){
+            else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space) && playerTurn){
                 hoveredCard.use();
+                StartCoroutine(EncounterControl.Instance.wait(hoveredCard.thisCard.COST));
 
                 discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
                 currEncounter.Discard(hoveredCard.thisCard);
@@ -84,6 +91,12 @@ public class EncounterControl : MonoBehaviour
         platformPlaceholder.SetActive(state);
         playerSpritePlaceholder.SetActive(state);
         enemySpritePlaceholder.SetActive(state);
+    }
+
+    public IEnumerator wait(int sec){
+        EncounterControl.Instance.playerTurn = false;
+        yield return new WaitForSeconds(sec);
+        EncounterControl.Instance.playerTurn = true;
     }
 
 }
