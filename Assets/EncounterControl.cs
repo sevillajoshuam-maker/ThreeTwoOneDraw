@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -91,6 +92,7 @@ public class EncounterControl : MonoBehaviour
         platformPlaceholder.SetActive(state);
         playerSpritePlaceholder.SetActive(state);
         enemySpritePlaceholder.SetActive(state);
+
     }
 
     public IEnumerator wait(int sec){
