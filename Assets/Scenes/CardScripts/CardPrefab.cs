@@ -32,14 +32,21 @@ public class CardPrefab : MonoBehaviour
         EncounterControl.Instance.hoveredCard = this;
         gameObject.transform.position += new Vector3(0, 1, 0);
         rendr.sortingOrder = 100;
+
+        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE == Type.Defend){
+            DefenseManager.Instance.makeVisible();
+        }
     }
 
     void OnMouseExit(){
         gameObject.transform.position -= new Vector3(0, 1, 0);
         rendr.sortingOrder = originalOrder;
         EncounterControl.Instance.hoveredCard = null;
-    }
 
+        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE == Type.Defend){
+            DefenseManager.Instance.makeInvisible();
+        }
+    }
 
 
 }

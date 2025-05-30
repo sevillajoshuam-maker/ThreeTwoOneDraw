@@ -1,16 +1,42 @@
 using UnityEngine;
+using System.Collections;
 
 public class DefenseManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public static DefenseManager Instance {get; private set;}
+
+    public GameObject playerDefense;
+    public BoxCollider2D playerDefenseActivate;
+
+    public void Awake(){
+        if (Instance != null && Instance != this){
+            Destroy(this);
+        }
+        else{
+            Instance = this;
+            playerDefenseActivate = gameObject.GetComponent<BoxCollider2D>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void makeVisible(){
+        playerDefense.SetActive(true);
+    }
+
+    public void makeInvisible(){
+        playerDefense.SetActive(false);
+    }
+
+    public void defend(){
+        StartCoroutine(colliderActivate(0.5F));
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        Destroy(other.gameObject);
+    }
+
+    private IEnumerator colliderActivate(float num){
+        playerDefenseActivate.enabled = true;
+        yield return new WaitForSeconds(num);
+        playerDefenseActivate.enabled = false;
     }
 }
