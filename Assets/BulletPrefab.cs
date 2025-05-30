@@ -30,6 +30,7 @@ public class BulletPrefab : MonoBehaviour
             Destroy(gameObject);
         }
         else if(shooter == "ENEMY" && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x){
+            Player.takeDamage(thisBullet.DAMAGE);
             Destroy(gameObject);
         }
     }  

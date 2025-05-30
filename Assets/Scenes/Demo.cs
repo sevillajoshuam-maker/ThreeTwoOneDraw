@@ -6,6 +6,7 @@ public class Demo : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Player.healDamage(100);
         for(int i = 0; i < 6; i++){
             Player.deck.Add(new SixShooterBullet());
             if(i % 2 == 0){
