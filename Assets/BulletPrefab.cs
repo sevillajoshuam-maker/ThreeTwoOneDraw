@@ -38,9 +38,4 @@ public class BulletPrefab : MonoBehaviour
     private static float feetToPixel(float feet){
         return feet * conversion;
     } 
-
-    void OnTriggerEnter(Collider other){
-        Debug.Log("Made it!");
-        Destroy(gameObject);
-    }
 }

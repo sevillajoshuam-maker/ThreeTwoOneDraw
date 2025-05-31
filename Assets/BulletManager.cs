@@ -18,11 +18,13 @@ public class BulletManager : MonoBehaviour
 
     public void fire(string shooter, AbstractBullet bullet){
         if(shooter == "PLAYER"){
-            BulletPrefab newBullet = Instantiate(bulletBlueprint, EncounterControl.Instance.playerSpritePlaceholder.transform.position ,Quaternion.identity) as BulletPrefab;
+            BulletPrefab newBullet = Instantiate(bulletBlueprint, 
+                EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0),Quaternion.identity) as BulletPrefab;
             newBullet.setData(bullet, shooter);
         }
         else if (shooter == "ENEMY"){
-            BulletPrefab newBullet = Instantiate(bulletBlueprint, EncounterControl.Instance.enemySpritePlaceholder.transform.position ,Quaternion.identity) as BulletPrefab;
+            BulletPrefab newBullet = Instantiate(bulletBlueprint, 
+                EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0),Quaternion.identity) as BulletPrefab;
             newBullet.setData(bullet, shooter);
         }
     }

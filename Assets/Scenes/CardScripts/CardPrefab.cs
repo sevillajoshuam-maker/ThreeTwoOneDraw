@@ -33,8 +33,8 @@ public class CardPrefab : MonoBehaviour
         gameObject.transform.position += new Vector3(0, 1, 0);
         rendr.sortingOrder = 100;
 
-        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE == Type.Defend){
-            DefenseManager.Instance.makeVisible();
+        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
+            DefenseManager.Instance.makeVisible(((AbstractSkill) thisCard).TYPE);
         }
     }
 
@@ -43,8 +43,8 @@ public class CardPrefab : MonoBehaviour
         rendr.sortingOrder = originalOrder;
         EncounterControl.Instance.hoveredCard = null;
 
-        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE == Type.Defend){
-            DefenseManager.Instance.makeInvisible();
+        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
+            DefenseManager.Instance.makeInvisible(((AbstractSkill) thisCard).TYPE);
         }
     }
 

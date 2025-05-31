@@ -10,6 +10,9 @@ public abstract class AbstractSkill : AbstractCard
 }
 
 public enum Type{
-    Defend, 
-    Not_Defend
+    SmallDefend,
+    MediumDefend,
+    LargeDefend, 
+    Other
 }
+
