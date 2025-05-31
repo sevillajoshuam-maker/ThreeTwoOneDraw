@@ -5,8 +5,13 @@ public class DefenseManager : MonoBehaviour
 {
     public static DefenseManager Instance {get; private set;}
 
-    public GameObject playerDefense;
-    public BoxCollider2D playerDefenseActivate;
+    public GameObject smallPlayerDefense;
+    public GameObject mediumPlayerDefense;
+    public GameObject largePlayerDefense;
+
+    SpriteRenderer smallDefenseSprite;
+    SpriteRenderer mediumDefenseSprite;
+    SpriteRenderer largeDefenseSprite;
 
     public void Awake(){
         if (Instance != null && Instance != this){
@@ -14,29 +19,48 @@ public class DefenseManager : MonoBehaviour
         }
         else{
             Instance = this;
-            playerDefenseActivate = gameObject.GetComponent<BoxCollider2D>();
+
+            smallDefenseSprite = smallPlayerDefense.GetComponent<SpriteRenderer>();
+            mediumDefenseSprite = mediumPlayerDefense.GetComponent<SpriteRenderer>();
+            largeDefenseSprite = largePlayerDefense.GetComponent<SpriteRenderer>();
         }
     }
 
-    public void makeVisible(){
-        playerDefense.SetActive(true);
+    public void makeVisible(Type size){
+        if(size == Type.SmallDefend){
+            smallDefenseSprite.enabled = true;
+        }
+        else if(size == Type.MediumDefend){
+            mediumDefenseSprite.enabled = true;
+        }
+        else if(size == Type.LargeDefend){
+            largeDefenseSprite.enabled = true;
+        }
     }
 
-    public void makeInvisible(){
-        playerDefense.SetActive(false);
+    public void makeInvisible(Type size){
+        if(size == Type.SmallDefend){
+            smallDefenseSprite.enabled = false;
+        }
+        else if(size == Type.MediumDefend){
+            mediumDefenseSprite.enabled = false;
+        }
+        else if(size == Type.LargeDefend){
+            largeDefenseSprite.enabled = false;
+        }
     }
 
-    public void defend(){
-        StartCoroutine(colliderActivate(0.5F));
-    }
+    public void defend(Type size){
+        if(size == Type.SmallDefend){
+            smallPlayerDefense.GetComponent<PlayerDefense>().defend();
+        }
+        else if(size == Type.MediumDefend){
+            mediumPlayerDefense.GetComponent<PlayerDefense>().defend();
 
-    void OnTriggerEnter2D(Collider2D other){
-        Destroy(other.gameObject);
-    }
+        }
+        else if(size == Type.LargeDefend){
+            largePlayerDefense.GetComponent<PlayerDefense>().defend();
 
-    private IEnumerator colliderActivate(float num){
-        playerDefenseActivate.enabled = true;
-        yield return new WaitForSeconds(num);
-        playerDefenseActivate.enabled = false;
+        }
     }
 }
