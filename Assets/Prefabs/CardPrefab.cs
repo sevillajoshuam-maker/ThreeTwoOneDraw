@@ -8,7 +8,8 @@ public class CardPrefab : MonoBehaviour
 
     private int originalOrder;
 
-
+    //Sets what card it is and its order in the hand.
+    //Uses the passed card to set sprite.
     public void setData(AbstractCard card, int num){
 
         thisCard = card;
@@ -20,6 +21,8 @@ public class CardPrefab : MonoBehaviour
         rendr.sprite = thisCard.IMAGE;
     }
 
+    //Called when this card is the hoveredCard and the player clicks spacebar.
+    //Calls the respective cards own use() method
     public void use(){
         thisCard.use();
     }
@@ -28,21 +31,25 @@ public class CardPrefab : MonoBehaviour
         return thisCard.ToString();
     }
 
+    //Whenever the player hovers over the card, change location and set it to hoveredCard
     void OnMouseEnter(){
         EncounterControl.Instance.hoveredCard = this;
         gameObject.transform.position += new Vector3(0, 1, 0);
         rendr.sortingOrder = 100;
 
+        //If the card is a defense, call makeVisible() with the defense size
         if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
             DefenseManager.Instance.makeVisible(((AbstractSkill) thisCard).TYPE);
         }
     }
 
+    //Whenever the mouse exits the card, put the card back in place and set hoveredCard to null
     void OnMouseExit(){
         gameObject.transform.position -= new Vector3(0, 1, 0);
         rendr.sortingOrder = originalOrder;
         EncounterControl.Instance.hoveredCard = null;
 
+        //If the card is a defense, call makeInvisible() with the defense size
         if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
             DefenseManager.Instance.makeInvisible(((AbstractSkill) thisCard).TYPE);
         }

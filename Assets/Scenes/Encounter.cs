@@ -12,10 +12,10 @@ public class Encounter
     public List<AbstractCard> hand;
 
     System.Random rand;
-
     private int handsize = 3;
     private int maxHandSize = 8;
 
+    //2 argument constructor that sets player and enemy decks and draws a starting hand
     public Encounter(List<AbstractCard> startDeck, List<AbstractCard> startEnemyDeck){
         currDeck = new List<AbstractCard>(startDeck);
         enemyDeck = new List<AbstractCard>(startEnemyDeck);
@@ -33,6 +33,7 @@ public class Encounter
  
     }
 
+    //Randomly moves a card from the player deck to hand, if the handsize isn't too big
     public void Draw(){
         if(currDeck.Count > 0 && hand.Count < maxHandSize){
             int num = rand.Next(0, currDeck.Count);
@@ -41,6 +42,7 @@ public class Encounter
         }
     }
 
+    //Moves the provided card from the hand to the discard pile
     public void Discard(AbstractCard discardedCard){
         if(discardedCard != null){
             discardPile.Add(discardedCard);
@@ -48,6 +50,7 @@ public class Encounter
         }
     }
 
+    //Returns the entire player deck, hand, and enemy deck as a string
     public override string ToString(){
         string deck1 = "[";
         for(int i = 0; i < currDeck.Count; i++){
