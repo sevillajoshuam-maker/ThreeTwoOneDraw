@@ -5,6 +5,7 @@ using System.Collections;
 
 public class EncounterControl : MonoBehaviour
 {
+    //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance {get; private set;}
 
     public Encounter currEncounter;
@@ -12,6 +13,7 @@ public class EncounterControl : MonoBehaviour
     private CardPrefab cardBlueprint;
     public CardPrefab hoveredCard {private get; set;}
 
+    //All UI elements
     public GameObject deckPlaceholder;
     public GameObject discardPilePlaceholder;
     public GameObject platformPlaceholder;
@@ -20,8 +22,11 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
+    //Relays if the player can currently play a card or perform an action
     public bool playerTurn;
 
+    //If the instance is the first one, it becomes the Instance.
+    //Otherwise is is destroyed
     public void Awake(){
         if (Instance != null && Instance != this){
             Destroy(this);
@@ -31,6 +36,7 @@ public class EncounterControl : MonoBehaviour
         }
     }
 
+    //Begin the passed Encounter instance
     public void startEncounter(Encounter encounter){
         currEncounter = encounter;
         setUI(true);
@@ -41,6 +47,7 @@ public class EncounterControl : MonoBehaviour
         reapplyHand();
     }
 
+    //Destroy all card prefabs and created a new list of prefabs to visually represent the current hand
     public void reapplyHand(){
         GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
         foreach(GameObject card in visibleCards){
@@ -53,6 +60,7 @@ public class EncounterControl : MonoBehaviour
         }
     }
 
+    //Calculate the card prefab position depending on hand size
     public Vector2 cardPosition(int num){
         if(currEncounter.hand.Count > 1){
             return new Vector2((currEncounter.hand.Count*1.45F)/ (float)(currEncounter.hand.Count - 1) * (num - ((float)(currEncounter.hand.Count)/3)), -4);
@@ -63,6 +71,7 @@ public class EncounterControl : MonoBehaviour
         
     }
 
+    //Check every update whether the player draws or plays a card
     void Update(){
         if(currEncounter != null){
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -70,6 +79,8 @@ public class EncounterControl : MonoBehaviour
                 currEncounter.Draw();
                 reapplyHand();
             }
+
+            //If a card is selected, the player has an action, and the user clicks Spacebar => Call the card's use() method and discard it
             else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space) && playerTurn){
                 hoveredCard.use();
                 StartCoroutine(EncounterControl.Instance.wait(hoveredCard.thisCard.COST));
@@ -86,6 +97,7 @@ public class EncounterControl : MonoBehaviour
         
     }
 
+    //Turn on or off all UI elements
     private void setUI(bool state){
         deckPlaceholder.SetActive(state);
         discardPilePlaceholder.SetActive(state);
@@ -95,6 +107,7 @@ public class EncounterControl : MonoBehaviour
 
     }
 
+    //Turn off player turn for the passed cost
     public IEnumerator wait(int sec){
         EncounterControl.Instance.playerTurn = false;
         yield return new WaitForSeconds(sec);

@@ -6,6 +6,7 @@ public class Demo : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Set player health to 100 and create basic deck
         Player.healDamage(100);
         for(int i = 0; i < 6; i++){
             Player.deck.Add(new SixShooterBullet());
@@ -15,13 +16,8 @@ public class Demo : MonoBehaviour
             }
         }
 
+        //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(Player.deck, new List<AbstractCard> {new SixShooterBullet()}));
            
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
