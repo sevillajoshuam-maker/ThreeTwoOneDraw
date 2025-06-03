@@ -17,7 +17,7 @@ public class Demo : MonoBehaviour
         }
 
         //Begin a new encounter with the player deck and an enemy deck with a single card
-        EncounterControl.Instance.startEncounter(new Encounter(Player.deck, new List<AbstractCard> {new SixShooterBullet()}));
+        EncounterControl.Instance.startEncounter(new Encounter(Player.deck, new Enemy(new List<AbstractCard>(Player.deck), 100, 0)));
            
     }
 }
