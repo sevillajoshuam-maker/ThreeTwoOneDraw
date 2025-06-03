@@ -9,6 +9,6 @@ public class SixShooterBullet : AbstractBullet
 
     //When the card is played, call the fire method with this bullet passed
     public override void use(){
-       BulletManager.Instance.fire("PLAYER", this);
+       BulletManager.Instance.fire("PLAYER", this, EncounterControl.Instance.currEncounter.enemy);
     }
 }

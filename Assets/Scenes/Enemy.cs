@@ -14,4 +14,25 @@ public class Enemy
         this.costAdjust = costAdjust;
         health = maxHealth;
     }
+
+    //Remove health equal to passed parameter, health cannot got below 0
+    public void takeDamage(int num){
+        if(num >= 0){
+            health -= num;
+        }
+
+        if(health <= 0){
+            health = 0;
+        }
+    }
+
+    //Heal health equal to passed parameter, health cannot exceed 100
+    public void healDamage(int num){
+        if(num >= 0){
+            health += num;
+        }
+        if(health >= maxHealth){
+            health = 100;
+        }
+    }
 }

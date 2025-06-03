@@ -19,6 +19,11 @@ public class EncounterControl : MonoBehaviour
     public GameObject platformPlaceholder;
     public GameObject playerSpritePlaceholder;
     public GameObject enemySpritePlaceholder;
+    public GameObject playerHealthBarSprite;
+    public GameObject enemyHealthBarSprite;
+
+    public Slider playerHealthBar;
+    public Slider enemyHealthBar;
 
     private SpriteRenderer discardSpriteRenderer;
 
@@ -73,6 +78,9 @@ public class EncounterControl : MonoBehaviour
 
     //Check every update whether the player draws or plays a card
     void Update(){
+        playerHealthBar.value = (float)Player.health / Player.maxHealth;
+        enemyHealthBar.value = (float)currEncounter.enemy.health / currEncounter.enemy.maxHealth;
+
         if(currEncounter != null){
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -91,7 +99,7 @@ public class EncounterControl : MonoBehaviour
                 reapplyHand();
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-                BulletManager.Instance.fire("ENEMY", new SixShooterBullet());
+                BulletManager.Instance.fire("ENEMY", new SixShooterBullet(), currEncounter.enemy);
             }
         }
         
@@ -104,7 +112,8 @@ public class EncounterControl : MonoBehaviour
         platformPlaceholder.SetActive(state);
         playerSpritePlaceholder.SetActive(state);
         enemySpritePlaceholder.SetActive(state);
-
+        playerHealthBarSprite.SetActive(state);
+        enemyHealthBarSprite.SetActive(state);
     }
 
     //Turn off player turn for the passed cost

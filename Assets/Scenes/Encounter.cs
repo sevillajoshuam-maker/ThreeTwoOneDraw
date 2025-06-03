@@ -8,6 +8,7 @@ public class Encounter
     public List<AbstractCard> currDeck;
     public List<AbstractCard> enemyDeck;
     public List<AbstractCard> discardPile;
+    public Enemy enemy;
 
     public List<AbstractCard> hand;
 
@@ -17,6 +18,8 @@ public class Encounter
 
     //2 argument constructor that sets player and enemy decks and draws a starting hand
     public Encounter(List<AbstractCard> startDeck, Enemy enemy){
+        this.enemy = enemy;
+
         currDeck = new List<AbstractCard>(startDeck);
         enemyDeck = new List<AbstractCard>(enemy.deck);
         discardPile = new List<AbstractCard>();
