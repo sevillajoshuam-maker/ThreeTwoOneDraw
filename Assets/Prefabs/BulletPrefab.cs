@@ -13,12 +13,15 @@ public class BulletPrefab : MonoBehaviour
     private static float conversion = pixelDistance / feetDistance;
 
     private string shooter;
+    private Enemy currEnemy;
 
     //Assigns this bullet based on the passed argument.
     //Assigns the speed and bullet sprite based on bullet type (speed is negative is it is the enemy firing)
-    public void setData(AbstractBullet bullet, string shooter){
+    public void setData(AbstractBullet bullet, string shooter, Enemy currEnemy){
         thisBullet = bullet;
         this.shooter = shooter;
+
+        this.currEnemy = currEnemy;
 
         rendr = gameObject.GetComponent<SpriteRenderer>();
         rendr.sprite = thisBullet.bulletSprite;
@@ -32,6 +35,7 @@ public class BulletPrefab : MonoBehaviour
         gameObject.transform.position += new Vector3(pixelPerSecond/50F, 0,0);
 
         if(shooter == "PLAYER" && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x){
+            currEnemy.takeDamage(thisBullet.DAMAGE);
             Destroy(gameObject);
         }
         else if(shooter == "ENEMY" && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x){
