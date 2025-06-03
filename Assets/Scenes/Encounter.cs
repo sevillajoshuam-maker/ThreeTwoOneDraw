@@ -16,9 +16,9 @@ public class Encounter
     private int maxHandSize = 8;
 
     //2 argument constructor that sets player and enemy decks and draws a starting hand
-    public Encounter(List<AbstractCard> startDeck, List<AbstractCard> startEnemyDeck){
+    public Encounter(List<AbstractCard> startDeck, Enemy enemy){
         currDeck = new List<AbstractCard>(startDeck);
-        enemyDeck = new List<AbstractCard>(startEnemyDeck);
+        enemyDeck = new List<AbstractCard>(enemy.deck);
         discardPile = new List<AbstractCard>();
 
         rand = new System.Random();
