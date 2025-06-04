@@ -23,8 +23,8 @@ public class CardPrefab : MonoBehaviour
 
     //Called when this card is the hoveredCard and the player clicks spacebar.
     //Calls the respective cards own use() method
-    public void use(){
-        thisCard.use();
+    public void use(AbstractPlayer user){
+        thisCard.use(user);
     }
 
     public override string ToString(){

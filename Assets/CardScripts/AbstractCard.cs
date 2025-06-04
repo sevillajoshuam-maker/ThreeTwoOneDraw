@@ -21,6 +21,6 @@ public abstract class AbstractCard
         return NAME;
     }
     //Abstract method to be implement by specific cards
-    public abstract void use();
+    public abstract void use(AbstractPlayer user);
 
 }

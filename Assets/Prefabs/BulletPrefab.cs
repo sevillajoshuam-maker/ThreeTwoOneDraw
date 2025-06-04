@@ -12,21 +12,18 @@ public class BulletPrefab : MonoBehaviour
     private static float feetDistance = 50F;
     private static float conversion = pixelDistance / feetDistance;
 
-    private string shooter;
-    private Enemy currEnemy;
+    private AbstractPlayer shooter;
 
     //Assigns this bullet based on the passed argument.
     //Assigns the speed and bullet sprite based on bullet type (speed is negative is it is the enemy firing)
-    public void setData(AbstractBullet bullet, string shooter, Enemy currEnemy){
+    public void setData(AbstractBullet bullet, AbstractPlayer shooter){
         thisBullet = bullet;
         this.shooter = shooter;
-
-        this.currEnemy = currEnemy;
 
         rendr = gameObject.GetComponent<SpriteRenderer>();
         rendr.sprite = thisBullet.bulletSprite;
 
-        pixelPerSecond = (shooter == "PLAYER")? feetToPixel((float)thisBullet.SPEED) : -1 * feetToPixel((float)thisBullet.SPEED);
+        pixelPerSecond = !(shooter is Enemy)? feetToPixel((float)thisBullet.SPEED) : -1 * feetToPixel((float)thisBullet.SPEED);
     }
 
     //Calls this update every 0.02 seconds.
@@ -34,12 +31,12 @@ public class BulletPrefab : MonoBehaviour
     void FixedUpdate(){
         gameObject.transform.position += new Vector3(pixelPerSecond/50F, 0,0);
 
-        if(shooter == "PLAYER" && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x){
-            currEnemy.takeDamage(thisBullet.DAMAGE);
+        if(!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x){
+            EncounterControl.Instance.currEnemy.takeDamage(thisBullet.DAMAGE);
             Destroy(gameObject);
         }
-        else if(shooter == "ENEMY" && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x){
-            Player.takeDamage(thisBullet.DAMAGE);
+        else if((shooter is Enemy) && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x){
+            EncounterControl.Instance.currPlayer.takeDamage(thisBullet.DAMAGE);
             Destroy(gameObject);
         }
     }  
