@@ -22,7 +22,7 @@ public class Demo : MonoBehaviour
         player.dealStartHand();
         
         Enemy starterEnemy = new Enemy(new List<AbstractCard>()
-        {new SixShooterBullet(),new SixShooterBullet(), new Defend(), new TakeAim(), new TakeAim()}, 100, 0);
+        {new SixShooterBullet(),new SixShooterBullet(), new Defend(), new TakeAim(), new TakeAim()}, 100, 1);
         starterEnemy.dealStartHand();
 
         //Begin a new encounter with the player deck and an enemy deck with a single card
