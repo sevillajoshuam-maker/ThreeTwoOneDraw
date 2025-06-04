@@ -20,20 +20,20 @@ public class BulletManager : MonoBehaviour
     }
 
     //Creates a new bullet prefab depending of the type of bullet and who fired
-    public void fire(string shooter, AbstractBullet bullet, Enemy enemy){
+    public void fire(AbstractPlayer shooter, AbstractBullet bullet){
 
         //Spawns the bullet on the head of the player
-        if(shooter == "PLAYER"){
+        if(!(shooter is Enemy)){
             BulletPrefab newBullet = Instantiate(bulletBlueprint, 
                 EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0),Quaternion.identity) as BulletPrefab;
-            newBullet.setData(bullet, shooter, enemy);
+            newBullet.setData(bullet, shooter);
         }
 
         //Spawns the bullet on the head of the enemy
-        else if (shooter == "ENEMY"){
+        else{
             BulletPrefab newBullet = Instantiate(bulletBlueprint, 
                 EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0),Quaternion.identity) as BulletPrefab;
-            newBullet.setData(bullet, shooter, enemy);
+            newBullet.setData(bullet, shooter);
         }
     }
 }

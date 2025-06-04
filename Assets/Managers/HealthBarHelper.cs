@@ -9,12 +9,15 @@ public class HealthBarHelper : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.enabled = true;
-        text.text = (gameObject.name == "PlayerSlider")? (Player.health + " / " + Player.maxHealth):
-                                                        (EncounterControl.Instance.currEncounter.enemy.health + " / " + EncounterControl.Instance.currEncounter.enemy.maxHealth);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         text.enabled = false;
+    }
+
+    public void Update(){
+        text.text = (gameObject.name == "PlayerSlider")? (Demo.player.health + " / " + Demo.player.maxHealth):
+                                                        (EncounterControl.Instance.currEnemy.health + " / " + EncounterControl.Instance.currEnemy.maxHealth);
     }
 }
