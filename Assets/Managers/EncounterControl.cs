@@ -140,4 +140,14 @@ public class EncounterControl : MonoBehaviour
             EncounterControl.Instance.playerTurn = true;
         }
     }
+
+    public void endEncounter(AbstractPlayer winner){
+        setUI(false);
+        Debug.Log(winner);
+        GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
+        foreach(GameObject card in visibleCards){
+            Destroy(card);
+        }
+        gameObject.SetActive(false);
+    }
 }

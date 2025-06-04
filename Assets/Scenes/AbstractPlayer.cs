@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AbstractPlayer
+public abstract class AbstractPlayer
 {
     //Create the player deck and health to be used by all scripts
     public List<AbstractCard> deck;
     public List<AbstractCard> masterDeck;
     public int health {get; set;}
     public int maxHealth = 100;
+    public string name;
 
     public List<AbstractCard> hand;
     public List<AbstractCard> discardPile;
@@ -72,5 +73,9 @@ public class AbstractPlayer
             discardPile.Add(discardedCard);
             hand.Remove(discardedCard);
         }
+    }
+
+    public override string ToString(){
+        return name;
     }
 }

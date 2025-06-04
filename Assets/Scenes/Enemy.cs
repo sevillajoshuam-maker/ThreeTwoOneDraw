@@ -9,13 +9,14 @@ public class Enemy : AbstractPlayer
 
     public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust) : base(deck, maxHealth){
         this.costAdjust = costAdjust;
+        name = "Enemy";
     }
 
     public int trySomething(){
         int cost = 0;
-        int num = rand.Next(0, hand.Count);
-        cost = hand[num].COST;
-        hand[num].use(this);
+        int num = rand.Next(0, deck.Count);
+        cost = deck[num].COST;
+        deck[num].use(this);
         return cost;
     }
 }
