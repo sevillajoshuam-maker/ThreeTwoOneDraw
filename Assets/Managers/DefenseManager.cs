@@ -10,10 +10,12 @@ public class DefenseManager : MonoBehaviour
     public GameObject smallPlayerDefense;
     public GameObject mediumPlayerDefense;
     public GameObject largePlayerDefense;
+    public GameObject smallEnemyDefense;
 
     SpriteRenderer smallDefenseSprite;
     SpriteRenderer mediumDefenseSprite;
     SpriteRenderer largeDefenseSprite;
+    SpriteRenderer smallEnemyDefenseSprite;
 
     
     //If the instance is the first one, it becomes the Instance.
@@ -29,6 +31,7 @@ public class DefenseManager : MonoBehaviour
             smallDefenseSprite = smallPlayerDefense.GetComponent<SpriteRenderer>();
             mediumDefenseSprite = mediumPlayerDefense.GetComponent<SpriteRenderer>();
             largeDefenseSprite = largePlayerDefense.GetComponent<SpriteRenderer>();
+            smallEnemyDefenseSprite = smallEnemyDefense.GetComponent<SpriteRenderer>();
         }
     }
 
@@ -59,17 +62,28 @@ public class DefenseManager : MonoBehaviour
     }
 
     //Activate the associated Defend() method of the passed defense size, this is called by a card's use() method
-    public void defend(Type size){
-        if(size == Type.SmallDefend){
-            smallPlayerDefense.GetComponent<PlayerDefense>().defend();
+    public void defend(Type size, AbstractPlayer user){
+        if(user is Enemy){
+            smallEnemyDefense.GetComponent<PlayerDefense>().defend();
+            StartCoroutine(show(0.5F, smallEnemyDefenseSprite));
         }
-        else if(size == Type.MediumDefend){
-            mediumPlayerDefense.GetComponent<PlayerDefense>().defend();
+        else{
+            if(size == Type.SmallDefend){
+                smallPlayerDefense.GetComponent<PlayerDefense>().defend();
+            }
+            else if(size == Type.MediumDefend){
+                mediumPlayerDefense.GetComponent<PlayerDefense>().defend();
 
+            }
+            else if(size == Type.LargeDefend){
+                largePlayerDefense.GetComponent<PlayerDefense>().defend();
+            }
         }
-        else if(size == Type.LargeDefend){
-            largePlayerDefense.GetComponent<PlayerDefense>().defend();
+    }
 
-        }
+    public IEnumerator show(float num, SpriteRenderer sprite){
+        sprite.enabled = true;
+        yield return new WaitForSeconds(num);
+        sprite.enabled = false;
     }
 }
