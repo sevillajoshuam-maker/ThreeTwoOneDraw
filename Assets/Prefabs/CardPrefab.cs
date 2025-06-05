@@ -31,7 +31,25 @@ public class CardPrefab : MonoBehaviour
         return thisCard.ToString();
     }
 
-    //Whenever the player hovers over the card, change location and set it to hoveredCard
+    public void selected(){
+        gameObject.transform.position += new Vector3(0, 1, 0);
+        rendr.sortingOrder = 100;
+
+        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
+            DefenseManager.Instance.makeVisible(((AbstractSkill) thisCard).TYPE);
+        }
+    }
+
+    public void deselected(){
+        gameObject.transform.position -= new Vector3(0, 1, 0);
+        rendr.sortingOrder = originalOrder;
+
+         if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
+            DefenseManager.Instance.makeInvisible(((AbstractSkill) thisCard).TYPE);
+        }
+    }
+
+    /*Whenever the player hovers over the card, change location and set it to hoveredCard
     void OnMouseEnter(){
         EncounterControl.Instance.hoveredCard = this;
         gameObject.transform.position += new Vector3(0, 1, 0);
@@ -54,6 +72,6 @@ public class CardPrefab : MonoBehaviour
             DefenseManager.Instance.makeInvisible(((AbstractSkill) thisCard).TYPE);
         }
     }
-
+    */
 
 }

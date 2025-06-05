@@ -29,6 +29,9 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
+    public int position;
+    public List<CardPrefab> visibleHand;
+
     //Relays if the player can currently play a card or perform an action
     public bool playerTurn;
     public bool enemyTurn;
@@ -50,6 +53,9 @@ public class EncounterControl : MonoBehaviour
         currPlayer = encounter.player;
         currEncounter = encounter;
 
+        position = -1;
+        visibleHand = new List<CardPrefab>();
+
         setUI(true);
         playerTurn = true;
         enemyTurn = true;
@@ -61,14 +67,15 @@ public class EncounterControl : MonoBehaviour
 
     //Destroy all card prefabs and created a new list of prefabs to visually represent the current hand
     public void reapplyHand(){
-        GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
-        foreach(GameObject card in visibleCards){
-            Destroy(card);
+        foreach(CardPrefab card in visibleHand){
+            Destroy(card.gameObject);
         }
+        visibleHand = new List<CardPrefab>();
 
         for(int i = 0; i < currEncounter.player.hand.Count; i++){
             CardPrefab newCard = Instantiate(cardBlueprint, cardPosition(i), Quaternion.identity) as CardPrefab;
             newCard.setData(currPlayer.hand[i], i);
+            visibleHand.Add(newCard);
         }
     }
 
@@ -93,24 +100,55 @@ public class EncounterControl : MonoBehaviour
         }
 
         if(currEncounter != null){
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 currPlayer.Draw();
                 reapplyHand();
             }
+            else if (Input.GetKeyDown(KeyCode.S)){
+                position = -1;
+                if(hoveredCard != null){
+                    hoveredCard.deselected();
+                    hoveredCard = null;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.D)){
+                if(position == -1 || position == currPlayer.hand.Count - 1){
+                    position = 0;
+                }
+                else{
+                    position += 1;
+                }
+
+            } else if (Input.GetKeyDown(KeyCode.A)){
+                if(position == -1 || position == 0){
+                    position = currPlayer.hand.Count - 1;
+                }
+                else{
+                    position -= 1;
+                }
+            }
 
             //If a card is selected, the player has an action, and the user clicks Spacebar => Call the card's use() method and discard it
-            else if(hoveredCard != null && Input.GetKeyDown(KeyCode.Space) && playerTurn){
+            else if(hoveredCard != null && (Input.GetMouseButtonDown(0)) && playerTurn){
                 hoveredCard.use(currPlayer);
                 StartCoroutine(EncounterControl.Instance.wait(hoveredCard.thisCard.COST, currPlayer));
 
                 discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
                 currPlayer.Discard(hoveredCard.thisCard);
                 
+                position = (position == 0)? position + 1: position - 1;
                 reapplyHand();
             }
         }
-        
+
+        if(position != -1){
+            if(hoveredCard != null){
+                hoveredCard.deselected();
+            }
+            hoveredCard = visibleHand[position];
+            hoveredCard.selected();
+        }
     }
 
     //Turn on or off all UI elements
