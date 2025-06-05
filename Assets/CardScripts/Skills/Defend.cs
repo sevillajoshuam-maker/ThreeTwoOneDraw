@@ -11,6 +11,6 @@ public class Defend : AbstractSkill
     public override void use(AbstractPlayer user){
         Debug.Log(this);
         DefenseManager.Instance.makeInvisible(this.TYPE);
-        DefenseManager.Instance.defend(this.TYPE);
+        DefenseManager.Instance.defend(this.TYPE, user);
     }
 }
