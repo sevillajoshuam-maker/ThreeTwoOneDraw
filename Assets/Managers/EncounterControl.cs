@@ -13,7 +13,7 @@ public class EncounterControl : MonoBehaviour
     public Player currPlayer;
     [SerializeField]
     private CardPrefab cardBlueprint;
-    public CardPrefab hoveredCard {private get; set;}
+    public CardPrefab hoveredCard {get; set;}
 
     //All UI elements
     public GameObject deckPlaceholder;
@@ -127,6 +127,9 @@ public class EncounterControl : MonoBehaviour
                 else{
                     position -= 1;
                 }
+            }
+            else if (Input.GetKeyDown(KeyCode.Q)){
+                BulletManager.Instance.fire(currEnemy, new SixShooterBullet());
             }
 
             //If a card is selected, the player has an action, and the user clicks Spacebar => Call the card's use() method and discard it

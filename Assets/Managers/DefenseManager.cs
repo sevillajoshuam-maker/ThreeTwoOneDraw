@@ -17,6 +17,8 @@ public class DefenseManager : MonoBehaviour
     SpriteRenderer largeDefenseSprite;
     SpriteRenderer smallEnemyDefenseSprite;
 
+    public Camera mainCamera;
+
     
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
@@ -85,5 +87,29 @@ public class DefenseManager : MonoBehaviour
         sprite.enabled = true;
         yield return new WaitForSeconds(num);
         sprite.enabled = false;
+    }
+
+
+    void Update(){
+        if(EncounterControl.Instance.hoveredCard != null && EncounterControl.Instance.hoveredCard.thisCard is AbstractSkill){
+            Type size = ((AbstractSkill)EncounterControl.Instance.hoveredCard.thisCard).TYPE;
+
+            if(size == Type.SmallDefend){
+                defenseFollowMouse(smallPlayerDefense);
+            }
+            else if(size == Type.MediumDefend){
+                defenseFollowMouse(mediumPlayerDefense);
+            }
+            else if(size == Type.LargeDefend){
+                defenseFollowMouse(largePlayerDefense);
+            }
+        }
+    }
+
+    void defenseFollowMouse(GameObject defense){
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        defense.GetComponent<SpriteRenderer>().enabled = true;
+        defense.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
     }
 }
