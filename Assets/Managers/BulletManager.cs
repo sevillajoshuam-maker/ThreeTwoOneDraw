@@ -26,14 +26,15 @@ public class BulletManager : MonoBehaviour
         if(!(shooter is Enemy)){
             BulletPrefab newBullet = Instantiate(bulletBlueprint, 
                 EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0),Quaternion.identity) as BulletPrefab;
-            newBullet.setData(bullet, shooter);
+            newBullet.setData(bullet, shooter, EncounterControl.Instance.takeAimActive);
+            EncounterControl.Instance.takeAimActive = false;
         }
 
         //Spawns the bullet on the head of the enemy
         else{
             BulletPrefab newBullet = Instantiate(bulletBlueprint, 
                 EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0),Quaternion.identity) as BulletPrefab;
-            newBullet.setData(bullet, shooter);
+            newBullet.setData(bullet, shooter, false);
         }
     }
 }
