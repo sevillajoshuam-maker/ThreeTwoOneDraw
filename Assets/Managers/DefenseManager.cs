@@ -17,6 +17,9 @@ public class DefenseManager : MonoBehaviour
     SpriteRenderer mediumDefenseSprite;
     SpriteRenderer largeDefenseSprite;
     SpriteRenderer smallEnemyDefenseSprite;
+
+    //Starting position of enemy defend
+    Vector3 enemySmallDefendPos;
     
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
@@ -26,6 +29,10 @@ public class DefenseManager : MonoBehaviour
         }
         else{
             Instance = this;
+
+            //Set the default position of the enmy defense to right in front of the sprite
+            enemySmallDefendPos = new Vector3(0,0,0);
+            enemySmallDefendPos = smallEnemyDefense.transform.position;
 
             //Retrieve the SpriteRenderersw for all types of defends
             smallDefenseSprite = smallPlayerDefense.GetComponent<SpriteRenderer>();
@@ -64,6 +71,20 @@ public class DefenseManager : MonoBehaviour
     //Activate the associated Defend() method of the passed defense size, this is called by a card's use() method
     public void defend(Type size, AbstractPlayer user){
         if(user is Enemy){
+            
+            //Retrieve all bullets and set the enmy defense to the correct starting position
+            GameObject[] allBullets = GameObject.FindGameObjectsWithTag("Bullet");
+            smallEnemyDefense.transform.position = enemySmallDefendPos;
+
+            //If any bullet is a player bullet, the defend teleports to it
+            for(int i = 0; i < allBullets.Length; i++){
+                if(!(allBullets[i].GetComponent<BulletPrefab>().shooter is Enemy)){
+                    smallEnemyDefense.transform.position = allBullets[i].transform.position;
+                    break;
+                }
+            }
+
+            //Activate the defense hitbox and sprite for a short time
             smallEnemyDefense.GetComponent<PlayerDefense>().defend();
             StartCoroutine(show(0.5F, smallEnemyDefenseSprite));
         }
