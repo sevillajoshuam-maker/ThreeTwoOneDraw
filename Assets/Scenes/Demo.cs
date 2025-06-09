@@ -18,9 +18,11 @@ public class Demo : MonoBehaviour
             }
         }
 
+        //Create a new Player object with a new hand
         player = new Player(starterDeck, 100);
         player.dealStartHand();
         
+        //Create a new Enemeny object with a new hand
         Enemy starterEnemy = new Enemy(new List<AbstractCard>()
         {new SixShooterBullet(),new SixShooterBullet(), new Defend(), new Defend()}, 100, 1);
         starterEnemy.dealStartHand();

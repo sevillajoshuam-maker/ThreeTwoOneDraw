@@ -31,23 +31,26 @@ public class CardPrefab : MonoBehaviour
         return thisCard.ToString();
     }
 
+    //This is called when the player's position in the hand matches the index of this card
     public void selected(){
+        //Visually indicate this card is selected
         gameObject.transform.position += new Vector3(0, 1, 0);
         rendr.sortingOrder = 100;
-
-        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
-            DefenseManager.Instance.makeVisible(((AbstractSkill) thisCard).TYPE);
-        }
     }
 
+    //This is called when the player's position in the hand NO LONGER matches the index of this card
     public void deselected(){
+        //Set visuals back to default
         gameObject.transform.position -= new Vector3(0, 1, 0);
         rendr.sortingOrder = originalOrder;
 
-         if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
-            DefenseManager.Instance.makeInvisible(((AbstractSkill) thisCard).TYPE);
+        //Make any defense sprite no longer visible
+        if(thisCard is AbstractSkill){
+            DefenseManager.Instance.makeInvisible(((AbstractSkill)thisCard).TYPE);
         }
     }
+
+    //Code that allows the mouse to select that current card. No longer in use currently.
 
     /*Whenever the player hovers over the card, change location and set it to hoveredCard
     void OnMouseEnter(){

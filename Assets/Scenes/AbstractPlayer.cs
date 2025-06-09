@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class AbstractPlayer
 {
-    //Create the player deck and health to be used by all scripts
+    //Create variables used by both player and enemy
     public List<AbstractCard> deck;
     public List<AbstractCard> masterDeck;
     public int health {get; set;}
@@ -18,6 +18,7 @@ public abstract class AbstractPlayer
     int maxHandSize = 8;
     int handsize = 3;
 
+    //A 2 arg constructor that creates an AbtsractPlayer with max health, an empty hand/discard pile, and a deck
     public AbstractPlayer(List<AbstractCard> deck, int maxhealth){
         masterDeck = new List<AbstractCard>(deck);
         this.deck = new List<AbstractCard>(deck);
@@ -29,12 +30,11 @@ public abstract class AbstractPlayer
         discardPile = new List<AbstractCard>();
     }
 
+    //Randomly select cards from the deck fro the hand
     public void dealStartHand(){
         for(int i = 0; i < handsize; i++)
         {
-            int num = rand.Next(0, deck.Count);
-            hand.Add(deck[num]);
-            deck.RemoveAt(num);
+            Draw();
         }
     }
 
@@ -59,6 +59,7 @@ public abstract class AbstractPlayer
         }
     }
 
+    //Remove a single random card from the deck and put into hand
     public void Draw(){
         if(deck.Count > 0 && hand.Count < maxHandSize){
             int num = rand.Next(0, deck.Count);
@@ -75,6 +76,7 @@ public abstract class AbstractPlayer
         }
     }
 
+    //Return only the name of this object
     public override string ToString(){
         return name;
     }
