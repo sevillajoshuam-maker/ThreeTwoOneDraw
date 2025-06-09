@@ -44,6 +44,9 @@ public class EncounterControl : MonoBehaviour
     public bool playerTurn;
     public bool enemyTurn;
 
+    //Variable to hold if the next bullet negates enemy defends
+    private bool takeAimActive;
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake(){
@@ -69,6 +72,8 @@ public class EncounterControl : MonoBehaviour
         enemyTurn = true;
 
         discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
+
+        takeAimActive = false;
 
         reapplyHand();
     }
@@ -161,7 +166,7 @@ public class EncounterControl : MonoBehaviour
         }
 
         //Visually show which card is selected and set hoveredCard to the currently selected card
-        if(position != -1){
+        if(position < visibleHand.Count && position >= 0){
             if(hoveredCard != null){
                 hoveredCard.deselected();
             }
@@ -202,9 +207,17 @@ public class EncounterControl : MonoBehaviour
     public void endEncounter(AbstractPlayer winner){
         setUI(false);
         Debug.Log(winner);
+
+        //Deactivate all visible cards
         GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
         foreach(GameObject card in visibleCards){
             Destroy(card);
+        }
+
+        //Deactivate all visible bullets
+        GameObject[] allBullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach(GameObject bullet in allBullets){
+            Destroy(bullet);
         }
         gameObject.SetActive(false);
     }

@@ -12,7 +12,7 @@ public class BulletPrefab : MonoBehaviour
     private static float feetDistance = 50F;
     private static float conversion = pixelDistance / feetDistance;
 
-    private AbstractPlayer shooter;
+    public AbstractPlayer shooter {get; private set;}
 
     //Assigns this bullet based on the passed argument.
     //Assigns the speed and bullet sprite based on bullet type (speed is negative is it is the enemy firing)
