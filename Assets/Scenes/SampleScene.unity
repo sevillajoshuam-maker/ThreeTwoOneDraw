@@ -289,6 +289,8 @@ MonoBehaviour:
   enemyHealthBarSprite: {fileID: 329496155}
   playerHealthBar: {fileID: 469651224}
   enemyHealthBar: {fileID: 134451786}
+  position: 0
+  visibleHand: []
   playerTurn: 1
   enemyTurn: 0
 --- !u!1 &229982878

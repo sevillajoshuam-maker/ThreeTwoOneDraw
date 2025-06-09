@@ -25,7 +25,6 @@ public class Demo : MonoBehaviour
         //Create a new Enemeny object with a new hand
         Enemy starterEnemy = new Enemy(new List<AbstractCard>()
         {new SixShooterBullet(),new SixShooterBullet(), new Defend(), new Defend()}, 100, 1);
-        starterEnemy.dealStartHand();
 
         //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy));
