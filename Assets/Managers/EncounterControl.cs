@@ -100,7 +100,6 @@ public class EncounterControl : MonoBehaviour
 
     //Check every update whether the player draws or plays a card
     void Update(){
-
         //Calculate the current health of the enemy and player
         playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
         enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;

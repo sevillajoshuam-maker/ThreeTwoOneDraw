@@ -14,12 +14,20 @@ public class Enemy : AbstractPlayer
         name = "Enemy";
     }
 
+    int num = 0;
+    int cost = 0;
     //Randomly selects a card in the enemy deck, plays it, and returns the amount of seconds until the next enemy turn
+    //If the deck runs low on cards, the discardpile is shuffled back into the deck
     public int trySomething(){
-        int cost = 0;
-        int num = rand.Next(0, deck.Count);
+        if(deck.Count <= 1){
+            deck.AddRange(discardPile);
+            discardPile = new List<AbstractCard>();
+        }
+        num = rand.Next(0, deck.Count);
         cost = deck[num].COST;
         deck[num].use(this);
+        discardPile.Add(deck[num]);
+        deck.RemoveAt(num);
         return cost;
     }
 }
