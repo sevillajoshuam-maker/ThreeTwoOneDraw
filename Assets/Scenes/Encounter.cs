@@ -5,10 +5,11 @@ using UnityEngine.LightTransport;
 
 public class Encounter
 {
+    //Instance variables to hold this specific enemy and player
     public Player player;
     public Enemy enemy;
 
-    //2 argument constructor that sets player and enemy decks and draws a starting hand
+    //2 argument constructor that sets the current player and current enemy
     public Encounter(Player player, Enemy enemy){
         this.enemy = enemy;
         this.player = player;

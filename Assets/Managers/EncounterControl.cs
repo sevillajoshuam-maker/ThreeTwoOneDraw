@@ -8,11 +8,16 @@ public class EncounterControl : MonoBehaviour
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance {get; private set;}
 
+    //Variables dictated by the passed Encounter
     public Encounter currEncounter;
     public Enemy currEnemy;
     public Player currPlayer;
+
+    //Card Prefab
     [SerializeField]
     private CardPrefab cardBlueprint;
+
+    //Currently selected card
     public CardPrefab hoveredCard {get; set;}
 
     //All UI elements
@@ -29,10 +34,13 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
+    //Holds the index of the card that is being selected
     public int position;
+
+    //List of all cards that in the player hand
     public List<CardPrefab> visibleHand;
 
-    //Relays if the player can currently play a card or perform an action
+    //Relays if the player or enemy can currently play a card or perform an action
     public bool playerTurn;
     public bool enemyTurn;
 
@@ -92,19 +100,25 @@ public class EncounterControl : MonoBehaviour
 
     //Check every update whether the player draws or plays a card
     void Update(){
+
+        //Calculate the current health of the enemy and player
         playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
         enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;
 
+        //If the enemy has a turn, randomly pick an action and pause the enemy turn for the returned seconds
         if(enemyTurn){
             StartCoroutine(wait(currEnemy.trySomething()+currEnemy.costAdjust, currEnemy));
         }
 
         if(currEncounter != null){
+
+            //Draw a card if the player clicks W
             if (Input.GetKeyDown(KeyCode.W))
             {
                 currPlayer.Draw();
                 reapplyHand();
             }
+            //Exit the card selection if the player clicks S
             else if (Input.GetKeyDown(KeyCode.S)){
                 position = -1;
                 if(hoveredCard != null){
@@ -112,6 +126,7 @@ public class EncounterControl : MonoBehaviour
                     hoveredCard = null;
                 }
             }
+            //Move the index of the selected card right when the playef clicks D
             else if (Input.GetKeyDown(KeyCode.D)){
                 if(position == -1 || position == currPlayer.hand.Count - 1){
                     position = 0;
@@ -119,7 +134,7 @@ public class EncounterControl : MonoBehaviour
                 else{
                     position += 1;
                 }
-
+            //Move the index of the selected card left when the playef clicks A
             } else if (Input.GetKeyDown(KeyCode.A)){
                 if(position == -1 || position == 0){
                     position = currPlayer.hand.Count - 1;
@@ -128,11 +143,12 @@ public class EncounterControl : MonoBehaviour
                     position -= 1;
                 }
             }
+            //The enemy fires a bullet when Q is pressed, for testing purposes
             else if (Input.GetKeyDown(KeyCode.Q)){
                 BulletManager.Instance.fire(currEnemy, new SixShooterBullet());
             }
 
-            //If a card is selected, the player has an action, and the user clicks Spacebar => Call the card's use() method and discard it
+            //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
             else if(hoveredCard != null && (Input.GetMouseButtonDown(0)) && playerTurn){
                 hoveredCard.use(currPlayer);
                 StartCoroutine(EncounterControl.Instance.wait(hoveredCard.thisCard.COST, currPlayer));
@@ -145,6 +161,7 @@ public class EncounterControl : MonoBehaviour
             }
         }
 
+        //Visually show which card is selected and set hoveredCard to the currently selected card
         if(position != -1){
             if(hoveredCard != null){
                 hoveredCard.deselected();
@@ -182,6 +199,7 @@ public class EncounterControl : MonoBehaviour
         }
     }
 
+    //The encounter ends whenever player or enemy reach 0 health
     public void endEncounter(AbstractPlayer winner){
         setUI(false);
         Debug.Log(winner);

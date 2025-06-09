@@ -20,7 +20,10 @@ public abstract class AbstractCard
     public override string ToString(){
         return NAME;
     }
+
     //Abstract method to be implement by specific cards
+    //The method requires the user of the card (could be player or enemies) 
+    // so card behaviour can depend on type of user playing said card
     public abstract void use(AbstractPlayer user);
 
 }

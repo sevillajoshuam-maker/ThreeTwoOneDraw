@@ -8,6 +8,7 @@ public class SixShooterBullet : AbstractBullet
     }
 
     //When the card is played, call the fire method with this bullet passed
+    //Also propogate the shooter to the fire() method to dictate where the bullet spawns/bullet direction
     public override void use(AbstractPlayer user){
         Debug.Log(this);
        BulletManager.Instance.fire(user, this);
