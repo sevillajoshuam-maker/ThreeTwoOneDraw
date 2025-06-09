@@ -6,12 +6,14 @@ public abstract class AbstractBullet : AbstractCard
     public readonly int DAMAGE;
     public readonly Speed SPEED;
     public readonly Sprite bulletSprite;
+    public readonly Sprite superBulletSprite;
 
     //Constructor that calls the AbstractCard constructor
-    public AbstractBullet(string name, int cost, Sprite image, string desc, int damage, Speed speed, Sprite bullet): base(name, cost, image, desc){
+    public AbstractBullet(string name, int cost, Sprite image, string desc, int damage, Speed speed, Sprite bullet, Sprite superBullet): base(name, cost, image, desc){
         DAMAGE = damage;
         SPEED = speed;
         bulletSprite = bullet;
+        superBulletSprite = superBullet;
     }
 }
 

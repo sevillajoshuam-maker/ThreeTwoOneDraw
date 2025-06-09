@@ -45,7 +45,7 @@ public class EncounterControl : MonoBehaviour
     public bool enemyTurn;
 
     //Variable to hold if the next bullet negates enemy defends
-    private bool takeAimActive;
+    public bool takeAimActive;
 
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed

@@ -17,7 +17,16 @@ public class PlayerDefense : MonoBehaviour
 
     //Destroy any bullet in the collider when it is activated
     void OnTriggerEnter2D(Collider2D other){
-        Destroy(other.gameObject);
+        BulletPrefab bullet = other.GetComponent<BulletPrefab>();
+
+        //If the bullet is super, the defend reverts the sprite to non-super and takes away super status
+        //Otherwise, the bullet is negated
+        if(bullet.isSuper){
+            bullet.loseSuper();
+        }
+        else{
+            Destroy(other.gameObject);
+        }
     }
 
     //Activates collider for passed seconds (should usually be as short as possible)
