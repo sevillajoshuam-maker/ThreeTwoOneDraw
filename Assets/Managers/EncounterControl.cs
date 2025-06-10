@@ -127,6 +127,15 @@ public class EncounterControl : MonoBehaviour
                 }
             }
             //Exit the card selection if the player clicks S
+            else if (Input.GetKeyDown(KeyCode.E)){
+                if(playerTurn){
+                    currPlayer.Shuffle();
+                    StartCoroutine(wait(currPlayer.shuffleCost, currPlayer));
+                    discardSpriteRenderer.sprite = null;
+                    Debug.Log(currEncounter);
+                }
+            }
+            //Exit the card selection if the player clicks S
             else if (Input.GetKeyDown(KeyCode.S)){
                 position = -1;
                 if(hoveredCard != null){

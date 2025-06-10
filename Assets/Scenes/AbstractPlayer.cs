@@ -80,4 +80,10 @@ public abstract class AbstractPlayer
     public override string ToString(){
         return name;
     }
+
+    //Method to combine the discard pile and deck
+    public void Shuffle(){
+        deck.AddRange(discardPile);
+        discardPile = new List<AbstractCard>();
+    }
 }
