@@ -19,7 +19,7 @@ public class Demo : MonoBehaviour
         }
 
         //Create a new Player object with a new hand
-        player = new Player(starterDeck, 100);
+        player = new Player(starterDeck, 100, 2);
         player.dealStartHand();
         
         //Create a new Enemeny object with a new hand

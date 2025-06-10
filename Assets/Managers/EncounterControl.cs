@@ -119,8 +119,12 @@ public class EncounterControl : MonoBehaviour
             //Draw a card if the player clicks W
             if (Input.GetKeyDown(KeyCode.W))
             {
-                currPlayer.Draw();
-                reapplyHand();
+                //Only draws a new card if it is the player turn
+                if(playerTurn){
+                    currPlayer.Draw();
+                    StartCoroutine(wait(currPlayer.drawCost, currPlayer));
+                    reapplyHand();
+                }
             }
             //Exit the card selection if the player clicks S
             else if (Input.GetKeyDown(KeyCode.S)){
