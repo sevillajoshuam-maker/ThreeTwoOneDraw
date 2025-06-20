@@ -293,6 +293,7 @@ MonoBehaviour:
   visibleHand: []
   playerTurn: 1
   enemyTurn: 0
+  takeAimActive: 0
 --- !u!1 &229982878
 GameObject:
   m_ObjectHideFlags: 0
