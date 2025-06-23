@@ -190,8 +190,8 @@ public class EncounterControl : MonoBehaviour
 
     //Turn on or off all UI elements
     private void setUI(bool state){
-        deckPlaceholder.SetActive(state);
-        discardPilePlaceholder.SetActive(state);
+        //deckPlaceholder.SetActive(state);
+        //discardPilePlaceholder.SetActive(state);
         platformPlaceholder.SetActive(state);
         playerSpritePlaceholder.SetActive(state);
         enemySpritePlaceholder.SetActive(state);

@@ -8,7 +8,7 @@ public class BulletPrefab : MonoBehaviour
     private float pixelPerSecond;
 
     //The length of the field in pixels and feet
-    private static float pixelDistance = 11.53F;
+    private static float pixelDistance = 15.91F;
     private static float feetDistance = 50F;
     private static float conversion = pixelDistance / feetDistance;
 
