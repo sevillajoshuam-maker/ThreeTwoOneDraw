@@ -34,14 +34,14 @@ public class CardPrefab : MonoBehaviour
     //This is called when the player's position in the hand matches the index of this card
     public void selected(){
         //Visually indicate this card is selected
-        gameObject.transform.position += new Vector3(0, 1, 0);
+        gameObject.transform.position += new Vector3(0, 1.75F, 0);
         rendr.sortingOrder = 100;
     }
 
     //This is called when the player's position in the hand NO LONGER matches the index of this card
     public void deselected(){
         //Set visuals back to default
-        gameObject.transform.position -= new Vector3(0, 1, 0);
+        gameObject.transform.position -= new Vector3(0, 1.75F, 0);
         rendr.sortingOrder = originalOrder;
 
         //Make any defense sprite no longer visible

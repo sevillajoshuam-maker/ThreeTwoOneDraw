@@ -126,7 +126,7 @@ public class EncounterControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 //Only draws a new card if it is the player turn
-                if(playerTurn){
+                if(playerTurn && currPlayer.hand.Count < currPlayer.maxHandSize){
                     currPlayer.Draw();
                     StartCoroutine(wait(currPlayer.drawCost, currPlayer));
                     reapplyHand();
@@ -213,18 +213,22 @@ public class EncounterControl : MonoBehaviour
         else{
             EncounterControl.Instance.playerTurn = false;
         }
+
+        //While there is time left
         float duration = sec;
-
-
         while(duration > 0){
+
+            //Alter the time by the time since last frame
             duration -= Time.deltaTime;
             if(duration <= 0){
                 duration = 0;
             }
 
+            //Updated the temp timer
             if(!(user is Enemy)){
                 timerText.text = Math.Round(duration, 4) + "";
             }
+
             yield return null;  
         }
         if(user is Enemy){
