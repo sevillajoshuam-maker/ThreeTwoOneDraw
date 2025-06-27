@@ -15,7 +15,7 @@ public abstract class AbstractPlayer
 
     public System.Random rand;
 
-    int maxHandSize = 8;
+    public int maxHandSize = 8;
     int handsize = 3;
 
     //A 2 arg constructor that creates an AbtsractPlayer with max health, an empty hand/discard pile, and a deck
