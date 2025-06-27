@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
+using TMPro;
 
 public class EncounterControl : MonoBehaviour
 {
@@ -34,6 +36,9 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
+    public GameObject tempTimer;
+    private TextMeshProUGUI timerText;
+
     //Holds the index of the card that is being selected
     public int position;
 
@@ -55,6 +60,7 @@ public class EncounterControl : MonoBehaviour
         }
         else{
             Instance = this;
+            timerText = tempTimer.GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -207,7 +213,20 @@ public class EncounterControl : MonoBehaviour
         else{
             EncounterControl.Instance.playerTurn = false;
         }
-        yield return new WaitForSeconds(sec);
+        float duration = sec;
+
+
+        while(duration > 0){
+            duration -= Time.deltaTime;
+            if(duration <= 0){
+                duration = 0;
+            }
+
+            if(!(user is Enemy)){
+                timerText.text = Math.Round(duration, 4) + "";
+            }
+            yield return null;  
+        }
         if(user is Enemy){
             EncounterControl.Instance.enemyTurn = true;
         }
