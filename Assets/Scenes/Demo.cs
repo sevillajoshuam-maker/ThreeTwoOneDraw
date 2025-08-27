@@ -1,9 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class Demo : MonoBehaviour
 {
     public static Player player;
+
+    public GameObject tempSlotImage;
+    public GameObject tempTimer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,8 +31,13 @@ public class Demo : MonoBehaviour
         Enemy starterEnemy = new Enemy(new List<AbstractCard>()
         {new Defend(), new Defend()}, 100, 1);
 
+        //Temp TimeSlot
+        TimeSlot[] slotArray = new TimeSlot[10];
+        slotArray[0] = gameObject.AddComponent<TimeSlot>() as TimeSlot;
+        slotArray[0].setData(0, tempTimer.GetComponent<TextMeshProUGUI>(), tempSlotImage);
+
         //Begin a new encounter with the player deck and an enemy deck with a single card
-        EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy));
+        EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, slotArray));
            
     }
 }

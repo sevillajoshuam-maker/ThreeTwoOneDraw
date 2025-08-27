@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
-  slotBlueprint: {fileID: 7539171557765725982, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+  slotBlueprint: {fileID: 0}
   deckPlaceholder: {fileID: 1189465481}
   discardPilePlaceholder: {fileID: 1380360579}
   platformPlaceholder: {fileID: 751108161}
@@ -377,8 +377,6 @@ MonoBehaviour:
   enemyHealthBarSprite: {fileID: 329496155}
   playerHealthBar: {fileID: 469651224}
   enemyHealthBar: {fileID: 134451786}
-  tempTimer: {fileID: 1595560773}
-  tempSlotImage: {fileID: 1358141908}
   position: 0
   visibleHand: []
   enemyTurn: 0
@@ -1657,6 +1655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022af44458bb2604f877274fef8beb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tempSlotImage: {fileID: 1358141908}
+  tempTimer: {fileID: 1595560773}
 --- !u!4 &763859151
 Transform:
   m_ObjectHideFlags: 0
