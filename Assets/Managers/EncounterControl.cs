@@ -40,12 +40,8 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
-    public GameObject tempTimer;
-    private TextMeshProUGUI timerText;
-
     //Temp TimeSlot
-    TimeSlot slot;
-    public GameObject tempSlotImage;
+    TimeSlot[] timeSlots;
 
     //Holds the index of the card that is being selected
     public int position;
@@ -67,9 +63,6 @@ public class EncounterControl : MonoBehaviour
         }
         else{
             Instance = this;
-            timerText = tempTimer.GetComponent<TextMeshProUGUI>();
-            slot = Instantiate(slotBlueprint, new Vector2(0,0), Quaternion.identity) as TimeSlot;
-            slot.setData(0, timerText, tempSlotImage);
         }
     }
 
@@ -78,6 +71,7 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
+        timeSlots = encounter.timeSlots;
 
         position = -1;
         visibleHand = new List<CardPrefab>();
@@ -186,18 +180,7 @@ public class EncounterControl : MonoBehaviour
 
             //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
             else if(hoveredCard != null && (Input.GetMouseButtonDown(0))){
-                if(slot.occupied){
-                    return;
-                }
-
-                StartCoroutine(slot.wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
-                //hoveredCard.use(currPlayer);
-
-                discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
-                currPlayer.Discard(hoveredCard.thisCard);
-                
-                position = (position == 0)? position + 1: position - 1;
-                reapplyHand();
+                playCardToSlot(0);
             }
         }
 
@@ -258,5 +241,19 @@ public class EncounterControl : MonoBehaviour
             Destroy(bullet);
         }
         gameObject.SetActive(false);
+    }
+
+    public void playCardToSlot(int index){
+        if(timeSlots[index] == null || timeSlots[index].occupied){
+            return;
+        }
+
+        StartCoroutine(timeSlots[index].wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
+
+        discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
+        currPlayer.Discard(hoveredCard.thisCard);
+                
+        position = (position == 0)? position + 1: position - 1;
+        reapplyHand();
     }
 }

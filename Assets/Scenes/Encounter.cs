@@ -8,11 +8,13 @@ public class Encounter
     //Instance variables to hold this specific enemy and player
     public Player player;
     public Enemy enemy;
+    public TimeSlot[] timeSlots;
 
     //2 argument constructor that sets the current player and current enemy
-    public Encounter(Player player, Enemy enemy){
+    public Encounter(Player player, Enemy enemy, TimeSlot[] timeSlots){
         this.enemy = enemy;
         this.player = player;
+        this.timeSlots = timeSlots;
     }
 
     //Returns the entire player deck, hand, and enemy deck as a string
