@@ -6,8 +6,11 @@ public class Demo : MonoBehaviour
 {
     public static Player player;
 
-    public GameObject tempSlotImage;
-    public GameObject tempTimer;
+    public GameObject tempSlotImage1;
+    public GameObject tempTimer1;
+
+    public GameObject tempSlotImage2;
+    public GameObject tempTimer2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +37,10 @@ public class Demo : MonoBehaviour
         //Temp TimeSlot
         TimeSlot[] slotArray = new TimeSlot[10];
         slotArray[0] = gameObject.AddComponent<TimeSlot>() as TimeSlot;
-        slotArray[0].setData(0, tempTimer.GetComponent<TextMeshProUGUI>(), tempSlotImage);
+        slotArray[0].setData(0, tempTimer1.GetComponent<TextMeshProUGUI>(), tempSlotImage1);
+
+        slotArray[1] = gameObject.AddComponent<TimeSlot>() as TimeSlot;
+        slotArray[1].setData(1, tempTimer2.GetComponent<TextMeshProUGUI>(), tempSlotImage2);
 
         //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, slotArray));
