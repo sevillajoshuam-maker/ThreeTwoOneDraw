@@ -149,7 +149,7 @@ public class EncounterControl : MonoBehaviour
                 Debug.Log(currEncounter);
             }
             //Exit the card selection if the player clicks S
-            else if (Input.GetKeyDown(KeyCode.S)){
+            else if (Input.GetKeyDown(KeyCode.DownArrow)){
                 position = -1;
                 if(hoveredCard != null){
                     hoveredCard.deselected();
@@ -157,7 +157,7 @@ public class EncounterControl : MonoBehaviour
                 }
             }
             //Move the index of the selected card right when the playef clicks D
-            else if (Input.GetKeyDown(KeyCode.D)){
+            else if (Input.GetKeyDown(KeyCode.RightArrow)){
                 if(position == -1 || position == currPlayer.hand.Count - 1){
                     position = 0;
                 }
@@ -165,7 +165,7 @@ public class EncounterControl : MonoBehaviour
                     position += 1;
                 }
             //Move the index of the selected card left when the playef clicks A
-            } else if (Input.GetKeyDown(KeyCode.A)){
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow)){
                 if(position == -1 || position == 0){
                     position = currPlayer.hand.Count - 1;
                 }
@@ -179,8 +179,38 @@ public class EncounterControl : MonoBehaviour
             }
 
             //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
-            else if(hoveredCard != null && (Input.GetMouseButtonDown(0))){
-                playCardToSlot(0);
+            else if(hoveredCard != null){
+                if(Input.GetKeyDown(KeyCode.Alpha1)){
+                    playCardToSlot(0);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha2)){
+                    playCardToSlot(1);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha3)){
+                    playCardToSlot(2);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha4)){
+                    playCardToSlot(3);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha5)){
+                    playCardToSlot(4);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha6)){
+                    playCardToSlot(5);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha7)){
+                    playCardToSlot(6);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha8)){
+                    playCardToSlot(7);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha9)){
+                    playCardToSlot(8);
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha0)){
+                    playCardToSlot(9);
+                }
+                
             }
         }
 
