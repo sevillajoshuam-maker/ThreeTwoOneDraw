@@ -8,13 +8,12 @@ public class Encounter
     //Instance variables to hold this specific enemy and player
     public Player player;
     public Enemy enemy;
-    public TimeSlot[] timeSlots;
 
-    //2 argument constructor that sets the current player and current enemy
-    public Encounter(Player player, Enemy enemy, TimeSlot[] timeSlots){
+    //2 argument constructor that sets the current player, current enemy, and passes the current weapon to WeaponMono
+    public Encounter(Player player, Enemy enemy, AbstractWeapon weapon){
         this.enemy = enemy;
         this.player = player;
-        this.timeSlots = timeSlots;
+        WeaponMono.Instance.activateWeapon(weapon);
     }
 
     //Returns the entire player deck, hand, and enemy deck as a string

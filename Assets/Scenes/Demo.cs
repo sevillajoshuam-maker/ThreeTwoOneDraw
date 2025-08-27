@@ -34,16 +34,11 @@ public class Demo : MonoBehaviour
         Enemy starterEnemy = new Enemy(new List<AbstractCard>()
         {new Defend(), new Defend()}, 100, 1);
 
-        //Temp TimeSlot
-        TimeSlot[] slotArray = new TimeSlot[10];
-        slotArray[0] = gameObject.AddComponent<TimeSlot>() as TimeSlot;
-        slotArray[0].setData(0, tempTimer1.GetComponent<TextMeshProUGUI>(), tempSlotImage1);
-
-        slotArray[1] = gameObject.AddComponent<TimeSlot>() as TimeSlot;
-        slotArray[1].setData(1, tempTimer2.GetComponent<TextMeshProUGUI>(), tempSlotImage2);
-
+        //Create a basic six shooter gun
+        SixShooter starterGun = new SixShooter();
+        
         //Begin a new encounter with the player deck and an enemy deck with a single card
-        EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, slotArray));
+        EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, starterGun));
            
     }
 }
