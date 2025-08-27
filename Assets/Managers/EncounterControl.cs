@@ -19,10 +19,6 @@ public class EncounterControl : MonoBehaviour
     [SerializeField]
     private CardPrefab cardBlueprint;
 
-    //Time Slot Prefab
-    [SerializeField]
-    private TimeSlot slotBlueprint;
-
     //Currently selected card
     public CardPrefab hoveredCard {get; set;}
 
@@ -71,7 +67,9 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
-        timeSlots = encounter.timeSlots;
+
+        Debug.Log(currEnemy);
+        Debug.Log(currPlayer);
 
         position = -1;
         visibleHand = new List<CardPrefab>();
@@ -180,6 +178,8 @@ public class EncounterControl : MonoBehaviour
 
             //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
             else if(hoveredCard != null){
+
+                //For any number key pressed (0-9), call the time slot with the associated index
                 if(Input.GetKeyDown(KeyCode.Alpha1)){
                     playCardToSlot(0);
                 }
@@ -273,16 +273,23 @@ public class EncounterControl : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //Play the current card to the time slot at the provided index
     public void playCardToSlot(int index){
-        if(timeSlots[index] == null || timeSlots[index].occupied){
+
+        //If the time slot does not exist or if it has a card already in it
+        if(WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied){
+            Debug.Log("Not valid Slot");
             return;
         }
 
-        StartCoroutine(timeSlots[index].wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
+        //Start the specific time slot's timer with the card that is currently selected
+        StartCoroutine(WeaponMono.Instance.allSlots[index].wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
 
+        //Discard the card
         discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
         currPlayer.Discard(hoveredCard.thisCard);
-                
+        
+        //Reapply the visuals for the player's hand
         position = (position == 0)? position + 1: position - 1;
         reapplyHand();
     }

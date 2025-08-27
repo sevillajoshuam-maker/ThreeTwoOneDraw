@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class AbstractBullet : AbstractCard
 {
     //Bullet specific instance variables
-    public readonly int DAMAGE;
+    public int DAMAGE {get; private set;}
     public readonly Speed SPEED;
     public readonly Sprite bulletSprite;
     public readonly Sprite superBulletSprite;
@@ -14,6 +14,11 @@ public abstract class AbstractBullet : AbstractCard
         SPEED = speed;
         bulletSprite = bullet;
         superBulletSprite = superBullet;
+    }
+
+    //Give this bullet double damage
+    public void doubleDamage(){
+        DAMAGE *= 2;
     }
 }
 
