@@ -44,26 +44,26 @@ public class DefenseManager : MonoBehaviour
 
     //Make the defense sprite visible of the passed size
     public void makeVisible(Type size){
-        if(size == Type.SmallDefend){
+        if(size == Type.Small){
             smallDefenseSprite.enabled = true;
         }
-        else if(size == Type.MediumDefend){
+        else if(size == Type.Medium){
             mediumDefenseSprite.enabled = true;
         }
-        else if(size == Type.LargeDefend){
+        else if(size == Type.Large){
             largeDefenseSprite.enabled = true;
         }
     }
 
     //Make the defense sprite invisible of the passed size
     public void makeInvisible(Type size){
-        if(size == Type.SmallDefend){
+        if(size == Type.Small){
             smallDefenseSprite.enabled = false;
         }
-        else if(size == Type.MediumDefend){
+        else if(size == Type.Medium){
             mediumDefenseSprite.enabled = false;
         }
-        else if(size == Type.LargeDefend){
+        else if(size == Type.Large){
             largeDefenseSprite.enabled = false;
         }
     }
@@ -89,14 +89,14 @@ public class DefenseManager : MonoBehaviour
             StartCoroutine(show(0.5F, smallEnemyDefenseSprite));
         }
         else{
-            if(size == Type.SmallDefend){
+            if(size == Type.Small){
                 smallPlayerDefense.GetComponent<PlayerDefense>().defend();
             }
-            else if(size == Type.MediumDefend){
+            else if(size == Type.Medium){
                 mediumPlayerDefense.GetComponent<PlayerDefense>().defend();
 
             }
-            else if(size == Type.LargeDefend){
+            else if(size == Type.Large){
                 largePlayerDefense.GetComponent<PlayerDefense>().defend();
             }
         }
@@ -113,19 +113,19 @@ public class DefenseManager : MonoBehaviour
     void Update(){
 
         //If there is a currently selected card that is a skill
-        if(EncounterControl.Instance.hoveredCard != null && EncounterControl.Instance.hoveredCard.thisCard is AbstractSkill){
+        if(EncounterControl.Instance.hoveredCard != null && EncounterControl.Instance.hoveredCard.thisCard is AbstractDefend){
 
             //Save the type of the selected card
-            Type size = ((AbstractSkill)EncounterControl.Instance.hoveredCard.thisCard).TYPE;
+            Type size = ((AbstractDefend)EncounterControl.Instance.hoveredCard.thisCard).TYPE;
 
             //Pass the correct defense game object depending on type of hovered card
-            if(size == Type.SmallDefend){
+            if(size == Type.Small){
                 defenseFollowMouse(smallPlayerDefense);
             }
-            else if(size == Type.MediumDefend){
+            else if(size == Type.Medium){
                 defenseFollowMouse(mediumPlayerDefense);
             }
-            else if(size == Type.LargeDefend){
+            else if(size == Type.Large){
                 defenseFollowMouse(largePlayerDefense);
             }
         }

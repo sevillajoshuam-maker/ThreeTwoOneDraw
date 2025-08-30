@@ -45,8 +45,8 @@ public class CardPrefab : MonoBehaviour
         rendr.sortingOrder = originalOrder;
 
         //Make any defense sprite no longer visible
-        if(thisCard is AbstractSkill){
-            DefenseManager.Instance.makeInvisible(((AbstractSkill)thisCard).TYPE);
+        if(thisCard is AbstractDefend){
+            DefenseManager.Instance.makeInvisible(((AbstractDefend)thisCard).TYPE);
         }
     }
 
