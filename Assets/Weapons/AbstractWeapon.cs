@@ -8,9 +8,9 @@ public abstract class AbstractWeapon
     public readonly List<AbstractCard> bullets;
 
     //2 arg constructor
-    public AbstractWeapon(InfoNode[] nodes, List<AbstractCard> bullets){
-        this.nodes = nodes;
-        this.bullets = bullets;
+    public AbstractWeapon(){
+        this.bullets = new List<AbstractCard>();
+        this.nodes = new InfoNode[10];
     }
 }
 
