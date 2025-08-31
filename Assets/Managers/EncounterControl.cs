@@ -44,6 +44,7 @@ public class EncounterControl : MonoBehaviour
 
     //List of all cards that in the player hand
     public List<CardPrefab> visibleHand;
+    public List<AbstractCard> deck;
 
     //Relays if the player or enemy can currently play a card or perform an action
     public bool enemyTurn;
@@ -67,6 +68,9 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
+        
+        currPlayer.addBullets(encounter.weapon.bullets);
+
 
         Debug.Log(currEnemy);
         Debug.Log(currPlayer);

@@ -5,11 +5,11 @@ public abstract class AbstractWeapon
 {
     //Create instance variables to holg the data of all time slots and all bullets
     public InfoNode[] nodes;
-    public readonly List<AbstractCard> bullets;
+    public readonly List<AbstractBullet> bullets;
 
     //2 arg constructor
     public AbstractWeapon(){
-        this.bullets = new List<AbstractCard>();
+        this.bullets = new List<AbstractBullet>();
         this.nodes = new InfoNode[10];
     }
 }

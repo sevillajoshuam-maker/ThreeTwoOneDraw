@@ -30,6 +30,12 @@ public abstract class AbstractPlayer
         discardPile = new List<AbstractCard>();
     }
 
+    //Combine the weapons bullets with the master deck
+    public void addBullets(List<AbstractBullet> bullets){
+        deck = new List<AbstractCard>(masterDeck);
+        deck.AddRange(bullets);
+    }
+
     //Randomly select cards from the deck fro the hand
     public void dealStartHand(){
         for(int i = 0; i < handsize; i++)
