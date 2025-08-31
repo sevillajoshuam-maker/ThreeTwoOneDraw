@@ -19,7 +19,6 @@ public class Demo : MonoBehaviour
 
         //Set player health to 100 and create basic deck
         for(int i = 0; i < 6; i++){
-            starterDeck.Add(new SixShooterBullet());
             if(i % 2 == 0){
                 starterDeck.Add(new Defend());
                 starterDeck.Add(new TakeAim());

@@ -5,14 +5,16 @@ using UnityEngine.LightTransport;
 
 public class Encounter
 {
-    //Instance variables to hold this specific enemy and player
+    //Instance variables to hold this specific enemy, player, and weapon
     public Player player;
     public Enemy enemy;
+    public AbstractWeapon weapon;
 
     //2 argument constructor that sets the current player, current enemy, and passes the current weapon to WeaponMono
     public Encounter(Player player, Enemy enemy, AbstractWeapon weapon){
         this.enemy = enemy;
         this.player = player;
+        this.weapon = weapon;
         WeaponMono.Instance.activateWeapon(weapon);
     }
 
