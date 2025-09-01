@@ -42,19 +42,6 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
-    //Make the defense sprite visible of the passed size
-    public void makeVisible(Type size){
-        if(size == Type.Small){
-            smallDefenseSprite.enabled = true;
-        }
-        else if(size == Type.Medium){
-            mediumDefenseSprite.enabled = true;
-        }
-        else if(size == Type.Large){
-            largeDefenseSprite.enabled = true;
-        }
-    }
-
     //Make the defense sprite invisible of the passed size
     public void makeInvisible(Type size){
         if(size == Type.Small){
@@ -111,24 +98,24 @@ public class DefenseManager : MonoBehaviour
     }
 
     void Update(){
+        //Check if time slot to see if it holds a Defend card
+        foreach(TimeSlot slot in WeaponMono.Instance.allSlots){
+            if(slot != null && slot.occupyingCard != null && slot.occupyingCard is AbstractDefend){
+                //Save the type of the occupying card
+                Type size = ((AbstractDefend)slot.occupyingCard).TYPE;
 
-        //If there is a currently selected card that is a skill
-        if(EncounterControl.Instance.hoveredCard != null && EncounterControl.Instance.hoveredCard.thisCard is AbstractDefend){
-
-            //Save the type of the selected card
-            Type size = ((AbstractDefend)EncounterControl.Instance.hoveredCard.thisCard).TYPE;
-
-            //Pass the correct defense game object depending on type of hovered card
-            if(size == Type.Small){
-                defenseFollowMouse(smallPlayerDefense);
+                //Pass the correct defense game object depending on type of hovered card
+                if(size == Type.Small){
+                    defenseFollowMouse(smallPlayerDefense);
+                }
+                else if(size == Type.Medium){
+                    defenseFollowMouse(mediumPlayerDefense);
+                }
+                else if(size == Type.Large){
+                    defenseFollowMouse(largePlayerDefense);
+                }
             }
-            else if(size == Type.Medium){
-                defenseFollowMouse(mediumPlayerDefense);
-            }
-            else if(size == Type.Large){
-                defenseFollowMouse(largePlayerDefense);
-            }
-        }
+        }     
     }
 
     //Activates the sprites and forces the passed defense Game Object to follow the mouse
