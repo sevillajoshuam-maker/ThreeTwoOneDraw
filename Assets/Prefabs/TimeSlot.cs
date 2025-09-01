@@ -27,10 +27,12 @@ public class TimeSlot : MonoBehaviour
         occupied = false;
     }
 
+    public AbstractCard occupyingCard;
     //Start this slot's timer based on the provided cards cost
     public IEnumerator wait(int sec, AbstractPlayer user, AbstractCard selectedCard){
         //Make the slot occupied
         occupied = true;
+        occupyingCard = selectedCard;
 
         //If its a bullet, call the node's corresponding method
         if(selectedCard is AbstractBullet){
@@ -59,11 +61,12 @@ public class TimeSlot : MonoBehaviour
 
         //Use the passed cards method
         if(selectedCard != null){
-                selectedCard.use(user);
+            selectedCard.use(user);
         }
 
         //Remove sprite and change the slot to unoccupied
         rendr.sprite = null;
+        occupyingCard = null;
         occupied = false;
     }
 
