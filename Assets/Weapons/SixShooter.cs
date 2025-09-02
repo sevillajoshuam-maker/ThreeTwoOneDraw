@@ -13,8 +13,8 @@ public class SixShooter : AbstractWeapon
             this.bullets.Add(new SixShooterBullet());
         }
 
-        this.nodes[0] = new InfoNode(0, new Vector2(-331f, -167.9f), new Vector2(-8.74f, -1.37f));
-        this.nodes[1] = new SpecialNode(1, new Vector2(-331f, 36f), new Vector2(-8.74f, 2.87f));
+        this.nodes[0] = new InfoNode(0);
+        this.nodes[1] = new SpecialNode(1);
     }
 }
 
@@ -22,7 +22,7 @@ public class SixShooter : AbstractWeapon
 public class SpecialNode : InfoNode
 {
     //3 arg constructor that calls base constructor
-    public SpecialNode(int diff, Vector2 timer, Vector2 slot) : base(diff, timer, slot)
+    public SpecialNode(int diff) : base(diff)
     {
     }
 
