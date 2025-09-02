@@ -3,14 +3,16 @@ using System.Collections.Generic;
 
 public abstract class AbstractWeapon
 {
-    //Create instance variables to holg the data of all time slots and all bullets
+    //Create instance variables to holg the data of all time slots, all bullets, and the draw timer
     public InfoNode[] nodes;
     public readonly List<AbstractBullet> bullets;
+    public readonly float drawDelay;
 
-    //2 arg constructor
-    public AbstractWeapon(){
+    //1 arg constructor
+    public AbstractWeapon(float drawDelay){
         this.bullets = new List<AbstractBullet>();
         this.nodes = new InfoNode[10];
+        this.drawDelay = drawDelay;
     }
 }
 

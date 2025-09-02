@@ -43,8 +43,11 @@ public class EncounterControl : MonoBehaviour
     public List<CardPrefab> visibleHand;
     public List<AbstractCard> deck;
 
-    //Relays if the player or enemy can currently play a card or perform an action
+    //Relays if the enemy can currently play a card or perform an action
     public bool enemyTurn;
+
+    //Relays if the player can currently draw a card
+    public bool drawTurn;
 
     //Variable to hold if the next bullet negates enemy defends
     public bool takeAimActive;
@@ -77,6 +80,7 @@ public class EncounterControl : MonoBehaviour
 
         setUI(true);
         enemyTurn = true;
+        drawTurn = true;
 
         discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
 
@@ -118,31 +122,17 @@ public class EncounterControl : MonoBehaviour
 
         //If the enemy has a turn, randomly pick an action and pause the enemy turn for the returned seconds
         if(enemyTurn){
-            StartCoroutine(wait(currEnemy.trySomething()+currEnemy.costAdjust));
+            StartCoroutine(wait(currEnemy.trySomething()+currEnemy.costAdjust, currEnemy));
         }
 
+        if(drawTurn && currPlayer.hand.Count < currPlayer.maxHandSize){
+            currPlayer.Draw();
+            StartCoroutine(wait(currEncounter.weapon.drawDelay, currPlayer));
+            reapplyHand();
+        }
         if(currEncounter != null){
-
-            //Draw a card if the player clicks W
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                //Only draws a new card if it is the player turn
-                /*if(playerTurn && currPlayer.hand.Count < currPlayer.maxHandSize){
-                    currPlayer.Draw();
-                    //StartCoroutine(wait(currPlayer.drawCost, currPlayer));
-                    reapplyHand();
-                }*/
-
-                if(currPlayer.hand.Count < currPlayer.maxHandSize){
-                    currPlayer.Draw();
-                    //StartCoroutine(wait(currPlayer.drawCost, currPlayer));
-                    reapplyHand();
-                }
-
-
-            }
             //Exit the card selection if the player clicks S
-            else if (Input.GetKeyDown(KeyCode.E)){
+            if (Input.GetKeyDown(KeyCode.E)){
                 currPlayer.Shuffle();
                 discardSpriteRenderer.sprite = null;
                 Debug.Log(currEncounter);
@@ -237,8 +227,13 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Turn off player turn for the passed cost
-    public IEnumerator wait(int sec){
-        EncounterControl.Instance.enemyTurn = false;
+    public IEnumerator wait(float sec, AbstractPlayer player){
+        if(player is Enemy){
+            EncounterControl.Instance.enemyTurn = false;
+        }
+        else{
+            EncounterControl.Instance.drawTurn = false;
+        }
 
         //While there is time left
         float duration = sec;
@@ -252,7 +247,12 @@ public class EncounterControl : MonoBehaviour
 
             yield return null;  
         }
-        EncounterControl.Instance.enemyTurn = true;
+        if(player is Enemy){
+            EncounterControl.Instance.enemyTurn = true;
+        }
+        else{
+            EncounterControl.Instance.drawTurn = true;
+        }
     }
 
     //The encounter ends whenever player or enemy reach 0 health
