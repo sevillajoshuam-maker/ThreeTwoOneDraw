@@ -16,10 +16,11 @@ public class TimeSlot : MonoBehaviour
     private InfoNode thisInfo;
 
     //Boolean for if the slot is open to another card or not
-    public bool occupied {get; private set;}
+    public bool occupied { get; private set; }
 
     //Set all the data associated with this slot
-    public void setData(InfoNode info, GameObject image, TextMeshProUGUI text){
+    public void setData(InfoNode info, GameObject image, TextMeshProUGUI text)
+    {
         thisInfo = info;
         timerText = text;
         this.imageObject = image;
@@ -28,13 +29,15 @@ public class TimeSlot : MonoBehaviour
     }
 
     //Start this slot's timer based on the provided cards cost
-    public IEnumerator wait(int sec, AbstractPlayer user, AbstractCard selectedCard){
+    public IEnumerator wait(int sec, AbstractPlayer user, AbstractCard selectedCard)
+    {
         //Make the slot occupied
         occupied = true;
 
         //If its a bullet, call the node's corresponding method
-        if(selectedCard is AbstractBullet){
-            Debug.Log(thisInfo is specialNode);
+        if (selectedCard is AbstractBullet)
+        {
+            Debug.Log(thisInfo is SpecialNode);
             thisInfo.ifBullet((AbstractBullet)selectedCard);
         }
 
@@ -43,28 +46,31 @@ public class TimeSlot : MonoBehaviour
 
         //While there is time left
         float duration = sec + thisInfo.diff;
-        while(duration > 0){
+        var totalDuration = duration;
 
+        while (duration > 0)
+        {
             //Alter the time by the time since last frame
             duration -= Time.deltaTime;
-            if(duration <= 0){
+            if (duration <= 0)
+            {
                 duration = 0;
             }
 
             //Updated the temp timer
             timerText.text = Math.Round(duration, 4) + "";
 
-            yield return null;  
+            yield return null;
         }
 
         //Use the passed cards method
-        if(selectedCard != null){
-                selectedCard.use(user);
+        if (selectedCard != null)
+        {
+            selectedCard.use(user, totalDuration);
         }
 
         //Remove sprite and change the slot to unoccupied
         rendr.sprite = null;
         occupied = false;
     }
-
 }

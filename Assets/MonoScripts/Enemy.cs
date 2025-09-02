@@ -25,7 +25,7 @@ public class Enemy : AbstractPlayer
         }
         num = rand.Next(0, deck.Count);
         cost = deck[num].COST;
-        deck[num].use(this);
+        deck[num].use(this, 0);
         discardPile.Add(deck[num]);
         deck.RemoveAt(num);
         return cost;
