@@ -36,7 +36,6 @@ public class TimeSlot : MonoBehaviour
 
         //If its a bullet, call the node's corresponding method
         if(selectedCard is AbstractBullet){
-            Debug.Log(thisInfo is specialNode);
             thisInfo.ifBullet((AbstractBullet)selectedCard);
         }
 
