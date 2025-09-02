@@ -1,10 +1,14 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class SixShooterBullet : AbstractBullet
+public class TomahawkBullet : AbstractBullet
 {
     //0 argument constructor that makes a basic six shooter bullet
-    public SixShooterBullet() : base("Six Shooter Bullet", 3, ImageLibrary.sixShooter_art,
-        "Fire one SLOW bullet that deals 25 damage", 25, Speed.Slow, ImageLibrary.default_bullet_concept_art,
+    // TODO: Are we calling this a bullet?
+    // TODO: change art
+    public TomahawkBullet() : base("Tomahawk Bullet", 2, ImageLibrary.sixShooter_art,
+        "Fire one FAST bullet that deals damage on duration it took to cast", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
         ImageLibrary.default_superBullet_concept_art)
     {
     }
@@ -13,6 +17,7 @@ public class SixShooterBullet : AbstractBullet
     //Also propogate the shooter to the fire() method to dictate where the bullet spawns/bullet direction
     public override void use(AbstractPlayer user, float duration)
     {
+        AddModifier(x => (int)Math.Floor(duration) * x);
         Debug.Log(this);
         BulletManager.Instance.fire(user, this);
     }

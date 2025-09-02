@@ -44,23 +44,27 @@ public class TimeSlot : MonoBehaviour
 
         //While there is time left
         float duration = sec + thisInfo.diff;
-        while(duration > 0){
+        var totalDuration = duration;
 
+        while (duration > 0)
+        {
             //Alter the time by the time since last frame
             duration -= Time.deltaTime;
-            if(duration <= 0){
+            if (duration <= 0)
+            {
                 duration = 0;
             }
 
             //Updated the temp timer
             timerText.text = Math.Round(duration, 4) + "";
 
-            yield return null;  
+            yield return null;
         }
 
         //Use the passed cards method
-        if(selectedCard != null){
-            selectedCard.use(user);
+        if (selectedCard != null)
+        {
+            selectedCard.use(user, totalDuration);
         }
 
         //Remove sprite and change the slot to unoccupied
