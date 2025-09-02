@@ -36,9 +36,6 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
-    //Temp TimeSlot
-    TimeSlot[] timeSlots;
-
     //Holds the index of the card that is being selected
     public int position;
 

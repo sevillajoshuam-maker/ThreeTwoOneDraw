@@ -18,11 +18,10 @@ public class Demo : MonoBehaviour
         List<AbstractCard> starterDeck = new List<AbstractCard>();
 
         //Set player health to 100 and create basic deck
-        for(int i = 0; i < 6; i++){
-            if(i % 2 == 0){
-                starterDeck.Add(new Defend());
-                starterDeck.Add(new TakeAim());
-            }
+        for(int i = 0; i < 3; i++){
+            starterDeck.Add(new Defend());
+            starterDeck.Add(new TakeAim());
+            starterDeck.Add(new CardBlueprint());
         }
 
         //Create a new Player object with a new hand
