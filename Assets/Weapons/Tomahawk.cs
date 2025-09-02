@@ -6,7 +6,7 @@ public class Tomahawk : AbstractWeapon
 {
     //0 arg constructor
     //Adds 6 Six Shooter bullet cards and creates two InfoNodes (one of which is special and adds one to costs)
-    public Tomahawk() : base()
+    public Tomahawk() : base(3f)
     {
         for (int i = 0; i < 4; i++)
         {

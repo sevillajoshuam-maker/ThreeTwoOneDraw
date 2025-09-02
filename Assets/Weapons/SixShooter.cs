@@ -6,7 +6,7 @@ public class SixShooter : AbstractWeapon
 {
     //0 arg constructor
     //Adds 6 Six Shooter bullet cards and creates two InfoNodes (one of which is special and adds one to costs)
-    public SixShooter() : base()
+    public SixShooter() : base(2f)
     {
         for (int i = 0; i < 6; i++)
         {
