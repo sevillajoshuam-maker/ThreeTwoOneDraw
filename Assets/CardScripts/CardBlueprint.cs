@@ -15,7 +15,7 @@ public class CardBlueprint : AbstractSkill
     public CardBlueprint():base(nameOfCard, costOfCard, imageOfCard, descOfCard){}
 
     //Override the use() method and put whatever the card does when it activates here
-    public override void use(AbstractPlayer user){
+    public override void use(AbstractPlayer user, float duration){
         Debug.Log("The Default Card Was Played");
     }
 }
