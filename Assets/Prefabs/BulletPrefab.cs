@@ -43,14 +43,14 @@ public class BulletPrefab : MonoBehaviour
         gameObject.transform.position += new Vector3(pixelPerSecond/50F, 0,0);
 
         if(!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x){
-            EncounterControl.Instance.currEnemy.takeDamage(thisBullet.DAMAGE);
+            EncounterControl.Instance.currEnemy.takeDamage(thisBullet.GetDamage());
             Destroy(gameObject);
             if(EncounterControl.Instance.currEnemy.health == 0){
                 EncounterControl.Instance.endEncounter(EncounterControl.Instance.currPlayer);
             }
         }
         else if((shooter is Enemy) && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x){
-            EncounterControl.Instance.currPlayer.takeDamage(thisBullet.DAMAGE);
+            EncounterControl.Instance.currPlayer.takeDamage(thisBullet.GetDamage());
             Destroy(gameObject);
             if(EncounterControl.Instance.currPlayer.health == 0){
                 EncounterControl.Instance.endEncounter(EncounterControl.Instance.currEnemy);
