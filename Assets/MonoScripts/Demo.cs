@@ -21,7 +21,6 @@ public class Demo : MonoBehaviour
         for(int i = 0; i < 3; i++){
             starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
-            starterDeck.Add(new CardBlueprint());
         }
 
         //Create a new Player object with a new hand

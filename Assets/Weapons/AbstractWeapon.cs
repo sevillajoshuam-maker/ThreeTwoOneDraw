@@ -20,16 +20,12 @@ public abstract class AbstractWeapon
 public class InfoNode{
 
     //Time slot specific data
-    //Position of timer and slot as well as added cost
+    //Added cost
     public readonly int diff;
-    public readonly Vector2 timer;
-    public readonly Vector2 slot;
 
     //3 arg constructor
-    public InfoNode(int diff, Vector2 timerLocation, Vector2 slotLocation){
+    public InfoNode(int diff){
         this.diff = diff;
-        this.timer = timerLocation;
-        this.slot = slotLocation;
     }
 
     //Virtual method that is overridden by any subclass which has behaviour when a bullet occupies this slot

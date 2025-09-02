@@ -8,8 +8,7 @@ using TMPro;
 public class TimeSlot : MonoBehaviour
 {
     //The game objects to visually show what card is occupying this slot and current time
-    private TextMeshProUGUI timerText;
-    private GameObject imageObject;
+    private TextMesh timerText;
     private SpriteRenderer rendr;
 
     //The info related to this slot
@@ -19,11 +18,14 @@ public class TimeSlot : MonoBehaviour
     public bool occupied {get; private set;}
 
     //Set all the data associated with this slot
-    public void setData(InfoNode info, GameObject image, TextMeshProUGUI text){
+    public void setData(InfoNode info){
         thisInfo = info;
-        timerText = text;
-        this.imageObject = image;
-        rendr = imageObject.GetComponent<SpriteRenderer>();
+
+        GameObject ImageRender = transform.GetChild(0).gameObject;
+        GameObject TempTimer = transform.GetChild(1).gameObject;
+
+        timerText = TempTimer.GetComponent<TextMesh>();
+        rendr = ImageRender.GetComponent<SpriteRenderer>();
         occupied = false;
     }
 
@@ -56,7 +58,7 @@ public class TimeSlot : MonoBehaviour
             }
 
             //Updated the temp timer
-            timerText.text = Math.Round(duration, 4) + "";
+            timerText.text = Math.Round(duration, 1) + "";
 
             yield return null;
         }
