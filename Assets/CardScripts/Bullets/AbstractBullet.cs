@@ -11,11 +11,13 @@ public abstract class AbstractBullet : AbstractCard
     public readonly Speed SPEED;
     public readonly Sprite bulletSprite;
     public readonly Sprite superBulletSprite;
+    public readonly SoundType sound;
 
     //Constructor that calls the AbstractCard constructor
     public AbstractBullet(string name, int cost, Sprite image, string desc, int baseDamage, Speed speed, Sprite bullet,
-        Sprite superBullet) : base(name, cost, image, desc)
+        Sprite superBullet, SoundType sound) : base(name, cost, image, desc)
     {
+        this.sound = sound;
         this.baseDamage = baseDamage;
         SPEED = speed;
         bulletSprite = bullet;

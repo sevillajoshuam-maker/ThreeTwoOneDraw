@@ -18,8 +18,6 @@ public class WeaponMono : MonoBehaviour
             Destroy(this);
         }
         else{
-
-            //Populate the arrays with the current game objects retrived from the serialized field
             Instance = this;
         }
     }

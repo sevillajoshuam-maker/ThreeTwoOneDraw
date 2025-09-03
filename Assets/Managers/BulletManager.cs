@@ -20,7 +20,8 @@ public class BulletManager : MonoBehaviour
     }
 
     //Creates a new bullet prefab depending of the type of bullet and who fired
-    public void fire(AbstractPlayer shooter, AbstractBullet bullet){
+    public void fire(AbstractPlayer shooter, AbstractBullet bullet, SoundType sound){
+        SoundManager.playSound(sound);
 
         //Spawns the bullet on the head of the player
         if(!(shooter is Enemy)){
