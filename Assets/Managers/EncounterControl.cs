@@ -164,7 +164,7 @@ public class EncounterControl : MonoBehaviour
             }
             //The enemy fires a bullet when Q is pressed, for testing purposes
             else if (Input.GetKeyDown(KeyCode.Q)){
-                BulletManager.Instance.fire(currEnemy, new SixShooterBullet());
+                BulletManager.Instance.fire(currEnemy, new SixShooterBullet(), SoundType.SixShooterBullet);
             }
 
             //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it

@@ -18,6 +18,7 @@ public class PlayerDefense : MonoBehaviour
     //Destroy any bullet in the collider when it is activated
     void OnTriggerEnter2D(Collider2D other){
         BulletPrefab bullet = other.GetComponent<BulletPrefab>();
+        SoundManager.playSound(SoundType.Defend);
 
         //If the bullet is super, the defend reverts the sprite to non-super and takes away super status
         //Otherwise, the bullet is negated

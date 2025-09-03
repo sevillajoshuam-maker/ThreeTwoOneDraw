@@ -9,7 +9,7 @@ public class TomahawkBullet : AbstractBullet
     // TODO: change art
     public TomahawkBullet() : base("Tomahawk Bullet", 2, ImageLibrary.sixShooter_art,
         "Fire one FAST bullet that deals damage on duration it took to cast", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
-        ImageLibrary.default_superBullet_concept_art)
+        ImageLibrary.default_superBullet_concept_art, SoundType.SixShooterBullet)
     {
     }
 
@@ -18,7 +18,6 @@ public class TomahawkBullet : AbstractBullet
     public override void use(AbstractPlayer user, float duration)
     {
         AddModifier(x => (int)Math.Floor(duration) * x);
-        Debug.Log(this);
-        BulletManager.Instance.fire(user, this);
+        BulletManager.Instance.fire(user, this, this.sound);
     }
 }

@@ -6,12 +6,6 @@ public class Demo : MonoBehaviour
 {
     public static Player player;
 
-    public GameObject tempSlotImage1;
-    public GameObject tempTimer1;
-
-    public GameObject tempSlotImage2;
-    public GameObject tempTimer2;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
