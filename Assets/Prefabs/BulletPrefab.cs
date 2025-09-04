@@ -34,7 +34,7 @@ public class BulletPrefab : MonoBehaviour
             rendr.sprite = thisBullet.bulletSprite;
         }
 
-        pixelPerSecond = !(shooter is Enemy)? feetToPixel((float)thisBullet.SPEED) : -1 * feetToPixel((float)thisBullet.SPEED);
+        pixelPerSecond = !(shooter is Enemy)? feetToPixel((float)thisBullet.speed) : -1 * feetToPixel((float)thisBullet.speed);
     }
 
     //Calls this update every 0.02 seconds.
