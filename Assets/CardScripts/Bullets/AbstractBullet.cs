@@ -8,7 +8,7 @@ public abstract class AbstractBullet : AbstractCard
     //Bullet specific instance variables
     private List<Func<int, int>> damageModifiers = new();
     private readonly int baseDamage;
-    public readonly Speed SPEED;
+    public Speed speed { get; private set; }
     public readonly Sprite bulletSprite;
     public readonly Sprite superBulletSprite;
     public readonly SoundType sound;
@@ -17,9 +17,9 @@ public abstract class AbstractBullet : AbstractCard
     public AbstractBullet(string name, int cost, Sprite image, string desc, int baseDamage, Speed speed, Sprite bullet,
         Sprite superBullet, SoundType sound) : base(name, cost, image, desc)
     {
-        this.sound = sound;
         this.baseDamage = baseDamage;
-        SPEED = speed;
+        this.speed = speed;
+        this.sound = sound;
         bulletSprite = bullet;
         superBulletSprite = superBullet;
     }
@@ -33,6 +33,16 @@ public abstract class AbstractBullet : AbstractCard
     {
         damageModifiers.Add(modifier);
     }
+
+    public void UpgradeSpeed()
+    {
+        this.speed = speed.Upgrade();
+    }
+
+    public void DowngradeSpeed()
+    {
+        this.speed = speed.Downgrade();
+    }
 }
 
 //All possible bullet speeds
@@ -43,4 +53,29 @@ public enum Speed
     Average = 20, //20 ft per second
     Fast = 30, // 30 ft per second
     Lightning = 50, // 50 ft per second
+}
+
+internal static class SpeedMethods
+{
+    public static Speed Upgrade(this Speed s1)
+    {
+        return s1 switch
+        {
+            Speed.Sluggish => Speed.Slow,
+            Speed.Slow => Speed.Average,
+            Speed.Average => Speed.Fast,
+            _ => Speed.Lightning
+        };
+    }
+
+    public static Speed Downgrade(this Speed s1)
+    {
+        return s1 switch
+        {
+            Speed.Lightning => Speed.Fast,
+            Speed.Fast => Speed.Average,
+            Speed.Average => Speed.Slow,
+            _ => Speed.Sluggish
+        };
+    }
 }
