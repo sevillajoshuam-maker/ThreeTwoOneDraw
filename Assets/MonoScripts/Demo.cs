@@ -26,7 +26,7 @@ public class Demo : MonoBehaviour
         {new Defend(), new Defend()}, 100, 1);
 
         //Create a basic six shooter gun
-        SixShooter starterGun = new SixShooter();
+        Winchester starterGun = new Winchester();
         
         //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, starterGun));
