@@ -1,10 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class SoundManager : MonoBehaviour
 {
 
     [SerializeField]
-    private AudioClip[] sounds;
+    private AudioClip[] sixShooterSounds;
+    [SerializeField]
+    private AudioClip[] defendSounds;
+
+    private static List<AudioClip[]> sounds = new List<AudioClip[]>();
     public static SoundManager Instance;
     private AudioSource audioSource;
 
@@ -19,10 +25,12 @@ public class SoundManager : MonoBehaviour
 
     private void Start(){
         audioSource = gameObject.GetComponent<AudioSource>();
+        sounds.Add(sixShooterSounds);
+        sounds.Add(defendSounds);
     }
 
     public static void playSound(SoundType sound, float volume = 1){
-        Instance.audioSource.PlayOneShot(Instance.sounds[(int)sound], volume);
+        Instance.audioSource.PlayOneShot(sounds[((int)sound)][UnityEngine.Random.Range(0, sounds[((int)sound)].Length)], volume);
     }
 }
 
