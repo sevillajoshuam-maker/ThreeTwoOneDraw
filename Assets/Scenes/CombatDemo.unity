@@ -2938,8 +2938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b2bb894a731fc49bc2caae6dc86e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  sixShooterSounds:
   - {fileID: 8300000, guid: 32d186b92396f9c498975599e8677aba, type: 3}
+  defendSounds:
   - {fileID: 8300000, guid: 26182859723e6ed4a8d4a2fbe86bc5ea, type: 3}
 --- !u!4 &1760707265
 Transform:
