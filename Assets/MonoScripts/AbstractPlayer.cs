@@ -68,6 +68,7 @@ public abstract class AbstractPlayer
     //Remove a single random card from the deck and put into hand
     public void Draw(){
         if(deck.Count > 0 && hand.Count < maxHandSize){
+            SoundManager.playSound(SoundType.CardDraw);
             int num = rand.Next(0, deck.Count);
             hand.Add(deck[num]);
             deck.RemoveAt(num);
