@@ -5,7 +5,7 @@ using UnityEngine;
 public class WinchesterBullet : AbstractBullet
 {
     // TODO: change art
-    public WinchesterBullet() : base("Winchester Bullet", 2, ImageLibrary.sixShooter_art,
+    public WinchesterBullet() : base("Winchester Bullet", 2, ImageLibrary.winchester_art,
         "Fire one FAST bullet that deals 5 damage", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
         ImageLibrary.default_superBullet_concept_art, SoundType.SixShooterBullet)
     {

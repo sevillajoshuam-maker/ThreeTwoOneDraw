@@ -9,6 +9,9 @@ public class ImageLibrary : MonoBehaviour
     public static Sprite default_bullet_concept_art;
     public static Sprite default_superBullet_concept_art;
     public static Sprite default_card;
+    public static Sprite dynamite_art;
+    public static Sprite tomahawk_art;
+    public static Sprite winchester_art;
 
 
     //Created static Sprites for all images located in the CardArt folder 
@@ -20,5 +23,8 @@ public class ImageLibrary : MonoBehaviour
         default_bullet_concept_art = Resources.Load<Sprite>("CharSprites/SixShooter");
         default_superBullet_concept_art = Resources.Load<Sprite>("CharSprites/TakeAimSixShooter");
         default_card = Resources.Load<Sprite>("CardArt/default_card");
+        dynamite_art = Resources.Load<Sprite>("CardArt/dynamiteCard");
+        tomahawk_art = Resources.Load<Sprite>("CardArt/tomahawkCard");
+        winchester_art = Resources.Load<Sprite>("CardArt/WinchRifleCard");
     }
 }

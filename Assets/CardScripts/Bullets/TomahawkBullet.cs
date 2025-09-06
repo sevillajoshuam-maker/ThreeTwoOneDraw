@@ -7,7 +7,7 @@ public class TomahawkBullet : AbstractBullet
     //0 argument constructor that makes a basic six shooter bullet
     // TODO: Are we calling this a bullet?
     // TODO: change art
-    public TomahawkBullet() : base("Tomahawk Bullet", 2, ImageLibrary.sixShooter_art,
+    public TomahawkBullet() : base("Tomahawk Bullet", 2, ImageLibrary.tomahawk_art,
         "Fire one FAST bullet that deals damage on duration it took to cast", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
         ImageLibrary.default_superBullet_concept_art, SoundType.SixShooterBullet)
     {
