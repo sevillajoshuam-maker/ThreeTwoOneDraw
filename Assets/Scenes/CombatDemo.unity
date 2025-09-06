@@ -2940,8 +2940,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sixShooterSounds:
   - {fileID: 8300000, guid: 32d186b92396f9c498975599e8677aba, type: 3}
+  - {fileID: 8300000, guid: fc3f3040164a75d409a142de600d88d0, type: 3}
+  - {fileID: 8300000, guid: 08c9fb5b271f40845b4b0181ad7a2b21, type: 3}
   defendSounds:
-  - {fileID: 8300000, guid: 26182859723e6ed4a8d4a2fbe86bc5ea, type: 3}
+  - {fileID: 8300000, guid: 74b37789f19c7d54dab5c821a2a70a92, type: 3}
+  - {fileID: 8300000, guid: 9687827bbaf1e1048986fb59bff87226, type: 3}
+  - {fileID: 8300000, guid: 2b7220ca839f1d74d8cf6df126cbdc36, type: 3}
+  - {fileID: 8300000, guid: 9eb7c602b915d7d45ad27e98b62dcffa, type: 3}
+  cardDrawSounds:
+  - {fileID: 8300000, guid: 0a23e6a928997204684df5dfb429eeaa, type: 3}
+  - {fileID: 8300000, guid: 84a942e008d3adc4cafc7f59c89132b3, type: 3}
+  - {fileID: 8300000, guid: e186dbb5096e68b47beb196567061547, type: 3}
+  - {fileID: 8300000, guid: a064132d0e488684a9b2992a7837c2e3, type: 3}
+  - {fileID: 8300000, guid: 6915c8f4cc64bcb4fbb0e1b23ed3f4e5, type: 3}
+  tomahawkSounds:
+  - {fileID: 8300000, guid: b3335b1ac7fbe5b4e80d07a2e20cd9f5, type: 3}
+  - {fileID: 8300000, guid: ae2c5e7e3a92c1e49ade8bb71b70f756, type: 3}
+  - {fileID: 8300000, guid: de93f1ce70e7643478258dbbad18e251, type: 3}
+  - {fileID: 8300000, guid: 9e5cdf3ed3a9e92428d121b9413f69c0, type: 3}
+  - {fileID: 8300000, guid: 5d39013359d9af54ab2bf067724e91f3, type: 3}
+  winchesterSounds:
+  - {fileID: 8300000, guid: 89b6b19b8ea145b4ea00d8fedeac41cf, type: 3}
+  - {fileID: 8300000, guid: c5fe31cdc62a90444917de068cbe451c, type: 3}
+  - {fileID: 8300000, guid: ae4fbf8522892f54da5e80483db11648, type: 3}
+  - {fileID: 8300000, guid: 1af7b4affb9b4504f8ffe3e1322eb8a1, type: 3}
+  - {fileID: 8300000, guid: 6ca2bd9f4bac3da41af4185f0b34e3a9, type: 3}
 --- !u!4 &1760707265
 Transform:
   m_ObjectHideFlags: 0

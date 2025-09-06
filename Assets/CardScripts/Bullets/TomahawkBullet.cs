@@ -9,7 +9,7 @@ public class TomahawkBullet : AbstractBullet
     // TODO: change art
     public TomahawkBullet() : base("Tomahawk Bullet", 2, ImageLibrary.tomahawk_art,
         "Fire one FAST bullet that deals damage on duration it took to cast", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
-        ImageLibrary.default_superBullet_concept_art, SoundType.SixShooterBullet)
+        ImageLibrary.default_superBullet_concept_art, SoundType.TomahawkBullet)
     {
     }
 

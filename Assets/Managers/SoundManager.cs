@@ -9,6 +9,12 @@ public class SoundManager : MonoBehaviour
     private AudioClip[] sixShooterSounds;
     [SerializeField]
     private AudioClip[] defendSounds;
+    [SerializeField]
+    private AudioClip[] cardDrawSounds;
+    [SerializeField]
+    private AudioClip[] tomahawkSounds;
+    [SerializeField]
+    private AudioClip[] winchesterSounds;
 
     private static List<AudioClip[]> sounds = new List<AudioClip[]>();
     public static SoundManager Instance;
@@ -20,6 +26,11 @@ public class SoundManager : MonoBehaviour
         }
         else{
             Instance = this;
+            audioSource = gameObject.GetComponent<AudioSource>();
+            sounds.Add(sixShooterSounds);
+            sounds.Add(defendSounds);
+            sounds.Add(cardDrawSounds);
+            sounds.Add(tomahawkSounds);
         }
     }
 
@@ -27,6 +38,8 @@ public class SoundManager : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         sounds.Add(sixShooterSounds);
         sounds.Add(defendSounds);
+        sounds.Add(cardDrawSounds);
+        sounds.Add(winchesterSounds);
     }
 
     public static void playSound(SoundType sound, float volume = 1){
@@ -36,5 +49,8 @@ public class SoundManager : MonoBehaviour
 
 public enum SoundType{
     SixShooterBullet,
-    Defend
+    Defend, 
+    CardDraw,
+    TomahawkBullet, 
+    WinchesterBullet
 }
