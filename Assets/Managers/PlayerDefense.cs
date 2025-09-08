@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 
 public class PlayerDefense : MonoBehaviour
 {
-    BoxCollider2D hitBox;
+    PolygonCollider2D hitBox;
 
     public enum DefenseType {
         Defend,
@@ -15,7 +15,8 @@ public class PlayerDefense : MonoBehaviour
 
     //Retrieve the collider attached to this game object
     void Awake(){
-        hitBox = gameObject.GetComponent<BoxCollider2D>();
+        hitBox = gameObject.GetComponent<PolygonCollider2D>();
+        Debug.Log(hitBox);
     }
     
     //Turn on the collider when this method is called by the DefenseManager, which is called by a card's use() method
