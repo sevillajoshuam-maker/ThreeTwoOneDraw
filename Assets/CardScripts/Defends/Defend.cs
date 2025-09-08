@@ -10,6 +10,6 @@ public class Defend : AbstractDefend
     //When the card is played, make the small defense invisible and destroy any bullets in the collider
     public override void use(AbstractPlayer user, float duration){
         DefenseManager.Instance.makeInvisible(this.TYPE);
-        DefenseManager.Instance.defend(this.TYPE, user);
+        DefenseManager.Instance.defend(this.TYPE, user, PlayerDefense.DefenseType.Defend);
     }
 }
