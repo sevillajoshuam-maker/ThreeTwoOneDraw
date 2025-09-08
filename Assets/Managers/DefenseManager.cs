@@ -55,36 +55,48 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Defending cards that utilize a hitbox run through this method, which uses PlayerDefense's defend method.
+    /// </summary>
+    /// <param name="size">Window size</param>
+    /// <param name="user">User, player or enemy, doing defense</param>
+    /// <param name="defenseType">Type of defense, i.e. deflect / defend etc.</param>
     //Activate the associated Defend() method of the passed defense size, this is called by a card's use() method
-    public void defend(Type size, AbstractPlayer user){
-        if(user is Enemy){
-            
+    public void defend(Type size, AbstractPlayer user, PlayerDefense.DefenseType defenseType)
+    {
+        if (user is Enemy)
+        {
             //Retrieve all bullets and set the enmy defense to the correct starting position
             GameObject[] allBullets = GameObject.FindGameObjectsWithTag("Bullet");
             smallEnemyDefense.transform.position = enemySmallDefendPos;
 
             //If any bullet is a player bullet, the defend teleports to it
-            for(int i = 0; i < allBullets.Length; i++){
-                if(!(allBullets[i].GetComponent<BulletPrefab>().shooter is Enemy)){
+            for (int i = 0; i < allBullets.Length; i++)
+            {
+                if (!(allBullets[i].GetComponent<BulletPrefab>().shooter is Enemy))
+                {
                     smallEnemyDefense.transform.position = allBullets[i].transform.position;
                     break;
                 }
             }
 
             //Activate the defense hitbox and sprite for a short time
-            smallEnemyDefense.GetComponent<PlayerDefense>().defend();
+            smallEnemyDefense.GetComponent<PlayerDefense>().defend(defenseType);
             StartCoroutine(show(0.5F, smallEnemyDefenseSprite));
         }
-        else{
-            if(size == Type.Small){
-                smallPlayerDefense.GetComponent<PlayerDefense>().defend();
+        else
+        {
+            if (size == Type.Small)
+            {
+                smallPlayerDefense.GetComponent<PlayerDefense>().defend(defenseType);
             }
-            else if(size == Type.Medium){
-                mediumPlayerDefense.GetComponent<PlayerDefense>().defend();
-
+            else if (size == Type.Medium)
+            {
+                mediumPlayerDefense.GetComponent<PlayerDefense>().defend(defenseType);
             }
-            else if(size == Type.Large){
-                largePlayerDefense.GetComponent<PlayerDefense>().defend();
+            else if (size == Type.Large)
+            {
+                largePlayerDefense.GetComponent<PlayerDefense>().defend(defenseType);
             }
         }
     }
