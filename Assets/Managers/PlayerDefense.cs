@@ -16,7 +16,6 @@ public class PlayerDefense : MonoBehaviour
     //Retrieve the collider attached to this game object
     void Awake(){
         hitBox = gameObject.GetComponent<PolygonCollider2D>();
-        Debug.Log(hitBox);
     }
     
     //Turn on the collider when this method is called by the DefenseManager, which is called by a card's use() method

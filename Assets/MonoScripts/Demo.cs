@@ -13,8 +13,8 @@ public class Demo : MonoBehaviour
 
         //Set player health to 100 and create basic deck
         for(int i = 0; i < 3; i++){
-            starterDeck.Add(new Dynamite());
-            starterDeck.Add(new TakeAim());
+            starterDeck.Add(new DefendLarge());
+            starterDeck.Add(new DefendMedium());
             starterDeck.Add(new Defend());
         }
 
