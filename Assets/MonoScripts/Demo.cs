@@ -15,6 +15,7 @@ public class Demo : MonoBehaviour
         for(int i = 0; i < 3; i++){
             starterDeck.Add(new Dynamite());
             starterDeck.Add(new TakeAim());
+            starterDeck.Add(new Defend());
         }
 
         //Create a new Player object with a new hand
@@ -26,7 +27,7 @@ public class Demo : MonoBehaviour
         {new Defend(), new Defend()}, 100, 1);
 
         //Create a basic six shooter gun
-        Winchester starterGun = new Winchester();
+        Tomahawk starterGun = new Tomahawk();
         
         //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, starterGun));

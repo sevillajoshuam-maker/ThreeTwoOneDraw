@@ -9,9 +9,8 @@ public class Winchester : AbstractWeapon
 
         this.nodes[0] = new InfoNode(1);
         this.nodes[1] = new InfoNode(1);
-        this.nodes[2] = new InfoNode(1);
+        this.nodes[2] = new SpeedUpNode(3);
         this.nodes[3] = new SpeedUpNode(3);
-        this.nodes[4] = new SpeedUpNode(3);
     }
 }
 
