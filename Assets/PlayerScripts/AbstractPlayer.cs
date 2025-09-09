@@ -19,7 +19,7 @@ public abstract class AbstractPlayer
     int handsize = 3;
 
     //A 2 arg constructor that creates an AbtsractPlayer with max health, an empty hand/discard pile, and a deck
-    public AbstractPlayer(List<AbstractCard> deck, int maxhealth){
+    public AbstractPlayer(List<AbstractCard> deck, int maxhealth, string name){
         masterDeck = new List<AbstractCard>(deck);
         this.deck = new List<AbstractCard>(deck);
         this.maxHealth = maxhealth;
@@ -28,6 +28,7 @@ public abstract class AbstractPlayer
 
         hand = new List<AbstractCard>();
         discardPile = new List<AbstractCard>();
+        this.name = name;
     }
 
     //Combine the weapons bullets with the master deck

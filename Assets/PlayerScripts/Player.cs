@@ -10,8 +10,7 @@ public class Player : AbstractPlayer
     public int shuffleCost {get; private set;}
 
     //3 arg consturctor that sets name to "Player"
-    public Player(List<AbstractCard> deck, int maxHealth, int drawCost, int shuffleCost) : base(deck, maxHealth){
-        name = "Player";
+    public Player(List<AbstractCard> deck, int maxHealth, int drawCost, int shuffleCost) : base(deck, maxHealth, "Player"){
         this.drawCost = drawCost;
         this.shuffleCost = shuffleCost;
     }
