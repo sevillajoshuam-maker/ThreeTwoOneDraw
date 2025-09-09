@@ -30,7 +30,7 @@ public class TimeSlot : MonoBehaviour
     public bool occupied {get; private set;}
 
     //Dictionary to store duration multipliers
-    public Dictionary<object, float> durationMultipliers = new Dictionary<object, float>();
+    public Dictionary<int, float> durationMultipliers = new Dictionary<int, float>();
 
     //Count what card is playing next to apply multipliers
     public int counter = 0;
