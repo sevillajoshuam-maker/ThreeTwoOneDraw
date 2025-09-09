@@ -22,20 +22,8 @@ public class Demo : MonoBehaviour
         player = new Player(starterDeck, 100, 2, 2);
         player.dealStartHand();
 
-        List<AbstractCard> enemyStarterDeck = new List<AbstractCard>();
-
-        for (int i = 0; i < 12; i++)
-        {
-            if (random.Next(3) == 0)
-                enemyStarterDeck.Add(new TakeAim());
-            if (random.Next(2) == 0)
-                enemyStarterDeck.Add(new Defend());
-            if (random.Next(1) == 0)
-                enemyStarterDeck.Add(new SixShooterBullet());
-        }
-
         //Create a new Enemy object with a new hand
-        Enemy starterEnemy = new Enemy(enemyStarterDeck, 100, 1);
+        Bandit starterEnemy = new Bandit();
 
         //Create a basic six shooter gun
         Tomahawk starterGun = new Tomahawk();

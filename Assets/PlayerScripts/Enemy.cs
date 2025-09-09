@@ -6,15 +6,14 @@ using System;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 
-public class Enemy : AbstractPlayer
+public abstract class Enemy : AbstractPlayer
 {
     //The value that will offset the seconds it takes for an enemy to play a card
     public int costAdjust {get; private set;}
 
     //2 arg constuctor that set name to "Enemy"
-    public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust) : base(deck, maxHealth){
+    public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust, string name) : base(deck, maxHealth, name){
         this.costAdjust = costAdjust;
-        name = "Enemy";
     }
 
     int num = 0;
@@ -28,8 +27,7 @@ public class Enemy : AbstractPlayer
             discardPile = new List<AbstractCard>();
         }
 
-        num = rand.Next(0, deck.Count);
-
+        //num = rand.Next(0, deck.Count);
 
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
@@ -52,7 +50,7 @@ public class Enemy : AbstractPlayer
 
     public void suggestCardType(string type)
     {
-        if (!"Bullet Skill Defend".Contains(type))
+        if (!"Bullet Skill Defend".Contains(type) || GetCardsOfType(type).Count == 0)
             return;
         List<AbstractCard> options = GetCardsOfType(type);
         num = deck.IndexOf(options[rand.Next(options.Count)]);

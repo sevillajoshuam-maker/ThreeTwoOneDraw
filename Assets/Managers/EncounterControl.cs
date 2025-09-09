@@ -287,7 +287,6 @@ public class EncounterControl : MonoBehaviour
 
         //If the time slot does not exist or if it has a card already in it
         if(WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied){
-            Debug.Log(WeaponMono.Instance.allSlots[index] == null);
             return;
         }
 
