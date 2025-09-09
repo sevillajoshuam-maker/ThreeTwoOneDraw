@@ -21,12 +21,6 @@ public class CardPrefab : MonoBehaviour
         rendr.sprite = thisCard.IMAGE;
     }
 
-    //Called when this card is the hoveredCard and the player clicks spacebar.
-    //Calls the respective cards own use() method
-    public void use(AbstractPlayer user){
-        thisCard.use(user, 0);
-    }
-
     public override string ToString(){
         return thisCard.ToString();
     }
@@ -49,32 +43,5 @@ public class CardPrefab : MonoBehaviour
             DefenseManager.Instance.makeInvisible(((AbstractDefend)thisCard).TYPE);
         }
     }
-
-    //Code that allows the mouse to select that current card. No longer in use currently.
-
-    /*Whenever the player hovers over the card, change location and set it to hoveredCard
-    void OnMouseEnter(){
-        EncounterControl.Instance.hoveredCard = this;
-        gameObject.transform.position += new Vector3(0, 1, 0);
-        rendr.sortingOrder = 100;
-
-        //If the card is a defense, call makeVisible() with the defense size
-        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
-            DefenseManager.Instance.makeVisible(((AbstractSkill) thisCard).TYPE);
-        }
-    }
-
-    //Whenever the mouse exits the card, put the card back in place and set hoveredCard to null
-    void OnMouseExit(){
-        gameObject.transform.position -= new Vector3(0, 1, 0);
-        rendr.sortingOrder = originalOrder;
-        EncounterControl.Instance.hoveredCard = null;
-
-        //If the card is a defense, call makeInvisible() with the defense size
-        if(thisCard is AbstractSkill && ((AbstractSkill) thisCard).TYPE.ToString().EndsWith("Defend")){
-            DefenseManager.Instance.makeInvisible(((AbstractSkill) thisCard).TYPE);
-        }
-    }
-    */
 
 }
