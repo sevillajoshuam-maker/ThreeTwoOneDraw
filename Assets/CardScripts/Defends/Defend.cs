@@ -8,7 +8,7 @@ public class Defend : AbstractDefend
     public Defend(): base("Defend", 2, ImageLibrary.defend_art, "Negate any bullets within a SMALL window.", Type.Small){}
 
     //When the card is played, make the small defense invisible and destroy any bullets in the collider
-    public override void use(AbstractPlayer user, float duration){
+    public override void use(AbstractPlayer user, float duration, TimeSlot slot){
         DefenseManager.Instance.makeInvisible(this.TYPE);
         DefenseManager.Instance.defend(this.TYPE, user, PlayerDefense.DefenseType.Defend);
     }

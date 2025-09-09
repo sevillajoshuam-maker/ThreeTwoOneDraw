@@ -7,18 +7,6 @@ using TMPro;
 
 public class TimeSlot : MonoBehaviour
 {
-    //Create a singleton instance
-    public static TimeSlot Instance {get; private set;}
-
-    public void Awake(){
-        if (Instance != null && Instance != this){
-            Destroy(this);
-        }
-        else{
-            Instance = this;
-        }
-    }
-
     //The game objects to visually show what card is occupying this slot and current time
     private TextMesh timerText;
     private SpriteRenderer rendr;
@@ -89,7 +77,7 @@ public class TimeSlot : MonoBehaviour
         //Use the passed cards method
         if (selectedCard != null)
         {
-            selectedCard.use(user, totalDuration);
+            selectedCard.use(user, totalDuration, this);
             ++counter;
         }
 

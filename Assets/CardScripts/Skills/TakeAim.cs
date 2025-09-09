@@ -8,7 +8,7 @@ public class TakeAim : AbstractSkill
     }
 
     //When this card is played, make the next bullet played "super"
-    public override void use(AbstractPlayer user, float duration)
+    public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         EncounterControl.Instance.takeAimActive = true;
     }

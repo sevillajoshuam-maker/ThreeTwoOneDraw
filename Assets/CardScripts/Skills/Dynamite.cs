@@ -7,7 +7,7 @@ public class Dynamite : AbstractSkill
     
     public Dynamite() : base("Dynamite", 5, ImageLibrary.dynamite_art, "Deal 20 damage to both yourself and the enemy.") { }
 
-    public override void use(AbstractPlayer user, float duration)
+    public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         EncounterControl.Instance.currPlayer.takeDamage(Damage);
         EncounterControl.Instance.currEnemy.takeDamage(Damage);
