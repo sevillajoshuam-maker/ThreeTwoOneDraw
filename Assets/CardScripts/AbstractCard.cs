@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class AbstractCard
@@ -7,6 +8,19 @@ public abstract class AbstractCard
     public readonly int COST;
     public readonly Sprite IMAGE;
     private readonly string DESC;
+
+    public readonly string[] SkillCards = {
+        "Take Aim",
+        "Grenade"
+    };
+    public readonly string[] BulletCards = {
+        "Six Shooter Bullet",
+        "Tomahawk Bullet",
+        "Winchester Bullet"
+    };
+    public readonly string[] DefendCards = {
+        "Defend"
+    };
 
     //4 argument constructor
     public AbstractCard(string name, int cost, Sprite image, string description){
@@ -19,6 +33,22 @@ public abstract class AbstractCard
     //The tostring for all cards, simply returns the card name
     public override string ToString(){
         return NAME;
+    }
+
+    public string GetCardType()
+    {
+        if (Array.IndexOf(SkillCards,NAME) != -1)
+            return "Skill";
+        if (Array.IndexOf(BulletCards,NAME) != -1)
+            return "Bullet";
+        if (Array.IndexOf(DefendCards,NAME) != -1)
+            return "Defend";
+        return "Unknown";
+    }
+
+    public bool IsCardType(String type)
+    {
+        return type == GetCardType();
     }
 
     //Abstract method to be implement by specific cards
