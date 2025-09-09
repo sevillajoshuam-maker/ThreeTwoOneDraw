@@ -92,4 +92,14 @@ public abstract class AbstractPlayer
         deck.AddRange(discardPile);
         discardPile = new List<AbstractCard>();
     }
+
+    public List<AbstractCard> GetCardsOfType (string type)
+    {
+        return deck.FindAll(card => card.IsCardType(type));
+    }
+
+    public int CountCardsOfType(string type)
+    {
+        return GetCardsOfType(type).Count;
+    }
 }

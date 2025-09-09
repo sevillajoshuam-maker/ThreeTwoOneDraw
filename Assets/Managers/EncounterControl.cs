@@ -71,6 +71,9 @@ public class EncounterControl : MonoBehaviour
         
         currPlayer.addBullets(encounter.weapon.bullets);
 
+        EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
+        enemyStateMachine.encounterController = this;
+        enemyStateMachine.enemy = currEnemy;
 
         Debug.Log(currEnemy);
         Debug.Log(currPlayer);
