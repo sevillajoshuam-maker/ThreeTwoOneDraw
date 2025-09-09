@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class Enemy : AbstractPlayer
 {
@@ -16,6 +19,7 @@ public class Enemy : AbstractPlayer
 
     int num = 0;
     int cost = 0;
+
     //Randomly selects a card in the enemy deck, plays it, and returns the amount of seconds until the next enemy turn
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
     public int trySomething(){
@@ -23,11 +27,34 @@ public class Enemy : AbstractPlayer
             deck.AddRange(discardPile);
             discardPile = new List<AbstractCard>();
         }
+
         num = rand.Next(0, deck.Count);
+
+
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
         deck.RemoveAt(num);
+        updateCardTypeCounts();
         return cost;
+    }
+
+    public int bulletCardCount = 0;
+    public int skillCardCount = 0;
+    public int defendCardCount = 0;
+
+    public void updateCardTypeCounts()
+    {
+        bulletCardCount = CountCardsOfType("Bullet");
+        skillCardCount = CountCardsOfType("Skill");
+        defendCardCount = CountCardsOfType("Defend");
+    }
+
+    public void suggestCardType(string type)
+    {
+        if (!"Bullet Skill Defend".Contains(type))
+            return;
+        List<AbstractCard> options = GetCardsOfType(type);
+        num = deck.IndexOf(options[rand.Next(options.Count)]);
     }
 }
