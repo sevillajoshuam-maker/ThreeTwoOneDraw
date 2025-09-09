@@ -7,6 +7,18 @@ using TMPro;
 
 public class TimeSlot : MonoBehaviour
 {
+    //Create a singleton instance
+    public static TimeSlot Instance {get; private set;}
+
+    public void Awake(){
+        if (Instance != null && Instance != this){
+            Destroy(this);
+        }
+        else{
+            Instance = this;
+        }
+    }
+
     //The game objects to visually show what card is occupying this slot and current time
     private TextMesh timerText;
     private SpriteRenderer rendr;
@@ -16,6 +28,12 @@ public class TimeSlot : MonoBehaviour
 
     //Boolean for if the slot is open to another card or not
     public bool occupied {get; private set;}
+
+    //Dictionary to store duration multipliers
+    public Dictionary<object, float> durationMultipliers = new Dictionary<object, float>();
+
+    //Count what card is playing next to apply multipliers
+    public int counter = 0;
 
     //Set all the data associated with this slot
     public void setData(InfoNode info){
@@ -44,10 +62,15 @@ public class TimeSlot : MonoBehaviour
         //Set the image to the sprite of the occupying card
         rendr.sprite = selectedCard.IMAGE;
 
-        //While there is time left
+        //Calculate duration
         float duration = sec + thisInfo.diff;
+        if (durationMultipliers.ContainsKey(counter)) {
+            duration *= durationMultipliers[counter];
+        }
+
         var totalDuration = duration;
 
+        //While there is time left
         while (duration > 0)
         {
             //Alter the time by the time since last frame
@@ -67,6 +90,7 @@ public class TimeSlot : MonoBehaviour
         if (selectedCard != null)
         {
             selectedCard.use(user, totalDuration);
+            ++counter;
         }
 
         //Remove sprite and change the slot to unoccupied
