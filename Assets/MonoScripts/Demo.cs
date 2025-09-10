@@ -14,7 +14,7 @@ public class Demo : MonoBehaviour
 
         //Set player health to 100 and create basic deck
         for(int i = 0; i < 3; i++){
-            starterDeck.Add(new AdrenalineShot());
+            starterDeck.Add(new SleightOfHand());
             starterDeck.Add(new Defend());
         }
 

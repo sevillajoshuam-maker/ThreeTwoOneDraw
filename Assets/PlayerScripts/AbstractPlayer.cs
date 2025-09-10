@@ -84,6 +84,12 @@ public abstract class AbstractPlayer
         }
     }
 
+    //Adds the entire player hand into the discard pile and makes the hand empty
+    public void DiscardHand(){
+        discardPile.AddRange(hand);
+        hand = new List<AbstractCard>();
+    }
+
     //Return only the name of this object
     public override string ToString(){
         return name;
