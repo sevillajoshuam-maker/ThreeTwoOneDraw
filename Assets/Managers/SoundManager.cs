@@ -15,10 +15,14 @@ public class SoundManager : MonoBehaviour
     private AudioClip[] tomahawkSounds;
     [SerializeField]
     private AudioClip[] winchesterSounds;
+    [SerializeField]
+    private AudioClip[] reloadSounds;
+    [SerializeField]
+    private AudioClip[] wildWestWalking;
 
     private static List<AudioClip[]> sounds = new List<AudioClip[]>();
     public static SoundManager Instance;
-    private AudioSource audioSource;
+    public static AudioSource audioSource;
 
     private void Awake(){
         if (Instance != null && Instance != this){
@@ -31,6 +35,9 @@ public class SoundManager : MonoBehaviour
             sounds.Add(defendSounds);
             sounds.Add(cardDrawSounds);
             sounds.Add(tomahawkSounds);
+            sounds.Add(winchesterSounds);
+            sounds.Add(reloadSounds);
+            sounds.Add(wildWestWalking);
         }
     }
 
@@ -39,11 +46,17 @@ public class SoundManager : MonoBehaviour
         sounds.Add(sixShooterSounds);
         sounds.Add(defendSounds);
         sounds.Add(cardDrawSounds);
+        sounds.Add(tomahawkSounds);
         sounds.Add(winchesterSounds);
+        sounds.Add(reloadSounds);
+        sounds.Add(wildWestWalking);
     }
 
     public static void playSound(SoundType sound, float volume = 1){
-        Instance.audioSource.PlayOneShot(sounds[((int)sound)][UnityEngine.Random.Range(0, sounds[((int)sound)].Length)], volume);
+        if((int)sound >= sounds.Count || sounds[((int)sound)].Length == 0){
+            return;
+        }
+        audioSource.PlayOneShot(sounds[((int)sound)][UnityEngine.Random.Range(0, sounds[((int)sound)].Length)], volume);
     }
 }
 
@@ -52,5 +65,7 @@ public enum SoundType{
     Defend, 
     CardDraw,
     TomahawkBullet, 
-    WinchesterBullet
+    WinchesterBullet,
+    Reload,
+    WildWestWalking
 }

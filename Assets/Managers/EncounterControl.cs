@@ -136,6 +136,7 @@ public class EncounterControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E)){
                 currPlayer.Shuffle();
                 discardSpriteRenderer.sprite = null;
+                SoundManager.playSound(SoundType.Reload);
                 Debug.Log(currEncounter);
             }
             //Exit the card selection if the player clicks S
@@ -162,10 +163,6 @@ public class EncounterControl : MonoBehaviour
                 else{
                     position -= 1;
                 }
-            }
-            //The enemy fires a bullet when Q is pressed, for testing purposes
-            else if (Input.GetKeyDown(KeyCode.Q)){
-                BulletManager.Instance.fire(currEnemy, new SixShooterBullet(), SoundType.SixShooterBullet);
             }
 
             //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it

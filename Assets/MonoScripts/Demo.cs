@@ -26,7 +26,7 @@ public class Demo : MonoBehaviour
         Bandit starterEnemy = new Bandit();
 
         //Create a basic six shooter gun
-        Tomahawk starterGun = new Tomahawk();
+        SixShooter starterGun = new SixShooter();
         
         //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, starterGun));
