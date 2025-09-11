@@ -27,8 +27,6 @@ public abstract class Enemy : AbstractPlayer
             discardPile = new List<AbstractCard>();
         }
 
-        //num = rand.Next(0, deck.Count);
-
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
