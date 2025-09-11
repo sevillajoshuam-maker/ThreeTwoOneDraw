@@ -3429,9 +3429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sixShooterSounds:
-  - {fileID: 8300000, guid: 32d186b92396f9c498975599e8677aba, type: 3}
   - {fileID: 8300000, guid: fc3f3040164a75d409a142de600d88d0, type: 3}
   - {fileID: 8300000, guid: 08c9fb5b271f40845b4b0181ad7a2b21, type: 3}
+  - {fileID: 8300000, guid: 32d186b92396f9c498975599e8677aba, type: 3}
   defendSounds:
   - {fileID: 8300000, guid: 74b37789f19c7d54dab5c821a2a70a92, type: 3}
   - {fileID: 8300000, guid: 9687827bbaf1e1048986fb59bff87226, type: 3}
@@ -3455,6 +3455,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ae4fbf8522892f54da5e80483db11648, type: 3}
   - {fileID: 8300000, guid: 1af7b4affb9b4504f8ffe3e1322eb8a1, type: 3}
   - {fileID: 8300000, guid: 6ca2bd9f4bac3da41af4185f0b34e3a9, type: 3}
+  reloadSounds:
+  - {fileID: 8300000, guid: 6ad4a6b09f5e17148bb7d62673f16105, type: 3}
 --- !u!4 &1760707265
 Transform:
   m_ObjectHideFlags: 0
