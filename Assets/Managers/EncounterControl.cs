@@ -75,10 +75,7 @@ public class EncounterControl : MonoBehaviour
         EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
         enemyStateMachine.encounterController = this;
         enemyStateMachine.enemy = currEnemy;
-
-        Debug.Log(currEnemy);
-        Debug.Log(currPlayer);
-
+        
         position = -1;
         visibleHand = new List<CardPrefab>();
 
