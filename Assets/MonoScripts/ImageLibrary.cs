@@ -13,6 +13,7 @@ public class ImageLibrary : MonoBehaviour
     public static Sprite tomahawk_art;
     public static Sprite winchester_art;
     public static Sprite adrenaline_art;
+    public static Sprite bandage_art;
 
 
     //Created static Sprites for all images located in the CardArt folder 
@@ -28,5 +29,7 @@ public class ImageLibrary : MonoBehaviour
         tomahawk_art = Resources.Load<Sprite>("CardArt/tomahawkCard");
         winchester_art = Resources.Load<Sprite>("CardArt/WinchRifleCard");
         adrenaline_art = Resources.Load<Sprite>("CardArt/adrenalineCard");
+        
+        bandage_art = Resources.Load<Sprite>("CardArt/bandage_art");
     }
 }
