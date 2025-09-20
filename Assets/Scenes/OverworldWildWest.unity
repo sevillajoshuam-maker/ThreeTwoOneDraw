@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 1987500912}
   - component: {fileID: 1987500913}
   - component: {fileID: 1987500914}
+  - component: {fileID: 1987500915}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -668,7 +669,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7773031391787181946, guid: fce32af597e8b8041a38ebadae66cf53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -707,11 +708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9031af5ba61847c4b9660426a4feddd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: -3108593393806473429, guid: b77e7fcc48a118c45be3d5f22d52d380, type: 3}
-  - {fileID: -1183243002201009903, guid: ee8284c3c4122514ca10b8d991a44e22, type: 3}
-  - {fileID: 200879824508115150, guid: e67dd9accc6d3254ebb796e47069ee25, type: 3}
-  - {fileID: 5236842690406975599, guid: 149fee664a413d54cb4e361e69fb8666, type: 3}
+  anim: {fileID: 1987500915}
+  moveSpeed: 5
 --- !u!50 &1987500913
 Rigidbody2D:
   serializedVersion: 5
@@ -777,7 +775,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 3.16}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -785,11 +783,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1987500915
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987500909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f825e36b00e9c34b9e5ecb0c16786cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 926366932}
-  - {fileID: 1987500911}
   - {fileID: 361910430}
   - {fileID: 1473375507}
+  - {fileID: 1987500911}
