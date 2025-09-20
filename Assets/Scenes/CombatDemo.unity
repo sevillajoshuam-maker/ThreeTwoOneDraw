@@ -3457,6 +3457,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ca2bd9f4bac3da41af4185f0b34e3a9, type: 3}
   reloadSounds:
   - {fileID: 8300000, guid: 6ad4a6b09f5e17148bb7d62673f16105, type: 3}
+  wildWestWalking: []
 --- !u!4 &1760707265
 Transform:
   m_ObjectHideFlags: 0
