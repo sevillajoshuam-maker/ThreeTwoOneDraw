@@ -1,50 +1,66 @@
 using UnityEngine;
-
+using System;
 public class SpriteMovement : MonoBehaviour
 {
+
     [SerializeField]
-    private Sprite[] sprites;
-    private SpriteRenderer rendr;
-
+    public Animator anim;
     private float count = 0;
+    public float moveSpeed = 10;
+    private Vector3 input;
+    private bool isMoving = false;
+    private float i = 0;
+    private float j = 0;
 
-
-    void Start(){
-        rendr = gameObject.GetComponent<SpriteRenderer>();
-        rendr.sprite = sprites[0];
-    }
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.DownArrow)){
-            gameObject.transform.position -= new Vector3(0, 0.01f,0);
-            rendr.sprite = sprites[0];
-            walkingSound();
-        }
-        else if(Input.GetKey(KeyCode.UpArrow)){
-            gameObject.transform.position += new Vector3(0, 0.01f,0);
-            rendr.sprite = sprites[2];
-            walkingSound();
-        }
-        else if(Input.GetKey(KeyCode.RightArrow)){
-            gameObject.transform.position += new Vector3(0.01f, 0,0);
-            rendr.sprite = sprites[3];
-            walkingSound();
-        }
-        else if(Input.GetKey(KeyCode.LeftArrow)){
-            gameObject.transform.position -= new Vector3(0.01f, 0,0);
-            rendr.sprite = sprites[1];
-            walkingSound();
-        }
+        double horizontal = Input.GetAxisRaw("Horizontal");
+        double vertical = Input.GetAxisRaw("Vertical");
+        Move(horizontal, vertical);
+        Animate();
     }
+    void Move(double x, double y)
+    {
+        //complicated math equations so that moving diagonally isn't faster than walking straight
+        double x_y_Squared = Math.Pow(x, 2) + Math.Pow(y, 2);
+        double a = x / Math.Sqrt(x_y_Squared);
+        double b = y / Math.Sqrt(x_y_Squared);
+        i = (float)x; //math equations done in double datatype but vectors are done in floats
+        j = (float)y; //i and j convert double a and b into float datatype
+        input = new Vector3(i, j, 0);
+        gameObject.transform.position +=  input* moveSpeed * Time.deltaTime;
+    }
+    
 
-    private void walkingSound(){
-        if(!SoundManager.audioSource.isPlaying){
+    private void walkingSound()
+    {
+        if (!SoundManager.audioSource.isPlaying)
+        {
             SoundManager.playSound(SoundType.WildWestWalking);
             count = 10f;
         }
-        else{
+        else
+        {
             count -= 0.01f;
         }
+    }
+    private void Animate()
+    {
+        if (input.magnitude > 0.1f || input.magnitude < -0.1f)
+        {
+            isMoving = true;
+            walkingSound();
+        }
+        else
+        {
+            isMoving = false;
+        }
+        if (isMoving)
+        {
+            anim.SetFloat("x", i);
+            anim.SetFloat("y", j);
+
+        }
+        anim.SetBool("isMoving",isMoving);
     }
 }

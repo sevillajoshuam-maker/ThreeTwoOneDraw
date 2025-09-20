@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bill_sprite_normalarm_scaled_10x_pngcrushed_0: 395416288026277318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
