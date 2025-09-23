@@ -44,7 +44,7 @@ public class BulletPrefab : MonoBehaviour
     //Moves the bullet by the speed and destroys the bullet when it hits its target
     void FixedUpdate()
     {
-        gameObject.transform.position += new Vector3(pixelPerSecond / 50F, 0, 0);
+        gameObject.transform.position += thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond);
 
         if (!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x)
         {

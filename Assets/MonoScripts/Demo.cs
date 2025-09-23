@@ -13,7 +13,8 @@ public class Demo : MonoBehaviour
         List<AbstractCard> starterDeck = new List<AbstractCard>();
 
         //Set player health to 100 and create basic deck
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++)
+        {
             starterDeck.Add(new TakeAim());
             starterDeck.Add(new Defend());
             starterDeck.Add(new IronSteelPlate());
@@ -27,10 +28,10 @@ public class Demo : MonoBehaviour
         Bandit starterEnemy = new Bandit();
 
         //Create a basic six shooter gun
-        SixShooter starterGun = new SixShooter();
-        
+        Tomahawk starterGun = new Tomahawk();
+
         //Begin a new encounter with the player deck and an enemy deck with a single card
         EncounterControl.Instance.startEncounter(new Encounter(player, starterEnemy, starterGun));
-           
+
     }
 }

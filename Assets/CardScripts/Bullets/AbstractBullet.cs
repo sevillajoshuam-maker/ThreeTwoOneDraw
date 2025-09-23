@@ -43,6 +43,11 @@ public abstract class AbstractBullet : AbstractCard
     {
         this.speed = speed.Downgrade();
     }
+
+    public virtual Vector3 flightPath(float x, float y, float pixelPerSecond)
+    {
+        return new Vector3(pixelPerSecond / 50F, 0, 0);
+    }
 }
 
 //All possible bullet speeds

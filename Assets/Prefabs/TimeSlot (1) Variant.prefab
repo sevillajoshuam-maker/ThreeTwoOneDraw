@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215385256830322151, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TimeSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
