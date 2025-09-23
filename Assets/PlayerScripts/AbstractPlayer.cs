@@ -18,6 +18,9 @@ public abstract class AbstractPlayer
     public int maxHandSize = 8;
     int handsize = 3;
 
+    //Damage modifier Queue
+    public Queue<double> incomingDamageMods;
+
     //A 2 arg constructor that creates an AbtsractPlayer with max health, an empty hand/discard pile, and a deck
     public AbstractPlayer(List<AbstractCard> deck, int maxhealth, string name){
         masterDeck = new List<AbstractCard>(deck);
@@ -28,6 +31,7 @@ public abstract class AbstractPlayer
 
         hand = new List<AbstractCard>();
         discardPile = new List<AbstractCard>();
+        incomingDamageMods = new Queue<double>();
         this.name = name;
     }
 
@@ -46,9 +50,11 @@ public abstract class AbstractPlayer
     }
 
     //Remove health equal to passed parameter, health cannot got below 0
-    public void takeDamage(int num){
+    public void takeDamage(double num){
+        double mod = (incomingDamageMods.Count == 0)? 1: incomingDamageMods.Dequeue();
+
         if(num >= 0){
-            health -= num;
+            health -= (int)(num * mod);
         }
 
         if(health <= 0){
