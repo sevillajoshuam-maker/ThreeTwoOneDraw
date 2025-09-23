@@ -356,7 +356,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BanditStateMachine
+  m_Name: EnemyStateMachine
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: BulletCards
@@ -482,7 +482,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: DefendCards
-    m_EventTreshold: 3
+    m_EventTreshold: 4
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7917863866463265672}
   m_Solo: 0

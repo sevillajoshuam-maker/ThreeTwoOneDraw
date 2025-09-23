@@ -26,7 +26,9 @@ public abstract class Enemy : AbstractPlayer
             deck.AddRange(discardPile);
             discardPile = new List<AbstractCard>();
         }
-
+        if(num >= deck.Count){
+            return 0;
+        }
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
@@ -48,6 +50,7 @@ public abstract class Enemy : AbstractPlayer
 
     public void suggestCardType(string type)
     {
+ 
         if (!"Bullet Skill Defend".Contains(type) || GetCardsOfType(type).Count == 0)
             return;
         List<AbstractCard> options = GetCardsOfType(type);
