@@ -8,7 +8,7 @@ public class TomahawkBullet : AbstractBullet
     // TODO: Are we calling this a bullet?
     // TODO: change art
     public TomahawkBullet() : base("Tomahawk Bullet", 2, ImageLibrary.tomahawk_art,
-        "Fire one FAST bullet that deals damage on duration it took to cast", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
+        "Fire one FAST bullet that deals damage on duration it took to cast", 5, Speed.Average, ImageLibrary.default_bullet_concept_art,
         ImageLibrary.default_superBullet_concept_art, SoundType.TomahawkBullet)
     {
     }
@@ -19,5 +19,10 @@ public class TomahawkBullet : AbstractBullet
     {
         AddModifier(x => (int)Math.Floor(duration) * x);
         BulletManager.Instance.fire(user, this, this.sound);
+    }
+
+    public override Vector3 flightPath(float x, float y, float pixelPerSecond)
+    {
+        return new Vector3(pixelPerSecond / 50F, pixelPerSecond / 50F * -0.1F * (x - 2), 0);
     }
 }
