@@ -28,10 +28,11 @@ public class EnemyStateMachine : MonoBehaviour
         }
         else
         {
+            animator.SetInteger("IncomingBullets", BulletManager.Instance.playerBullet);
             animator.SetInteger("BulletCards", enemy.bulletCardCount);
             animator.SetInteger("SkillCards", enemy.skillCardCount);
             animator.SetInteger("DefendCards", enemy.defendCardCount);
-            animator.SetFloat("Random", (float) random.NextDouble());
+            animator.SetFloat("Random", (float)random.NextDouble());
         }
     }
 

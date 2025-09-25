@@ -6,7 +6,8 @@ public class PlayerDefense : MonoBehaviour
 {
     PolygonCollider2D hitBox;
 
-    public enum DefenseType {
+    public enum DefenseType
+    {
         Defend,
         Deflect
     }
@@ -14,19 +15,26 @@ public class PlayerDefense : MonoBehaviour
     private DefenseType defenseType;
 
     //Retrieve the collider attached to this game object
-    void Awake(){
+    void Awake()
+    {
         hitBox = gameObject.GetComponent<PolygonCollider2D>();
     }
-    
+
     //Turn on the collider when this method is called by the DefenseManager, which is called by a card's use() method
-    public void defend(DefenseType defenseType) {
+    public void defend(DefenseType defenseType)
+    {
         this.defenseType = defenseType;
         StartCoroutine(colliderActivate(0.1F));
     }
 
     //Destroy any bullet in the collider when it is activated
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerEnter2D(Collider2D other)
+    {
         BulletPrefab bullet = other.GetComponent<BulletPrefab>();
+        if (!(bullet.shooter is Enemy))
+        {
+            BulletManager.Instance.playerBullet--;
+        }
         SoundManager.playSound(SoundType.Defend);
 
         switch (defenseType)

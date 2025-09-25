@@ -31,7 +31,8 @@ public class ImageLibrary : MonoBehaviour
         winchester_art = Resources.Load<Sprite>("CardArt/WinchRifleCard");
         adrenaline_art = Resources.Load<Sprite>("CardArt/adrenalineCard");
         ironSteelPlate_art = Resources.Load<Sprite>("CardArt/ironSteelPlateCard");
-        
+
         bandage_art = Resources.Load<Sprite>("CardArt/bandage_art");
+        DontDestroyOnLoad(gameObject);
     }
 }
