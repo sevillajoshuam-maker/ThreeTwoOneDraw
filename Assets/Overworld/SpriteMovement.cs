@@ -6,47 +6,59 @@ public class SpriteMovement : MonoBehaviour
     [SerializeField]
     public Animator anim;
     private float count = 0;
-    public float moveSpeed = 10;
+    public float moveSpeed = 10f;
     private Vector3 input;
     private bool isMoving = false;
+    private bool isSprinting = false;
     private float i = 0;
     private float j = 0;
 
     void Update()
     {
-        double horizontal = Input.GetAxisRaw("Horizontal");
-        double vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        SprintInput();
         Move(horizontal, vertical);
         Animate();
-    }
-    void Move(double x, double y)
-    {
-        //complicated math equations so that moving diagonally isn't faster than walking straight
-        double x_y_Squared = Math.Pow(x, 2) + Math.Pow(y, 2);
-        double a = x / Math.Sqrt(x_y_Squared);
-        double b = y / Math.Sqrt(x_y_Squared);
-        i = (float)x; //math equations done in double datatype but vectors are done in floats
-        j = (float)y; //i and j convert double a and b into float datatype
-        input = new Vector3(i, j, 0);
-        gameObject.transform.position +=  input* moveSpeed * Time.deltaTime;
-    }
-    
 
+    }
+    void Move(float x, float y)
+    {
+        i = x; //math equations done in double datatype but vectors are done in floats
+        j = y; //i and j convert double a and b into float datatype
+        input = new Vector3(x, y, 0);
+        if (input.magnitude>0.1f){
+        input = input.normalized;}
+        float moveSpeed_new =isSprinting ? 2f * moveSpeed: moveSpeed;
+        gameObject.transform.position += input * moveSpeed_new * Time.deltaTime;
+    }
     private void walkingSound()
     {
-        if (!SoundManager.audioSource.isPlaying)
+        if (!isSprinting)
         {
-            SoundManager.playSound(SoundType.WildWestWalking);
-            count = 10f;
+            if (!SoundManager.audioSource.isPlaying)
+            {
+                SoundManager.audioSource.pitch = 1.0f;
+                SoundManager.playSound(SoundType.WildWestWalking);
+            }
         }
         else
         {
-            count -= 0.01f;
+            if (count > 0)
+            {
+                count -= Time.deltaTime;
+            }
+            else
+            {
+                SoundManager.playSound(SoundType.WildWestWalking);
+                count += 0.2f;
+            }
         }
+
     }
     private void Animate()
     {
-        if (input.magnitude > 0.1f || input.magnitude < -0.1f)
+        if (input.magnitude > 0.1f)
         {
             isMoving = true;
             walkingSound();
@@ -57,10 +69,18 @@ public class SpriteMovement : MonoBehaviour
         }
         if (isMoving)
         {
+    
             anim.SetFloat("x", i);
             anim.SetFloat("y", j);
-
+    
         }
-        anim.SetBool("isMoving",isMoving);
+        anim.SetBool("isMoving", isMoving);
+    }
+    private void SprintInput()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        { isSprinting = true; }
+        else
+        { isSprinting = false; }
     }
 }
