@@ -280,21 +280,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c874dafd52be27d47911caf81ddc3754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWonLast: 0
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
-  deckPlaceholder: {fileID: 1189465481}
-  discardPilePlaceholder: {fileID: 1380360579}
-  platformPlaceholder: {fileID: 751108161}
   playerSpritePlaceholder: {fileID: 1577900648}
   enemySpritePlaceholder: {fileID: 1656953158}
   playerHealthBarSprite: {fileID: 861093188}
   enemyHealthBarSprite: {fileID: 329496155}
   playerHealthBar: {fileID: 469651224}
   enemyHealthBar: {fileID: 134451786}
+  allObjects:
+  - {fileID: 1544027551}
+  - {fileID: 662626839}
+  - {fileID: 360366335}
+  - {fileID: 1819232897}
+  - {fileID: 1760707263}
+  - {fileID: 619394800}
+  - {fileID: 751108161}
+  - {fileID: 1656953158}
+  - {fileID: 1577900648}
+  - {fileID: 861093188}
+  - {fileID: 329496155}
+  - {fileID: 134451785}
+  - {fileID: 469651223}
+  - {fileID: 519420028}
   position: 0
   visibleHand: []
   enemyTurn: 0
   drawTurn: 0
   takeAimActive: 0
+  combat: 0
 --- !u!114 &201181783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &360366336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1071,7 +1085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,7 +1171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &662626840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,50 +1470,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &763859149
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 763859151}
-  - component: {fileID: 763859150}
-  m_Layer: 0
-  m_Name: Demo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &763859150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763859149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022af44458bb2604f877274fef8beb7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &763859151
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763859149}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808609056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,7 +3021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1544027552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3385,7 +3355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1760707264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,7 +3526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1819232898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3774,7 +3744,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 763859151}
   - {fileID: 1544027553}
   - {fileID: 201181781}
   - {fileID: 662626841}

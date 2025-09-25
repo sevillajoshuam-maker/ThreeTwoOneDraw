@@ -16,6 +16,8 @@ public class EncounterControl : MonoBehaviour
     public Enemy currEnemy;
     public Player currPlayer;
 
+    public bool playerWonLast;
+
     //Card Prefab
     [SerializeField]
     private CardPrefab cardBlueprint;
@@ -24,9 +26,6 @@ public class EncounterControl : MonoBehaviour
     public CardPrefab hoveredCard { get; set; }
 
     //All UI elements
-    public GameObject deckPlaceholder;
-    public GameObject discardPilePlaceholder;
-    public GameObject platformPlaceholder;
     public GameObject playerSpritePlaceholder;
     public GameObject enemySpritePlaceholder;
     public GameObject playerHealthBarSprite;
@@ -36,6 +35,9 @@ public class EncounterControl : MonoBehaviour
     public Slider enemyHealthBar;
 
     private SpriteRenderer discardSpriteRenderer;
+
+
+    public List<GameObject> allObjects = new List<GameObject>();
 
     //Holds the index of the card that is being selected
     public int position;
@@ -53,6 +55,8 @@ public class EncounterControl : MonoBehaviour
     //Variable to hold if the next bullet negates enemy defends
     public bool takeAimActive;
 
+    public bool combat;
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -64,12 +68,15 @@ public class EncounterControl : MonoBehaviour
         else
         {
             Instance = this;
+            combat = false;
+            playerWonLast = false;
         }
     }
 
     //Begin the passed Encounter instance
     public void startEncounter(Encounter encounter)
     {
+        setUI(true);
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
@@ -84,11 +91,8 @@ public class EncounterControl : MonoBehaviour
         position = -1;
         visibleHand = new List<CardPrefab>();
 
-        setUI(true);
         enemyTurn = true;
         drawTurn = true;
-
-        discardSpriteRenderer = discardPilePlaceholder.GetComponent<SpriteRenderer>();
 
         takeAimActive = false;
 
@@ -129,133 +133,141 @@ public class EncounterControl : MonoBehaviour
     //Check every update whether the player draws or plays a card
     void Update()
     {
-        //Calculate the current health of the enemy and player
-        playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
-        enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;
+        if (combat)
+        {
+            //Calculate the current health of the enemy and player
+            playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
+            enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;
 
-        //If the enemy has a turn, randomly pick an action and pause the enemy turn for the returned seconds
-        if (enemyTurn)
-        {
-            StartCoroutine(wait(currEnemy.trySomething() + currEnemy.costAdjust, currEnemy));
-        }
-
-        if (drawTurn && currPlayer.hand.Count < currPlayer.maxHandSize)
-        {
-            currPlayer.Draw();
-            StartCoroutine(wait(currEncounter.weapon.drawDelay, currPlayer));
-            reapplyHand();
-        }
-        if (currEncounter != null)
-        {
-            //Exit the card selection if the player clicks S
-            if (Input.GetKeyDown(KeyCode.E))
+            if (currPlayer.health == 0)
             {
-                currPlayer.Shuffle();
-                discardSpriteRenderer.sprite = null;
-                SoundManager.playSound(SoundType.Reload);
-                Debug.Log(currEncounter);
+                EncounterControl.Instance.playerWonLast = false;
+                DisableOverworld.Instance.enableOverworld(true);
+                endEncounter(currEnemy);
             }
-            //Exit the card selection if the player clicks S
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (currEnemy.health == 0)
             {
-                position = -1;
+                EncounterControl.Instance.playerWonLast = true;
+                DisableOverworld.Instance.enableOverworld(true);
+                endEncounter(currPlayer);
+            }
+
+            //If the enemy has a turn, randomly pick an action and pause the enemy turn for the returned seconds
+            if (enemyTurn)
+            {
+                StartCoroutine(wait(currEnemy.trySomething() + currEnemy.costAdjust, currEnemy));
+            }
+
+            if (drawTurn && currPlayer.hand.Count < currPlayer.maxHandSize)
+            {
+                currPlayer.Draw();
+                StartCoroutine(wait(currEncounter.weapon.drawDelay, currPlayer));
+                reapplyHand();
+            }
+            if (currEncounter != null)
+            {
+                //Exit the card selection if the player clicks S
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    currPlayer.Shuffle();
+                    SoundManager.playSound(SoundType.Reload);
+                }
+                //Exit the card selection if the player clicks S
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    position = -1;
+                    if (hoveredCard != null)
+                    {
+                        hoveredCard.deselected();
+                        hoveredCard = null;
+                    }
+                }
+                //Move the index of the selected card right when the playef clicks D
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    if (position == -1 || position == currPlayer.hand.Count - 1)
+                    {
+                        position = 0;
+                    }
+                    else
+                    {
+                        position += 1;
+                    }
+                    //Move the index of the selected card left when the playef clicks A
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    if (position == -1 || position == 0)
+                    {
+                        position = currPlayer.hand.Count - 1;
+                    }
+                    else
+                    {
+                        position -= 1;
+                    }
+                }
+
+                //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
+                else if (hoveredCard != null)
+                {
+
+                    //For any number key pressed (0-9), call the time slot with the associated index
+                    if (Input.GetKeyDown(KeyCode.Alpha1))
+                    {
+                        playCardToSlot(0);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2))
+                    {
+                        playCardToSlot(1);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3))
+                    {
+                        playCardToSlot(2);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4))
+                    {
+                        playCardToSlot(3);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha5))
+                    {
+                        playCardToSlot(4);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha6))
+                    {
+                        playCardToSlot(5);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha7))
+                    {
+                        playCardToSlot(6);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha8))
+                    {
+                        playCardToSlot(7);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha9))
+                    {
+                        playCardToSlot(8);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha0))
+                    {
+                        playCardToSlot(9);
+                    }
+
+                }
+            }
+
+            //Visually show which card is selected and set hoveredCard to the currently selected card
+            if (position < visibleHand.Count && position >= 0)
+            {
                 if (hoveredCard != null)
                 {
                     hoveredCard.deselected();
-                    hoveredCard = null;
                 }
-            }
-            //Move the index of the selected card right when the playef clicks D
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                if (position == -1 || position == currPlayer.hand.Count - 1)
-                {
-                    position = 0;
-                }
-                else
-                {
-                    position += 1;
-                }
-                //Move the index of the selected card left when the playef clicks A
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                if (position == -1 || position == 0)
-                {
-                    position = currPlayer.hand.Count - 1;
-                }
-                else
-                {
-                    position -= 1;
-                }
-            }
-
-            //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
-            else if (hoveredCard != null)
-            {
-
-                //For any number key pressed (0-9), call the time slot with the associated index
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    playCardToSlot(0);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    playCardToSlot(1);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    playCardToSlot(2);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha4))
-                {
-                    playCardToSlot(3);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha5))
-                {
-                    playCardToSlot(4);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha6))
-                {
-                    playCardToSlot(5);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha7))
-                {
-                    playCardToSlot(6);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha8))
-                {
-                    playCardToSlot(7);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha9))
-                {
-                    playCardToSlot(8);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha0))
-                {
-                    playCardToSlot(9);
-                }
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                EncounterControl.Instance.endEncounter(currPlayer);
-                DisableOverworld.Instance.enableOverworld(true);
-                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                hoveredCard = visibleHand[position];
+                hoveredCard.selected();
             }
         }
 
-        //Visually show which card is selected and set hoveredCard to the currently selected card
-        if (position < visibleHand.Count && position >= 0)
-        {
-            if (hoveredCard != null)
-            {
-                hoveredCard.deselected();
-            }
-            hoveredCard = visibleHand[position];
-            hoveredCard.selected();
-        }
     }
 
     //Turn on or off all UI elements
@@ -263,11 +275,12 @@ public class EncounterControl : MonoBehaviour
     {
         //deckPlaceholder.SetActive(state);
         //discardPilePlaceholder.SetActive(state);
-        platformPlaceholder.SetActive(state);
-        playerSpritePlaceholder.SetActive(state);
-        enemySpritePlaceholder.SetActive(state);
-        playerHealthBarSprite.SetActive(state);
-        enemyHealthBarSprite.SetActive(state);
+
+        combat = state;
+        foreach (GameObject item in allObjects)
+        {
+            item.SetActive(state);
+        }
     }
 
     //Turn off player turn for the passed cost
@@ -310,7 +323,6 @@ public class EncounterControl : MonoBehaviour
     public void endEncounter(AbstractPlayer winner)
     {
         setUI(false);
-        Debug.Log(winner);
 
         //Deactivate all visible cards
         GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
@@ -332,7 +344,6 @@ public class EncounterControl : MonoBehaviour
         {
             Destroy(bullet);
         }
-        gameObject.SetActive(false);
     }
 
     //Play the current card to the time slot at the provided index
@@ -349,7 +360,6 @@ public class EncounterControl : MonoBehaviour
         StartCoroutine(WeaponMono.Instance.allSlots[index].wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
 
         //Discard the card
-        discardSpriteRenderer.sprite = hoveredCard.thisCard.IMAGE;
         currPlayer.Discard(hoveredCard.thisCard);
 
         //Reapply the visuals for the player's hand

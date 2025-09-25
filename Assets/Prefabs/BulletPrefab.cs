@@ -44,6 +44,10 @@ public class BulletPrefab : MonoBehaviour
     //Moves the bullet by the speed and destroys the bullet when it hits its target
     void FixedUpdate()
     {
+        if (EncounterControl.Instance == null)
+        {
+            return;
+        }
         gameObject.transform.position += thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond);
 
         if (!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x)
@@ -51,19 +55,11 @@ public class BulletPrefab : MonoBehaviour
             EncounterControl.Instance.currEnemy.takeDamage(thisBullet.GetDamage());
             BulletManager.Instance.playerBullet--;
             Destroy(gameObject);
-            if (EncounterControl.Instance.currEnemy.health == 0)
-            {
-                EncounterControl.Instance.endEncounter(EncounterControl.Instance.currPlayer);
-            }
         }
         else if ((shooter is Enemy) && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x)
         {
             EncounterControl.Instance.currPlayer.takeDamage(thisBullet.GetDamage());
             Destroy(gameObject);
-            if (EncounterControl.Instance.currPlayer.health == 0)
-            {
-                EncounterControl.Instance.endEncounter(EncounterControl.Instance.currEnemy);
-            }
         }
     }
 
