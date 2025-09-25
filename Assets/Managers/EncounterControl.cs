@@ -344,6 +344,8 @@ public class EncounterControl : MonoBehaviour
         {
             Destroy(bullet);
         }
+
+        DefenseManager.Instance.makeInvisible(Type.Small);
     }
 
     //Play the current card to the time slot at the provided index

@@ -8,7 +8,7 @@ public class NPCInteraction : MonoBehaviour
 {
     //Elements in scene
     public GameObject dialogueBox;
-    public TextMeshProUGUI  dialogueText;
+    public TextMeshProUGUI dialogueText;
     public GameObject interactPrompt;
     public GameObject player;
 
@@ -22,7 +22,8 @@ public class NPCInteraction : MonoBehaviour
     void Update()
     {
         //If NPC is interacted with: sets up UI and first line, freezes player
-        if (playerIsNearby && !inDialogue && Input.GetKeyDown(KeyCode.E)) {
+        if (playerIsNearby && !inDialogue && Input.GetKeyDown(KeyCode.E))
+        {
             inDialogue = true;
             lineNum = 0;
 
@@ -36,9 +37,11 @@ public class NPCInteraction : MonoBehaviour
         }
 
         //Displays next line of dialogue and end dialogue when all lines read
-        if (inDialogue && Input.GetKeyDown(KeyCode.Return)) {
+        if (inDialogue && Input.GetKeyDown(KeyCode.Return))
+        {
             ++lineNum;
-            if (lineNum == lines.Length) {
+            if (lineNum == lines.Length)
+            {
                 dialogueText.text = "";
                 dialogueText.enabled = false;
                 dialogueBox.SetActive(false);
@@ -46,23 +49,29 @@ public class NPCInteraction : MonoBehaviour
                 SpriteMovement movement = player.GetComponent<SpriteMovement>();
                 movement.isFrozen = false;
                 inDialogue = false;
-            } else {
+            }
+            else
+            {
                 dialogueText.text = lines[lineNum];
             }
         }
     }
 
     //Enter NPC hitbox
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
             playerIsNearby = true;
             interactPrompt.SetActive(true);
         }
     }
 
     //Leave NPC hitbox
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
             playerIsNearby = false;
             interactPrompt.SetActive(false);
         }
