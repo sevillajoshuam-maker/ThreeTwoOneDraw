@@ -16,7 +16,6 @@ public class DisableOverworld : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -24,9 +23,18 @@ public class DisableOverworld : MonoBehaviour
     private List<GameObject> allObjects = new List<GameObject>();
     public void enableOverworld(bool state)
     {
+        Debug.Log(EncounterControl.Instance.playerWonLast);
         foreach (GameObject singleObject in allObjects)
         {
             singleObject.SetActive(state);
+        }
+        if (state)
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("OverworldWildWest"));
+        }
+        else
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("CombatDemo"));
         }
     }
 

@@ -25,17 +25,18 @@ public abstract class Enemy : AbstractPlayer
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
     public int trySomething()
     {
-        if (deck.Count <= 1 || num >= deck.Count)
+        if (deck.Count <= 1 || num >= deck.Count || num < 0)
         {
             deck.AddRange(discardPile);
             discardPile = new List<AbstractCard>();
             return 1;
         }
-        this.Draw();
+
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
         deck.RemoveAt(num);
+        this.Draw();
         updateCardTypeCounts();
         return cost;
     }
