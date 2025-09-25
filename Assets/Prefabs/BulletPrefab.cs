@@ -49,6 +49,7 @@ public class BulletPrefab : MonoBehaviour
         if (!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x)
         {
             EncounterControl.Instance.currEnemy.takeDamage(thisBullet.GetDamage());
+            BulletManager.Instance.playerBullet--;
             Destroy(gameObject);
             if (EncounterControl.Instance.currEnemy.health == 0)
             {

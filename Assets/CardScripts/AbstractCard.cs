@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public abstract class AbstractCard
 {
     //All instance variables needed by all cards
@@ -23,7 +22,8 @@ public abstract class AbstractCard
     };
 
     //4 argument constructor
-    public AbstractCard(string name, int cost, Sprite image, string description){
+    public AbstractCard(string name, int cost, Sprite image, string description)
+    {
         NAME = name;
         COST = cost;
         IMAGE = image;
@@ -31,17 +31,18 @@ public abstract class AbstractCard
     }
 
     //The tostring for all cards, simply returns the card name
-    public override string ToString(){
+    public override string ToString()
+    {
         return NAME;
     }
 
     public string GetCardType()
     {
-        if (Array.IndexOf(SkillCards,NAME) != -1)
+        if (Array.IndexOf(SkillCards, NAME) != -1)
             return "Skill";
-        if (Array.IndexOf(BulletCards,NAME) != -1)
+        if (Array.IndexOf(BulletCards, NAME) != -1)
             return "Bullet";
-        if (Array.IndexOf(DefendCards,NAME) != -1)
+        if (Array.IndexOf(DefendCards, NAME) != -1)
             return "Defend";
         return "Unknown";
     }

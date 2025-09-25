@@ -9,11 +9,13 @@ using Debug = UnityEngine.Debug;
 public abstract class Enemy : AbstractPlayer
 {
     //The value that will offset the seconds it takes for an enemy to play a card
-    public int costAdjust {get; private set;}
+    public int costAdjust { get; private set; }
 
     //2 arg constuctor that set name to "Enemy"
-    public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust, string name) : base(deck, maxHealth, name){
+    public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust, string name) : base(deck, maxHealth, name)
+    {
         this.costAdjust = costAdjust;
+        maxHandSize = 20;
     }
 
     int num = 0;
@@ -21,14 +23,15 @@ public abstract class Enemy : AbstractPlayer
 
     //Randomly selects a card in the enemy deck, plays it, and returns the amount of seconds until the next enemy turn
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
-    public int trySomething(){
-        if(deck.Count <= 1){
+    public int trySomething()
+    {
+        if (deck.Count <= 1 || num >= deck.Count)
+        {
             deck.AddRange(discardPile);
             discardPile = new List<AbstractCard>();
+            return 1;
         }
-        if(num >= deck.Count){
-            return 0;
-        }
+        this.Draw();
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
@@ -50,7 +53,7 @@ public abstract class Enemy : AbstractPlayer
 
     public void suggestCardType(string type)
     {
- 
+
         if (!"Bullet Skill Defend".Contains(type) || GetCardsOfType(type).Count == 0)
             return;
         List<AbstractCard> options = GetCardsOfType(type);

@@ -21,8 +21,9 @@ public class HealthBarHelper : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     //Every update, calculate the current health depending on if this the player or enemy health bar
-    public void Update(){
-        text.text = (gameObject.name == "PlayerSlider")? (Demo.player.health + " / " + Demo.player.maxHealth):
+    public void Update()
+    {
+        text.text = (gameObject.name == "PlayerSlider") ? (EncounterControl.Instance.currPlayer.health + " / " + EncounterControl.Instance.currPlayer.maxHealth) :
                                                         (EncounterControl.Instance.currEnemy.health + " / " + EncounterControl.Instance.currEnemy.maxHealth);
     }
 }

@@ -75,6 +75,7 @@ public class EncounterControl : MonoBehaviour
         currEncounter = encounter;
 
         currPlayer.addBullets(encounter.weapon.bullets);
+        WeaponMono.Instance.activateWeapon(encounter.weapon);
 
         EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
         enemyStateMachine.encounterController = this;
