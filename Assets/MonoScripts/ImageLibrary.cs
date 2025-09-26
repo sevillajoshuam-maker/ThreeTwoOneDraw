@@ -15,6 +15,10 @@ public class ImageLibrary : MonoBehaviour
     public static Sprite adrenaline_art;
     public static Sprite bandage_art;
     public static Sprite ironSteelPlate_art;
+    public static Sprite winchester_bullet;
+    public static Sprite winchester_bullet_super;
+    public static Sprite tomahawk_bullet;
+    public static Sprite tomahawk_bullet_super;
 
 
     //Created static Sprites for all images located in the CardArt folder 
@@ -31,7 +35,10 @@ public class ImageLibrary : MonoBehaviour
         winchester_art = Resources.Load<Sprite>("CardArt/WinchRifleCard");
         adrenaline_art = Resources.Load<Sprite>("CardArt/adrenalineCard");
         ironSteelPlate_art = Resources.Load<Sprite>("CardArt/ironSteelPlateCard");
-
+        winchester_bullet = Resources.Load<Sprite>("CharSprites/WinchesterBullet");
+        winchester_bullet_super = Resources.Load<Sprite>("CharSprites/WinchesterBulletSuper");
+        tomahawk_bullet = Resources.Load<Sprite>("CharSprites/TomahawkPixel");
+        tomahawk_bullet_super = Resources.Load<Sprite>("CharSprites/ChargedTomahawkPixel");
         bandage_art = Resources.Load<Sprite>("CardArt/bandage_art");
         DontDestroyOnLoad(gameObject);
     }
