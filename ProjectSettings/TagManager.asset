@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Card
   - Bullet
+  - TimeSlot
+  - NPC
   layers:
   - Default
   - TransparentFX

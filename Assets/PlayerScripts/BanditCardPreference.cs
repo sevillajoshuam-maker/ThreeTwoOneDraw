@@ -11,18 +11,18 @@ public class BanditCardPreference : StateMachineBehaviour
     public string RollType()
     {
         float chanceSum = defendChance + bulletChance + skillChance;
-        float chanceValue = (float) random.NextDouble();
+        float chanceValue = (float)random.NextDouble();
         if (chanceValue < defendChance / chanceSum)
             return "Defend";
         if (chanceValue < (bulletChance + defendChance) / chanceSum)
             return "Bullet";
         return "Skill";
-        
+
     }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.GetComponent<EnemyStateMachine>().SuggestType(RollType());    
+        animator.gameObject.GetComponent<EnemyStateMachine>().SuggestType(RollType());
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

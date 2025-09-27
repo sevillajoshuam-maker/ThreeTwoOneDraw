@@ -15,7 +15,7 @@ public class TimeSlot : MonoBehaviour
     private InfoNode thisInfo;
 
     //Boolean for if the slot is open to another card or not
-    public bool occupied {get; private set;}
+    public bool occupied { get; private set; }
 
     //Dictionary to store duration multipliers
     public Dictionary<int, float> durationMultipliers = new Dictionary<int, float>();
@@ -24,7 +24,8 @@ public class TimeSlot : MonoBehaviour
     public int counter = 0;
 
     //Set all the data associated with this slot
-    public void setData(InfoNode info){
+    public void setData(InfoNode info)
+    {
         thisInfo = info;
 
         GameObject ImageRender = transform.GetChild(0).gameObject;
@@ -37,13 +38,15 @@ public class TimeSlot : MonoBehaviour
 
     public AbstractCard occupyingCard;
     //Start this slot's timer based on the provided cards cost
-    public IEnumerator wait(int sec, AbstractPlayer user, AbstractCard selectedCard){
+    public IEnumerator wait(int sec, AbstractPlayer user, AbstractCard selectedCard)
+    {
         //Make the slot occupied
         occupied = true;
         occupyingCard = selectedCard;
 
         //If its a bullet, call the node's corresponding method
-        if(selectedCard is AbstractBullet){
+        if (selectedCard is AbstractBullet)
+        {
             thisInfo.ifBullet((AbstractBullet)selectedCard);
         }
 
@@ -52,7 +55,8 @@ public class TimeSlot : MonoBehaviour
 
         //Calculate duration
         float duration = sec + thisInfo.diff;
-        if (durationMultipliers.ContainsKey(counter)) {
+        if (durationMultipliers.ContainsKey(counter))
+        {
             duration *= durationMultipliers[counter];
         }
 
@@ -69,20 +73,26 @@ public class TimeSlot : MonoBehaviour
             }
 
             //Updated the temp timer
-            timerText.text = Math.Round(duration, 1) + "";
+            if (timerText != null)
+            {
+                timerText.text = Math.Round(duration, 1) + "";
+            }
 
             yield return null;
         }
 
         //Use the passed cards method
-        if (selectedCard != null)
+        if (selectedCard != null && EncounterControl.Instance.combat)
         {
             selectedCard.use(user, totalDuration, this);
             ++counter;
         }
 
         //Remove sprite and change the slot to unoccupied
-        rendr.sprite = null;
+        if (rendr != null)
+        {
+            rendr.sprite = null;
+        }
         occupyingCard = null;
         occupied = false;
     }

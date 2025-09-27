@@ -10,6 +10,7 @@ public class SpriteMovement : MonoBehaviour
     private Vector3 input;
     private bool isMoving = false;
     private bool isSprinting = false;
+    public bool isFrozen = false;
     private float i = 0;
     private float j = 0;
 
@@ -21,16 +22,22 @@ public class SpriteMovement : MonoBehaviour
         Move(horizontal, vertical);
         Animate();
 
+
     }
     void Move(float x, float y)
     {
-        i = x; //math equations done in double datatype but vectors are done in floats
-        j = y; //i and j convert double a and b into float datatype
-        input = new Vector3(x, y, 0);
-        if (input.magnitude>0.1f){
-        input = input.normalized;}
-        float moveSpeed_new =isSprinting ? 2f * moveSpeed: moveSpeed;
-        gameObject.transform.position += input * moveSpeed_new * Time.deltaTime;
+        if (!isFrozen)
+        {
+            i = x; //math equations done in double datatype but vectors are done in floats
+            j = y; //i and j convert double a and b into float datatype
+            input = new Vector3(x, y, 0);
+            if (input.magnitude > 0.1f)
+            {
+                input = input.normalized;
+            }
+            float moveSpeed_new = isSprinting ? 2f * moveSpeed : moveSpeed;
+            gameObject.transform.position += input * moveSpeed_new * Time.deltaTime;
+        }
     }
     private void walkingSound()
     {
@@ -58,23 +65,25 @@ public class SpriteMovement : MonoBehaviour
     }
     private void Animate()
     {
-        if (input.magnitude > 0.1f)
-        {
-            isMoving = true;
-            walkingSound();
+        if (!isFrozen) {
+            if (input.magnitude > 0.1f)
+            {
+                isMoving = true;
+                walkingSound();
+            }
+            else
+            {
+                isMoving = false;
+            }
+            if (isMoving)
+            {
+
+                anim.SetFloat("x", i);
+                anim.SetFloat("y", j);
+
+            }
+            anim.SetBool("isMoving", isMoving);
         }
-        else
-        {
-            isMoving = false;
-        }
-        if (isMoving)
-        {
-    
-            anim.SetFloat("x", i);
-            anim.SetFloat("y", j);
-    
-        }
-        anim.SetBool("isMoving", isMoving);
     }
     private void SprintInput()
     {
@@ -82,5 +91,6 @@ public class SpriteMovement : MonoBehaviour
         { isSprinting = true; }
         else
         { isSprinting = false; }
+
     }
 }

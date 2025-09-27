@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CardPrefab : MonoBehaviour 
+public class CardPrefab : MonoBehaviour
 {
     public AbstractCard thisCard;
     public SpriteRenderer rendr;
@@ -10,7 +10,8 @@ public class CardPrefab : MonoBehaviour
 
     //Sets what card it is and its order in the hand.
     //Uses the passed card to set sprite.
-    public void setData(AbstractCard card, int num){
+    public void setData(AbstractCard card, int num)
+    {
 
         thisCard = card;
         rendr = gameObject.GetComponent<SpriteRenderer>();
@@ -21,25 +22,29 @@ public class CardPrefab : MonoBehaviour
         rendr.sprite = thisCard.IMAGE;
     }
 
-    public override string ToString(){
+    public override string ToString()
+    {
         return thisCard.ToString();
     }
 
     //This is called when the player's position in the hand matches the index of this card
-    public void selected(){
+    public void selected()
+    {
         //Visually indicate this card is selected
         gameObject.transform.position += new Vector3(0, 1.75F, 0);
         rendr.sortingOrder = 100;
     }
 
     //This is called when the player's position in the hand NO LONGER matches the index of this card
-    public void deselected(){
+    public void deselected()
+    {
         //Set visuals back to default
         gameObject.transform.position -= new Vector3(0, 1.75F, 0);
         rendr.sortingOrder = originalOrder;
 
         //Make any defense sprite no longer visible
-        if(thisCard is AbstractDefend){
+        if (thisCard is AbstractDefend)
+        {
             DefenseManager.Instance.makeInvisible(((AbstractDefend)thisCard).TYPE);
         }
     }

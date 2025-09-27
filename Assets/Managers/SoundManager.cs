@@ -24,12 +24,16 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
     public static AudioSource audioSource;
 
-    private void Awake(){
-        if (Instance != null && Instance != this){
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
             Destroy(this);
         }
-        else{
+        else
+        {
             Instance = this;
+            DontDestroyOnLoad(this);
             audioSource = gameObject.GetComponent<AudioSource>();
             sounds.Add(sixShooterSounds);
             sounds.Add(defendSounds);
@@ -41,7 +45,8 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start(){
+    private void Start()
+    {
         audioSource = gameObject.GetComponent<AudioSource>();
         sounds.Add(sixShooterSounds);
         sounds.Add(defendSounds);
@@ -52,19 +57,22 @@ public class SoundManager : MonoBehaviour
         sounds.Add(wildWestWalking);
     }
 
-    public static void playSound(SoundType sound, float volume = 1){
-        if((int)sound >= sounds.Count || sounds[((int)sound)].Length == 0){
+    public static void playSound(SoundType sound, float volume = 1)
+    {
+        if ((int)sound >= sounds.Count || sounds[((int)sound)].Length == 0)
+        {
             return;
         }
         audioSource.PlayOneShot(sounds[((int)sound)][UnityEngine.Random.Range(0, sounds[((int)sound)].Length)], volume);
     }
 }
 
-public enum SoundType{
+public enum SoundType
+{
     SixShooterBullet,
-    Defend, 
+    Defend,
     CardDraw,
-    TomahawkBullet, 
+    TomahawkBullet,
     WinchesterBullet,
     Reload,
     WildWestWalking

@@ -6,8 +6,8 @@ public class WinchesterBullet : AbstractBullet
 {
     // TODO: change art
     public WinchesterBullet() : base("Winchester Bullet", 2, ImageLibrary.winchester_art,
-        "Fire one FAST bullet that deals 5 damage", 5, Speed.Fast, ImageLibrary.default_bullet_concept_art,
-        ImageLibrary.default_superBullet_concept_art, SoundType.WinchesterBullet)
+        "Fire one FAST bullet that deals 5 damage", 5, Speed.Fast, ImageLibrary.winchester_bullet,
+        ImageLibrary.winchester_bullet_super, SoundType.WinchesterBullet)
     {
     }
 
@@ -16,5 +16,10 @@ public class WinchesterBullet : AbstractBullet
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         BulletManager.Instance.fire(user, this, this.sound);
+    }
+
+    public override Vector3 flightPath(float x, float y, float pixelPerSecond)
+    {
+        return new Vector3(pixelPerSecond / 50F, pixelPerSecond / 50F * -0.05F * (float)(1 / Math.Sqrt(8 - x)), 0);
     }
 }
