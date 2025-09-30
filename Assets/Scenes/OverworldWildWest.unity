@@ -521,7 +521,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 926366930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f88876824afef47ba16c5294fc4985, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a625eb709a78304f831e09ed0ec6907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &926366932
@@ -19534,7 +19534,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 3.16}
+    oldSize: {x: 2, y: 2.46875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -19593,7 +19593,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2103707776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a23370e27160a24691197f88084e60d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b3c530596e0da24eb334944278f8e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 2138394137}
@@ -19601,9 +19601,9 @@ MonoBehaviour:
   interactPrompt: {fileID: 874100492}
   player: {fileID: 1987500909}
   lines:
-  - This is my first line of dialogue!
-  - This is my second line of dialogue...
-  - I'm out of lines.
+  - This is my first line!
+  - This is my second line!
+  - I'm out of lines :(
 --- !u!61 &2103707778
 BoxCollider2D:
   m_ObjectHideFlags: 0

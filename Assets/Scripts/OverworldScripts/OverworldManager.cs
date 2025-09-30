@@ -18,7 +18,7 @@ public class OverworldManager : MonoBehaviour
                 starterDeck.Add(new Defend());
                 starterDeck.Add(new TakeAim());
             }
-            weapon = new Tomahawk();
+            weapon = new SixShooter();
 
             DisableOverworld.Instance.enableOverworld(false);
             EncounterControl.Instance.startEncounter(new Encounter(new Player(starterDeck, 100, 2, 2), new Bandit(), weapon));
