@@ -27,18 +27,18 @@ public class ImageLibrary : MonoBehaviour
         takeAim_art = Resources.Load<Sprite>("CardArt/TakeAim_2");
         sixShooter_art = Resources.Load<Sprite>("CardArt/SixShooter_2");
         defend_art = Resources.Load<Sprite>("CardArt/Defend_2");
-        default_bullet_concept_art = Resources.Load<Sprite>("CharSprites/SixShooter");
-        default_superBullet_concept_art = Resources.Load<Sprite>("CharSprites/TakeAimSixShooter");
+        default_bullet_concept_art = Resources.Load<Sprite>("CharSprites/Bullets/Six Shooter/SixShooter");
+        default_superBullet_concept_art = Resources.Load<Sprite>("CharSprites/Bullets/Six Shooter/TakeAimSixShooter");
         default_card = Resources.Load<Sprite>("CardArt/default_card");
         dynamite_art = Resources.Load<Sprite>("CardArt/dynamiteCard");
         tomahawk_art = Resources.Load<Sprite>("CardArt/tomahawkCard");
         winchester_art = Resources.Load<Sprite>("CardArt/WinchRifleCard");
         adrenaline_art = Resources.Load<Sprite>("CardArt/adrenalineCard");
         ironSteelPlate_art = Resources.Load<Sprite>("CardArt/ironSteelPlateCard");
-        winchester_bullet = Resources.Load<Sprite>("CharSprites/WinchesterBullet");
-        winchester_bullet_super = Resources.Load<Sprite>("CharSprites/WinchesterBulletSuper");
-        tomahawk_bullet = Resources.Load<Sprite>("CharSprites/TomahawkPixel");
-        tomahawk_bullet_super = Resources.Load<Sprite>("CharSprites/ChargedTomahawkPixel");
+        winchester_bullet = Resources.Load<Sprite>("CharSprites/Bullets/Winchester/WinchesterBullet");
+        winchester_bullet_super = Resources.Load<Sprite>("CharSprites/Bullets/Winchester/WinchesterBulletSuper");
+        tomahawk_bullet = Resources.Load<Sprite>("CharSprites/Bullets/Tomahawk/TomahawkPixel");
+        tomahawk_bullet_super = Resources.Load<Sprite>("CharSprites/Bullets/Tomahawk/ChargedTomahawkPixel");
         bandage_art = Resources.Load<Sprite>("CardArt/bandage_art");
         DontDestroyOnLoad(gameObject);
     }
