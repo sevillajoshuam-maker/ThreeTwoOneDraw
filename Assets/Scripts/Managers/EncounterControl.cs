@@ -138,6 +138,11 @@ public class EncounterControl : MonoBehaviour
     {
         if (combat)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+
             //Calculate the current health of the enemy and player
             playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
             enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;

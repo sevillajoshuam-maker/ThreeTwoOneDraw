@@ -191,11 +191,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8163993755375725575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a23370e27160a24691197f88084e60d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b3c530596e0da24eb334944278f8e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
   interactPrompt: {fileID: 0}
+  enterPrompt: {fileID: 0}
   player: {fileID: 0}
   lines: []

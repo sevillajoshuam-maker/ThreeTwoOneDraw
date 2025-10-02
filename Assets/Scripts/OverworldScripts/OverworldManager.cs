@@ -8,38 +8,41 @@ using UnityEngine.SceneManagement;
 
 public class OverworldManager : MonoBehaviour
 {
-    public AbstractWeapon weapon;
+    public static AbstractWeapon weapon = new SixShooter();
     public GameObject player;
 
-    private bool transition = false;
+    private static bool transition = false;
 
-    public List<AbstractCard> starterDeck = new List<AbstractCard>();
+    public static List<AbstractCard> starterDeck = new List<AbstractCard>();
+
+    void Start()
+    {
+        if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
+        {
+            SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            starterDeck.Add(new Defend());
+            starterDeck.Add(new TakeAim());
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (!MusicManager.audioSource.isPlaying && !transition)
         {
             MusicManager.playSound(MusicType.Theme, 0.5F);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && !transition)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                starterDeck.Add(new Defend());
-                starterDeck.Add(new TakeAim());
-            }
-            weapon = new SixShooter();
-
-
-            player.GetComponent<SpriteMovement>().isFrozen = true;
-            StartCoroutine(startCombat(weapon, starterDeck));
-        }
     }
 
-    public IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck)
+    public static IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck)
     {
         transition = true;
         MusicManager.audioSource.Stop();
