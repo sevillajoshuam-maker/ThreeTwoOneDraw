@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lasso_chat_bubble_0: -5840297686568934275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,7 +4,7 @@ public abstract class AbstractCard
 {
     //All instance variables needed by all cards
     public readonly string NAME;
-    public readonly int COST;
+    public readonly float COST;
     public readonly Sprite IMAGE;
     private readonly string DESC;
 
@@ -22,7 +22,7 @@ public abstract class AbstractCard
     };
 
     //4 argument constructor
-    public AbstractCard(string name, int cost, Sprite image, string description)
+    public AbstractCard(string name, float cost, Sprite image, string description)
     {
         NAME = name;
         COST = cost;

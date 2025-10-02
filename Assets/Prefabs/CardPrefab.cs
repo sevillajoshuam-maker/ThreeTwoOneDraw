@@ -48,4 +48,25 @@ public class CardPrefab : MonoBehaviour
             DefenseManager.Instance.makeInvisible(((AbstractDefend)thisCard).TYPE);
         }
     }
+
+    void OnMouseEnter()
+    {
+        if (EncounterControl.Instance.mouseMode)
+        {
+            EncounterControl.Instance.hoveredCard = this;
+            selected();
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (EncounterControl.Instance.mouseMode)
+        {
+            EncounterControl.Instance.hoveredCard = null;
+            deselected();
+        }
+    }
+
+
+
 }
