@@ -19,6 +19,12 @@ public class NPCInteraction : MonoBehaviour
     public bool playerIsNearby { get; private set; }
     public bool inDialogue { get; private set; }
 
+    //Temp variable to indicate if we are testing weapon selection
+    //The number corresponds to what line is the one to check, -1 means no line should be checked
+    public int weaponSelectLine = 3;
+    private bool demoNPC = true;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -39,22 +45,30 @@ public class NPCInteraction : MonoBehaviour
         }
 
         //Displays next line of dialogue and end dialogue when all lines read
-        if (inDialogue && Input.GetKeyDown(KeyCode.Return))
+        if (inDialogue)
         {
-            ++lineNum;
-            if (lineNum == lines.Length)
+            if (weaponSelectLine == lineNum)
             {
-                dialogueText.gameObject.SetActive(false);
                 enterPrompt.SetActive(false);
-                dialogueBox.SetActive(false);
-
-                SpriteMovement movement = player.GetComponent<SpriteMovement>();
-                movement.isFrozen = false;
-                inDialogue = false;
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    OverworldManager.weapon = new Tomahawk();
+                    nextLine();
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    OverworldManager.weapon = new Winchester();
+                    nextLine();
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    OverworldManager.weapon = new SixShooter();
+                    nextLine();
+                }
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.Return))
             {
-                dialogueText.text = lines[lineNum];
+                nextLine();
             }
         }
     }
@@ -76,6 +90,31 @@ public class NPCInteraction : MonoBehaviour
         {
             playerIsNearby = false;
             interactPrompt.SetActive(false);
+        }
+    }
+
+    private void nextLine()
+    {
+        ++lineNum;
+        if (lineNum == lines.Length)
+        {
+            dialogueText.gameObject.SetActive(false);
+            enterPrompt.SetActive(false);
+            dialogueBox.SetActive(false);
+
+
+            SpriteMovement movement = player.GetComponent<SpriteMovement>();
+
+            if (demoNPC)
+            {
+                StartCoroutine(OverworldManager.startCombat(OverworldManager.weapon, OverworldManager.starterDeck));
+            }
+            inDialogue = false;
+        }
+        else
+        {
+            enterPrompt.SetActive(true);
+            dialogueText.text = lines[lineNum];
         }
     }
 }
