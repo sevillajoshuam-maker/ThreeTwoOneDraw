@@ -264,7 +264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.35}
+  m_AnchoredPosition: {x: 0, y: 1.381}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201181782
@@ -942,6 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTheme: {fileID: 8300000, guid: b1e072bbfb00e514d8c9bc90856a4366, type: 3}
+  intro: {fileID: 8300000, guid: 7a6d3ad52fcb1a4448cbbcceec5ae24d, type: 3}
 --- !u!4 &397828536
 Transform:
   m_ObjectHideFlags: 0
@@ -1168,7 +1169,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1539,8 +1540,8 @@ Transform:
   m_GameObject: {fileID: 751108161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.99, y: -1.66, z: -0.0053688297}
-  m_LocalScale: {x: 13.878434, y: 0.5578, z: 1}
+  m_LocalPosition: {x: 0.99, y: -1.5327, z: -0.0053688297}
+  m_LocalScale: {x: 13.878434, y: 0.3032201, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 201181781}
@@ -3285,8 +3286,8 @@ Transform:
   m_GameObject: {fileID: 1656953158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.38, y: 0.77, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 7.49, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 201181781}
@@ -3487,7 +3488,7 @@ Transform:
   m_GameObject: {fileID: 1705657348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.08, y: 0.22, z: 0}
+  m_LocalPosition: {x: -3.89, y: 0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3574,6 +3575,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c91ffaaf1e173ec478d83c566b62fec3, type: 3}
   - {fileID: 8300000, guid: ae97e875ed0e20b4cb0bd326c250cb71, type: 3}
   - {fileID: 8300000, guid: 076f136f8c4eed94d81c2d23ca321b84, type: 3}
+  dynamiteExplosion:
+  - {fileID: 8300000, guid: 09d5119f314fc06489077e2c8b327db9, type: 3}
+  - {fileID: 8300000, guid: 1283ce8ec6b515c43b115d439fcdbd09, type: 3}
+  - {fileID: 8300000, guid: 3ed52dbd2ddf9394cb6b7c5da759b271, type: 3}
 --- !u!4 &1760707265
 Transform:
   m_ObjectHideFlags: 0

@@ -124,7 +124,7 @@ public class EncounterControl : MonoBehaviour
     {
         if (currEncounter.player.hand.Count > 1)
         {
-            return new Vector2((currPlayer.hand.Count * 1.45F) / (float)(currPlayer.hand.Count - 1) * (num - ((float)(currPlayer.hand.Count) / 3)), -4);
+            return new Vector2((currPlayer.hand.Count * 1.45F) / (float)(currPlayer.hand.Count - 1) * (num - ((float)(currPlayer.hand.Count) / 3)) + num, -4);
         }
         else
         {

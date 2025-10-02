@@ -1075,6 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a625eb709a78304f831e09ed0ec6907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1987500909}
 --- !u!4 &926366932
 Transform:
   m_ObjectHideFlags: 0
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Combat: CombatDemo
   Overworld: OverworldWildWest
+  player: {fileID: 1987500909}
   allObjects:
   - {fileID: 926366930}
   - {fileID: 1987500909}
