@@ -4,7 +4,7 @@ using System.Collections;
 public class DefenseManager : MonoBehaviour
 {
     //Create a single, static instance of this manager that will be referenced 
-    public static DefenseManager Instance {get; private set;}
+    public static DefenseManager Instance { get; private set; }
 
     //Store the three types of defends, and the enemy defend
     public GameObject smallPlayerDefense;
@@ -20,18 +20,21 @@ public class DefenseManager : MonoBehaviour
 
     //Starting position of enemy defend
     Vector3 enemySmallDefendPos;
-    
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
-    public void Awake(){
-        if (Instance != null && Instance != this){
+    public void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
             Destroy(this);
         }
-        else{
+        else
+        {
             Instance = this;
 
             //Set the default position of the enmy defense to right in front of the sprite
-            enemySmallDefendPos = new Vector3(0,0,0);
+            enemySmallDefendPos = new Vector3(0, 0, 0);
             enemySmallDefendPos = smallEnemyDefense.transform.position;
 
             //Retrieve the SpriteRenderersw for all types of defends
@@ -43,14 +46,18 @@ public class DefenseManager : MonoBehaviour
     }
 
     //Make the defense sprite invisible of the passed size
-    public void makeInvisible(Type size){
-        if(size == Type.Small){
+    public void makeInvisible(Type size)
+    {
+        if (size == Type.Small)
+        {
             smallDefenseSprite.enabled = false;
         }
-        else if(size == Type.Medium){
+        else if (size == Type.Medium)
+        {
             mediumDefenseSprite.enabled = false;
         }
-        else if(size == Type.Large){
+        else if (size == Type.Large)
+        {
             largeDefenseSprite.enabled = false;
         }
     }
@@ -103,35 +110,46 @@ public class DefenseManager : MonoBehaviour
 
     //Helper method that enables the passed sprite for specified number of seconds
     //Used to flash the sprite of enemy defends when played
-    public IEnumerator show(float num, SpriteRenderer sprite){
+    public IEnumerator show(float num, SpriteRenderer sprite)
+    {
         sprite.enabled = true;
         yield return new WaitForSeconds(num);
         sprite.enabled = false;
     }
 
-    void Update(){
+    void Update()
+    {
         //Check if time slot to see if it holds a Defend card
-        foreach(TimeSlot slot in WeaponMono.Instance.allSlots){
-            if(slot != null && slot.occupyingCard != null && slot.occupyingCard is AbstractDefend){
-                //Save the type of the occupying card
-                Type size = ((AbstractDefend)slot.occupyingCard).TYPE;
+        if (WeaponMono.Instance.allSlots != null)
+        {
+            foreach (TimeSlot slot in WeaponMono.Instance.allSlots)
+            {
+                if (slot != null && slot.occupyingCard != null && slot.occupyingCard is AbstractDefend)
+                {
+                    //Save the type of the occupying card
+                    Type size = ((AbstractDefend)slot.occupyingCard).TYPE;
 
-                //Pass the correct defense game object depending on type of hovered card
-                if(size == Type.Small){
-                    defenseFollowMouse(smallPlayerDefense);
-                }
-                else if(size == Type.Medium){
-                    defenseFollowMouse(mediumPlayerDefense);
-                }
-                else if(size == Type.Large){
-                    defenseFollowMouse(largePlayerDefense);
+                    //Pass the correct defense game object depending on type of hovered card
+                    if (size == Type.Small)
+                    {
+                        defenseFollowMouse(smallPlayerDefense);
+                    }
+                    else if (size == Type.Medium)
+                    {
+                        defenseFollowMouse(mediumPlayerDefense);
+                    }
+                    else if (size == Type.Large)
+                    {
+                        defenseFollowMouse(largePlayerDefense);
+                    }
                 }
             }
-        }     
+        }
     }
 
     //Activates the sprites and forces the passed defense Game Object to follow the mouse
-    void defenseFollowMouse(GameObject defense){
+    void defenseFollowMouse(GameObject defense)
+    {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         defense.GetComponent<SpriteRenderer>().enabled = true;
