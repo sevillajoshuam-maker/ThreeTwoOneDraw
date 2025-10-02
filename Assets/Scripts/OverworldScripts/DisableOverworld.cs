@@ -38,6 +38,7 @@ public class DisableOverworld : MonoBehaviour
             Debug.Log("EncounterControl.Instance is null!");
         }
 
+        MusicManager.audioSource.Stop();
         foreach (GameObject singleObject in allObjects)
         {
             singleObject.SetActive(state);

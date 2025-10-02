@@ -21,32 +21,11 @@ public class SoundManager : MonoBehaviour
     private AudioClip[] wildWestWalking;
 
     private static List<AudioClip[]> sounds = new List<AudioClip[]>();
-    public static SoundManager Instance;
     public static AudioSource audioSource;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-            audioSource = gameObject.GetComponent<AudioSource>();
-            sounds.Add(sixShooterSounds);
-            sounds.Add(defendSounds);
-            sounds.Add(cardDrawSounds);
-            sounds.Add(tomahawkSounds);
-            sounds.Add(winchesterSounds);
-            sounds.Add(reloadSounds);
-            sounds.Add(wildWestWalking);
-        }
-    }
 
     private void Start()
     {
+        DontDestroyOnLoad(this);
         audioSource = gameObject.GetComponent<AudioSource>();
         sounds.Add(sixShooterSounds);
         sounds.Add(defendSounds);
