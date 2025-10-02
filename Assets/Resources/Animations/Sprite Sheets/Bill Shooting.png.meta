@@ -1,0 +1,1031 @@
+fileFormatVersion: 2
+guid: 1ab77e0c8bb046945b1c916be8ae0ba5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8309153794041342816
+    second: Bill Shooting_0
+  - first:
+      213: 8647166951047372334
+    second: Bill Shooting_1
+  - first:
+      213: 1639730547356796181
+    second: Bill Shooting_2
+  - first:
+      213: 329486802616897447
+    second: Bill Shooting_3
+  - first:
+      213: 3483094916156243248
+    second: Bill Shooting_4
+  - first:
+      213: -5980197463841264231
+    second: Bill Shooting_5
+  - first:
+      213: -5670212115358005267
+    second: Bill Shooting_6
+  - first:
+      213: 646037192770594127
+    second: Bill Shooting_7
+  - first:
+      213: -1162747558722753409
+    second: Bill Shooting_8
+  - first:
+      213: 5757610104250719557
+    second: Bill Shooting_9
+  - first:
+      213: -687268869656141239
+    second: Bill Shooting_10
+  - first:
+      213: 3845350385351120777
+    second: Bill Shooting_11
+  - first:
+      213: 3098626302814043330
+    second: Bill Shooting_12
+  - first:
+      213: 1021067406790481120
+    second: Bill Shooting_13
+  - first:
+      213: 3367368088748370370
+    second: Bill Shooting_14
+  - first:
+      213: 9049159240450753507
+    second: Bill Shooting_15
+  - first:
+      213: 8630085076476811563
+    second: Bill Shooting_16
+  - first:
+      213: 4806267387790924993
+    second: Bill Shooting_17
+  - first:
+      213: -2819216126181181596
+    second: Bill Shooting_18
+  - first:
+      213: 7245977650269025988
+    second: Bill Shooting_19
+  - first:
+      213: -4961190789349804245
+    second: Bill Shooting_20
+  - first:
+      213: 2718902600840089911
+    second: Bill Shooting_21
+  - first:
+      213: 5053616231815426134
+    second: Bill Shooting_22
+  - first:
+      213: -522618520109281689
+    second: Bill Shooting_23
+  - first:
+      213: -8873671060921067514
+    second: Bill Shooting_24
+  - first:
+      213: 3574339896858873106
+    second: Bill Shooting_25
+  - first:
+      213: -5987334703050278595
+    second: Bill Shooting_26
+  - first:
+      213: 9051602699995178397
+    second: Bill Shooting_27
+  - first:
+      213: 8017578555438963342
+    second: Bill Shooting_28
+  - first:
+      213: -3882593128766222067
+    second: Bill Shooting_29
+  - first:
+      213: -1994583647028939446
+    second: Bill Shooting_30
+  - first:
+      213: -8776849212763513963
+    second: Bill Shooting_31
+  - first:
+      213: 7074964785088449028
+    second: Bill Shooting_32
+  - first:
+      213: -8194287376174289148
+    second: Bill Shooting_33
+  - first:
+      213: -5088070507187406151
+    second: Bill Shooting_34
+  - first:
+      213: -320563553110261422
+    second: Bill Shooting_35
+  - first:
+      213: 469496402085474951
+    second: Bill Shooting_36
+  - first:
+      213: -8573744781054640095
+    second: Bill Shooting_37
+  - first:
+      213: 4895375792127048864
+    second: Bill Shooting_38
+  - first:
+      213: -4968776611989097652
+    second: Bill Shooting_39
+  - first:
+      213: 7185911357371933705
+    second: Bill Shooting_40
+  - first:
+      213: -9117012059019503412
+    second: Bill Shooting_41
+  - first:
+      213: -5239831023889749920
+    second: Bill Shooting_42
+  - first:
+      213: -3150047650958117830
+    second: Bill Shooting_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bill Shooting_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 635
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873999e7b0400e04f97c33ee4465879f
+      internalID: -8309153794041342816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 635
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f72234fdb5a5ef4c8ead9505ce209a7
+      internalID: 8647166951047372334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_2
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 635
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fc91663bc6bafb429c5813b96da033d
+      internalID: 1639730547356796181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_3
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 635
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33473171571a674dbac981d285739c6
+      internalID: 329486802616897447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_4
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 635
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672c612ff0ed4324aa47301117c14950
+      internalID: 3483094916156243248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_5
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 635
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4cf21b4c18e594e910cea0f599b2a7
+      internalID: -5980197463841264231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 508
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c422605c3cf2abc4697767e153ca70b1
+      internalID: -5670212115358005267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_7
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 508
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1613d01bbac053f4eb9dad1112e694d3
+      internalID: 646037192770594127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_8
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 508
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c572be7a9b8751740ba289dd12526916
+      internalID: -1162747558722753409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_9
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 508
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddad47532705bd4083ee1e1b139001b
+      internalID: 5757610104250719557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_10
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 508
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 806954bb59ab450439b9a893cef3cb2e
+      internalID: -687268869656141239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_11
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 508
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff1bb90c637c9e40a96de8e2860f3a4
+      internalID: 3845350385351120777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 381
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45858fc30cdb24141a6a32f62f3a8e15
+      internalID: 3098626302814043330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_13
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 381
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d2523212378f14e905f7aa2b3c6d88
+      internalID: 1021067406790481120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_14
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 381
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6bb46fe01e348c4a91156db3a3eaab8
+      internalID: 3367368088748370370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_15
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 381
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01203785f14c16641a26c185209f2e1f
+      internalID: 9049159240450753507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_16
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 381
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d91e76ee6fcd8f44b17d7d27e61db51
+      internalID: 8630085076476811563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_17
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 381
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18a9ee916b1bfbe41a8d7d7735ae5e46
+      internalID: 4806267387790924993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 254
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26154bb895a18048914c7954add85bc
+      internalID: -2819216126181181596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_19
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 254
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3d9ada672bea8443b95e15ad9553ccd
+      internalID: 7245977650269025988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_20
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 254
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a214596d8c221a4e9e52dd4e3351bb9
+      internalID: -4961190789349804245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_21
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 254
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d38b184a077854bad9fcfef588428b
+      internalID: 2718902600840089911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_22
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 254
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d36f0abb3833c34580b272ac2245492
+      internalID: 5053616231815426134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_23
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 254
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec9b7897cdd9ff47989d1435a10c38e
+      internalID: -522618520109281689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c536f86348be781419f649518f57684e
+      internalID: -8873671060921067514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_25
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 127
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0320a00fb062c4a9d93e10c7c3de9d
+      internalID: 3574339896858873106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_26
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 127
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cd62577a6df17749ababc0426103512
+      internalID: -5987334703050278595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_27
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 127
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0a7a08e94ac15449a422f1106fd4a2
+      internalID: 9051602699995178397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_28
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 127
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50dbebc30ca6744a96204cb83d82b23
+      internalID: 8017578555438963342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_29
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 127
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86fbfcdce6e3ca141aa0b054bb9a604f
+      internalID: -3882593128766222067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211935be8e104aa46a625e6523f19644
+      internalID: -1994583647028939446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_31
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 0
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e854f0be9d3d49f41a71bac5302ceb82
+      internalID: -8776849212763513963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_32
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab85527fc2589549bb8408b669d43a7
+      internalID: 7074964785088449028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bill Shooting_33
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 0
+        width: 125
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742c6de78cd8c324a8bf3a7e836d99f0
+      internalID: -8194287376174289148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0d23a13bad1d1174c8a573caf5b856e6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bill Shooting_0: -8309153794041342816
+      Bill Shooting_1: 8647166951047372334
+      Bill Shooting_10: -687268869656141239
+      Bill Shooting_11: 3845350385351120777
+      Bill Shooting_12: 3098626302814043330
+      Bill Shooting_13: 1021067406790481120
+      Bill Shooting_14: 3367368088748370370
+      Bill Shooting_15: 9049159240450753507
+      Bill Shooting_16: 8630085076476811563
+      Bill Shooting_17: 4806267387790924993
+      Bill Shooting_18: -2819216126181181596
+      Bill Shooting_19: 7245977650269025988
+      Bill Shooting_2: 1639730547356796181
+      Bill Shooting_20: -4961190789349804245
+      Bill Shooting_21: 2718902600840089911
+      Bill Shooting_22: 5053616231815426134
+      Bill Shooting_23: -522618520109281689
+      Bill Shooting_24: -8873671060921067514
+      Bill Shooting_25: 3574339896858873106
+      Bill Shooting_26: -5987334703050278595
+      Bill Shooting_27: 9051602699995178397
+      Bill Shooting_28: 8017578555438963342
+      Bill Shooting_29: -3882593128766222067
+      Bill Shooting_3: 329486802616897447
+      Bill Shooting_30: -1994583647028939446
+      Bill Shooting_31: -8776849212763513963
+      Bill Shooting_32: 7074964785088449028
+      Bill Shooting_33: -8194287376174289148
+      Bill Shooting_4: 3483094916156243248
+      Bill Shooting_5: -5980197463841264231
+      Bill Shooting_6: -5670212115358005267
+      Bill Shooting_7: 646037192770594127
+      Bill Shooting_8: -1162747558722753409
+      Bill Shooting_9: 5757610104250719557
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

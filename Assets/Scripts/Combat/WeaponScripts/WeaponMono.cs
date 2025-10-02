@@ -25,7 +25,7 @@ public class WeaponMono : MonoBehaviour
         }
     }
 
-    //Call this method when combat startes and pass the current weapon
+    //Call this method when combat starts and pass the current weapon
     public void activateWeapon(AbstractWeapon weapon)
     {
         //Attach each node from the weapon to the newly created time slots

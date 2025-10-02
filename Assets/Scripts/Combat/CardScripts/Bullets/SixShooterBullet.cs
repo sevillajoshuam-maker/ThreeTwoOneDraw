@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SixShooterBullet : AbstractBullet
 {
+    
     //0 argument constructor that makes a basic six shooter bullet
     public SixShooterBullet() : base("Six Shooter Bullet", 3, ImageLibrary.sixShooter_art,
         "Fire one SLOW bullet that deals 25 damage", 15, Speed.Slow, ImageLibrary.default_bullet_concept_art,
@@ -14,5 +15,7 @@ public class SixShooterBullet : AbstractBullet
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         BulletManager.Instance.fire(user, this, this.sound);
+        
+
     }
 }

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
+    public CombatAnimations combat_Anim;
+
+
     //Create a single, static instance of this manager that will be referenced 
     public static BulletManager Instance { get; private set; }
 
@@ -33,6 +36,7 @@ public class BulletManager : MonoBehaviour
         //Spawns the bullet on the head of the player
         if (!(shooter is Enemy))
         {
+            combat_Anim.Shoot();
             BulletPrefab newBullet = Instantiate(bulletBlueprint,
                 EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
             newBullet.setData(bullet, shooter, EncounterControl.Instance.takeAimActive);
