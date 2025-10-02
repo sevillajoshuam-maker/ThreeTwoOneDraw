@@ -49,4 +49,24 @@ public class CardPrefab : MonoBehaviour
         }
     }
 
+    void OnMouseEnter()
+    {
+        if (EncounterControl.Instance.mouseMode)
+        {
+            EncounterControl.Instance.hoveredCard = this;
+            selected();
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (EncounterControl.Instance.mouseMode)
+        {
+            EncounterControl.Instance.hoveredCard = null;
+            deselected();
+        }
+    }
+
+
+
 }
