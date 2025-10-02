@@ -38,7 +38,7 @@ public class TimeSlot : MonoBehaviour
 
     public AbstractCard occupyingCard;
     //Start this slot's timer based on the provided cards cost
-    public IEnumerator wait(int sec, AbstractPlayer user, AbstractCard selectedCard)
+    public IEnumerator wait(float sec, AbstractPlayer user, AbstractCard selectedCard)
     {
         //Make the slot occupied
         occupied = true;
