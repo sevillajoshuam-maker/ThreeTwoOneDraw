@@ -10,6 +10,7 @@ public class NPCInteraction : MonoBehaviour
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
     public GameObject interactPrompt;
+    public GameObject enterPrompt;
     public GameObject player;
 
     public string[] lines;
@@ -29,6 +30,7 @@ public class NPCInteraction : MonoBehaviour
 
             interactPrompt.SetActive(false);
             dialogueBox.SetActive(true);
+            enterPrompt.SetActive(true);
             dialogueText.gameObject.SetActive(true);
             dialogueText.text = lines[0];
 
@@ -42,8 +44,8 @@ public class NPCInteraction : MonoBehaviour
             ++lineNum;
             if (lineNum == lines.Length)
             {
-                dialogueText.text = "";
-                dialogueText.enabled = false;
+                dialogueText.gameObject.SetActive(false);
+                enterPrompt.SetActive(false);
                 dialogueBox.SetActive(false);
 
                 SpriteMovement movement = player.GetComponent<SpriteMovement>();

@@ -83,6 +83,8 @@ public class SpriteMovement : MonoBehaviour
 
             }
             anim.SetBool("isMoving", isMoving);
+        } else {
+            anim.SetBool("isMoving", false);
         }
     }
     private void SprintInput()
