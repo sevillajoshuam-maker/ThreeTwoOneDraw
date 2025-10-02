@@ -1037,7 +1037,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9.046875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -20445,8 +20445,7 @@ MonoBehaviour:
   player: {fileID: 1987500909}
   lines:
   - This is my first line!
-  - This is my second line! And it's a really long line! I wonder how it displays!
-    Wow, I still need more text.
+  - This is my second line!
   - I'm out of lines :(
 --- !u!61 &2103707778
 BoxCollider2D:
@@ -20486,8 +20485,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.38, y: 2.54}
-    newSize: {x: 1, y: 2}
+    oldSize: {x: 0.61, y: 1.01}
+    newSize: {x: 0.61, y: 1.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -20532,8 +20531,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.38, y: 2.54}
-    newSize: {x: 1, y: 2}
+    oldSize: {x: 0.61, y: 1.01}
+    newSize: {x: 0.61, y: 1.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -20584,15 +20583,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8912304941135482, guid: 1253aa64152742442919e4f61296ad9b, type: 3}
+  m_Sprite: {fileID: -2303639118575511178, guid: 6f5ea42c9a163a84f8b01612c51e979a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.61, y: 1.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2103707781
@@ -20605,7 +20604,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.13, y: -0.39, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -20695,7 +20694,7 @@ SceneRoots:
   - {fileID: 1150400156}
   - {fileID: 1484532717}
   - {fileID: 1987500911}
-  - {fileID: 125268277}
   - {fileID: 2103707781}
   - {fileID: 2101122709}
+  - {fileID: 125268277}
   - {fileID: 1555554836}
