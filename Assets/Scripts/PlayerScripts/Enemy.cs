@@ -19,11 +19,11 @@ public abstract class Enemy : AbstractPlayer
     }
 
     int num = 0;
-    float cost = 0;
+    int cost = 0;
 
     //Randomly selects a card in the enemy deck, plays it, and returns the amount of seconds until the next enemy turn
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
-    public float trySomething()
+    public int trySomething()
     {
         if (deck.Count <= 1 || num >= deck.Count || num < 0)
         {
