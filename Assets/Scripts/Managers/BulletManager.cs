@@ -1,4 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using TMPro;
 
 public class BulletManager : MonoBehaviour
 {
@@ -31,25 +36,43 @@ public class BulletManager : MonoBehaviour
     //Creates a new bullet prefab depending of the type of bullet and who fired
     public void fire(AbstractPlayer shooter, AbstractBullet bullet, SoundType sound)
     {
-        SoundManager.playSound(sound);
-
         //Spawns the bullet on the head of the player
         if (!(shooter is Enemy))
         {
             combat_Anim.Shoot();
-            BulletPrefab newBullet = Instantiate(bulletBlueprint,
-                EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
-            newBullet.setData(bullet, shooter, EncounterControl.Instance.takeAimActive);
-            EncounterControl.Instance.takeAimActive = false;
-            playerBullet++;
+            StartCoroutine(delayShooting(0.5F, shooter, bullet, sound));
         }
 
         //Spawns the bullet on the head of the enemy
         else
         {
+            SoundManager.playSound(sound);
             BulletPrefab newBullet = Instantiate(bulletBlueprint,
                 EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
             newBullet.setData(bullet, shooter, false);
         }
+    }
+
+    private IEnumerator delayShooting(float sec, AbstractPlayer shooter, AbstractBullet bullet, SoundType sound)
+    {
+        float duration = sec;
+        //While there is time left
+        while (duration > 0)
+        {
+            //Alter the time by the time since last frame
+            duration -= Time.deltaTime;
+            if (duration <= 0)
+            {
+                duration = 0;
+            }
+            yield return null;
+        }
+
+        SoundManager.playSound(sound);
+        BulletPrefab newBullet = Instantiate(bulletBlueprint,
+            EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
+        newBullet.setData(bullet, shooter, EncounterControl.Instance.takeAimActive);
+        EncounterControl.Instance.takeAimActive = false;
+        playerBullet++;
     }
 }
