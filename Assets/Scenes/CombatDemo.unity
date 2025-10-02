@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c874dafd52be27d47911caf81ddc3754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseMode: 0
   playerWonLast: 0
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
   playerSpritePlaceholder: {fileID: 1577900648}
