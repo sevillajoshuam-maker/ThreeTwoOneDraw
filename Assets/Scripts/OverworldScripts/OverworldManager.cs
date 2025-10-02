@@ -11,6 +11,12 @@ public class OverworldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!MusicManager.audioSource.isPlaying)
+        {
+            MusicManager.playSound(MusicType.Theme, 0.5F);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             for (int i = 0; i < 3; i++)
