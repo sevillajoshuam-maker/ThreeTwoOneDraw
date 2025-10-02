@@ -8,10 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class EncounterControl : MonoBehaviour
 {
-
-    //Temp variable that says whether the mouse controls hand traversal or not
-    public bool mouseMode = false;
-
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance { get; private set; }
 
@@ -177,7 +173,7 @@ public class EncounterControl : MonoBehaviour
                     SoundManager.playSound(SoundType.Reload);
                 }
                 //Exit the card selection if the player clicks S
-                else if (Input.GetKeyDown(KeyCode.DownArrow) && !mouseMode)
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     position = -1;
                     if (hoveredCard != null)
@@ -187,7 +183,7 @@ public class EncounterControl : MonoBehaviour
                     }
                 }
                 //Move the index of the selected card right when the playef clicks D
-                else if (Input.GetKeyDown(KeyCode.RightArrow) && !mouseMode)
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     if (position == -1 || position == currPlayer.hand.Count - 1)
                     {
@@ -199,7 +195,7 @@ public class EncounterControl : MonoBehaviour
                     }
                     //Move the index of the selected card left when the playef clicks A
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && !mouseMode)
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     if (position == -1 || position == 0)
                     {
