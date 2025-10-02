@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour
     private AudioClip[] reloadSounds;
     [SerializeField]
     private AudioClip[] wildWestWalking;
+    [SerializeField]
+    private AudioClip[] dynamiteExplosion;
 
     private static List<AudioClip[]> sounds = new List<AudioClip[]>();
     public static AudioSource audioSource;
@@ -34,6 +36,7 @@ public class SoundManager : MonoBehaviour
         sounds.Add(winchesterSounds);
         sounds.Add(reloadSounds);
         sounds.Add(wildWestWalking);
+        sounds.Add(dynamiteExplosion);
     }
 
     public static void playSound(SoundType sound, float volume = 1)
@@ -54,5 +57,6 @@ public enum SoundType
     TomahawkBullet,
     WinchesterBullet,
     Reload,
-    WildWestWalking
+    WildWestWalking,
+    Explosion
 }
