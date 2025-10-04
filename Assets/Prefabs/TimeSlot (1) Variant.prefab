@@ -196,12 +196,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
-      propertyPath: m_SortingLayer
+      propertyPath: m_Size.x
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_Size.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 18b83b1fd85e9fe48b99310a03f5f529, type: 3}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
       propertyPath: m_SortingLayerID
-      value: -996418413
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617966592808808832, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446810195688989737, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446810195688989737, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 13.187295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446810195688989737, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4578972
       objectReference: {fileID: 0}
     - target: {fileID: 2446810195688989737, guid: 7b37343a734eb134f9c30af1ec029bab, type: 3}
       propertyPath: m_LocalPosition.x

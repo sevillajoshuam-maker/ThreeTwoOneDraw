@@ -122,13 +122,16 @@ public class EncounterControl : MonoBehaviour
     //Calculate the card prefab position depending on hand size
     public Vector2 cardPosition(int num)
     {
+        //x-axis offset for UI layout placement
+        int offset = -5;
+
         if (currEncounter.player.hand.Count > 1)
         {
-            return new Vector2((currPlayer.hand.Count * 1.45F) / (float)(currPlayer.hand.Count - 1) * (num - ((float)(currPlayer.hand.Count) / 3)) + num, -4);
+            return new Vector2(((currPlayer.hand.Count * 1.45F) / (float)(currPlayer.hand.Count - 1) * (num - ((float)(currPlayer.hand.Count) / 3)) + num) + offset, -8);
         }
         else
         {
-            return new Vector2(0, -4);
+            return new Vector2(0 + offset, -8);
         }
 
     }
