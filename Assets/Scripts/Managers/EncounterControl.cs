@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class EncounterControl : MonoBehaviour
 {
     //Temp variable that says whether the mouse controls hand traversal or not
-    public bool mouseMode = false;
+    public bool mouseMode = true;
 
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance { get; private set; }
@@ -127,7 +127,7 @@ public class EncounterControl : MonoBehaviour
 
         if (currEncounter.player.hand.Count > 1)
         {
-            return new Vector2(((currPlayer.hand.Count * 1.45F) / (float)(currPlayer.hand.Count - 1) * (num - ((float)(currPlayer.hand.Count) / 3)) + num) + offset, -8);
+            return new Vector2(((currPlayer.hand.Count * 1.45F) / (float)(currPlayer.hand.Count - 1) * (num - ((float)(currPlayer.hand.Count) / 3)) + num) + offset, -12);
         }
         else
         {

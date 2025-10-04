@@ -26,7 +26,7 @@ public class ImageLibrary : MonoBehaviour
     {
         takeAim_art = Resources.Load<Sprite>("CardArt/TakeAim_2");
         sixShooter_art = Resources.Load<Sprite>("CardArt/SixShooter_2");
-        defend_art = Resources.Load<Sprite>("CardArt/Defend_2");
+        defend_art = Resources.Load<Sprite>("CardArt/smallDefendCard");
         default_bullet_concept_art = Resources.Load<Sprite>("CharSprites/Bullets/Six Shooter/SixShooter");
         default_superBullet_concept_art = Resources.Load<Sprite>("CharSprites/Bullets/Six Shooter/TakeAimSixShooter");
         default_card = Resources.Load<Sprite>("CardArt/default_card");
