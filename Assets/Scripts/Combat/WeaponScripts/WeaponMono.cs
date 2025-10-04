@@ -41,10 +41,11 @@ public class WeaponMono : MonoBehaviour
     }
 
     public Dictionary<int, Vector2> indexToPos = new Dictionary<int, Vector2>(){
-        {0, new Vector2(-8.75f, 3.69f)},
-        {1, new Vector2(-7.25f, 2.08f)},
-        {2, new Vector2(-8.75f, 0.47f)},
-        {3, new Vector2(-7.25f, -1.47f)},
-        {4, new Vector2(-8.75f, -2.88f)}
+        {0, new Vector2(-22.14f, 8.27f)},
+        {1, new Vector2(-18.74f, 6.79f)},
+        {2, new Vector2(-16.47f, 4.10f)},
+        {3, new Vector2(-16.47f, 0.86f)},
+        {4, new Vector2(-18.74f, -1.88f)},
+        {5, new Vector2(-22.14f, -3.36f)}
     };
 }
