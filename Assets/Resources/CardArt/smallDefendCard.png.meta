@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6277a119ff196434089345c851c3866a
+guid: 5c1a8073465955a43aa9506258b603d0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7051786797765262297
-    second: Defend_2_0
+      213: -8042972376745552892
+    second: smallDefendCard_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Defend_2_0
+      name: smallDefendCard_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 155
-        height: 222
+        width: 927
+        height: 1332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9db76980bbafcd160800000000000000
-      internalID: 7051786797765262297
+      spriteID: 4045dc1ac3f916090800000000000000
+      internalID: -8042972376745552892
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Defend_2_0: 7051786797765262297
+      smallDefendCard_0: -8042972376745552892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
