@@ -39,7 +39,6 @@ public class DisableOverworld : MonoBehaviour
             Debug.Log("EncounterControl.Instance is null!");
         }
 
-        MusicManager.audioSource.Stop();
         player.GetComponent<SpriteMovement>().isFrozen = !state;
         foreach (GameObject singleObject in allObjects)
         {
