@@ -50,6 +50,11 @@ public class TimeSlot : MonoBehaviour
             thisInfo.ifBullet((AbstractBullet)selectedCard);
         }
 
+        //If card is a Smoke Screen, set up the smoke screen
+        if (occupyingCard.NAME == "Smoke Screen") {
+            EncounterControl.Instance.setUpSmokeScreen();
+        }
+
         //Set the image to the sprite of the occupying card
         rendr.sprite = selectedCard.IMAGE;
 

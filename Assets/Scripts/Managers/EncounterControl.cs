@@ -39,6 +39,8 @@ public class EncounterControl : MonoBehaviour
 
     private SpriteRenderer discardSpriteRenderer;
 
+    //Smoke Screen
+    public GameObject smokeScreen;
 
     public List<GameObject> allObjects = new List<GameObject>();
 
@@ -356,6 +358,9 @@ public class EncounterControl : MonoBehaviour
             Destroy(bullet);
         }
 
+        //Deactive smoke screen
+        smokeScreen.SetActive(false);
+
         DefenseManager.Instance.makeInvisible(Type.Small);
     }
 
@@ -378,5 +383,15 @@ public class EncounterControl : MonoBehaviour
         //Reapply the visuals for the player's hand
         position = (position == 0) ? position + 1 : position - 1;
         reapplyHand();
+    }
+
+    //Activate smoke screen
+    public void setUpSmokeScreen() {
+        smokeScreen.SetActive(true);
+    }
+
+    //Deactive smoke screen
+    public void destroySmokeScreen() {
+        smokeScreen.SetActive(false);
     }
 }
