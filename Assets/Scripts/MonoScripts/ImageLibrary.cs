@@ -24,8 +24,8 @@ public class ImageLibrary : MonoBehaviour
     //Created static Sprites for all images located in the CardArt folder 
     void Awake()
     {
-        takeAim_art = Resources.Load<Sprite>("CardArt/TakeAim_2");
-        sixShooter_art = Resources.Load<Sprite>("CardArt/SixShooter_2");
+        takeAim_art = Resources.Load<Sprite>("CardArt/takeAimCard");
+        sixShooter_art = Resources.Load<Sprite>("CardArt/sixShooter");
         defend_art = Resources.Load<Sprite>("CardArt/smallDefendCard");
         default_bullet_concept_art = Resources.Load<Sprite>("CharSprites/Bullets/Six Shooter/SixShooter");
         default_superBullet_concept_art = Resources.Load<Sprite>("CharSprites/Bullets/Six Shooter/TakeAimSixShooter");
