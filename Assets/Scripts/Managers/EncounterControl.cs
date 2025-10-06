@@ -60,6 +60,25 @@ public class EncounterControl : MonoBehaviour
 
     public bool combat;
 
+    //Determines if we are in the tutorial or not
+    public bool tutorial;
+
+    public bool bulletPlayed = false;
+
+    public bool defendPlayed = false;
+
+    public bool takeAimPlayed = false;
+
+    public bool deckRanOut = false;
+
+    public GameObject bulletPopUp;
+
+    public GameObject defendPopUp;
+
+    public GameObject takeAimPopUp;
+
+    public GameObject reloadPopUp;
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -362,7 +381,23 @@ public class EncounterControl : MonoBehaviour
     //Play the current card to the time slot at the provided index
     public void playCardToSlot(int index)
     {
-
+        if (tutorial) {
+            if (!bulletPlayed && hoveredCard.thisCard.GetCardType() == "Bullet") {
+                bulletPopUp.SetActive(true);
+                bulletPlayed = true;
+                StartCoroutine(endTutorialPopUp(bulletPopUp));
+            }
+            if (!defendPlayed && hoveredCard.thisCard.GetCardType() == "Defend") {
+                defendPopUp.SetActive(true);
+                defendPlayed = true;
+                StartCoroutine(endTutorialPopUp(defendPopUp));
+            }
+            if (!takeAimPlayed && hoveredCard.thisCard.NAME == "Take Aim") {
+                takeAimPopUp.SetActive(true);
+                takeAimPlayed = true;
+                StartCoroutine(endTutorialPopUp(takeAimPopUp));
+            }
+        }
         //If the time slot does not exist or if it has a card already in it
         if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
         {
@@ -374,9 +409,29 @@ public class EncounterControl : MonoBehaviour
 
         //Discard the card
         currPlayer.Discard(hoveredCard.thisCard);
+        if (tutorial) {
+            if (!deckRanOut && currPlayer.hand.Count == 0) {
+                reloadPopUp.SetActive(true);
+                deckRanOut = true;
+                StartCoroutine(endTutorialPopUp(bulletPopUp));
+            }
+        }
 
         //Reapply the visuals for the player's hand
         position = (position == 0) ? position + 1 : position - 1;
         reapplyHand();
     }
+
+    public IEnumerator endTutorialPopUp(GameObject popUp) {
+        Time.timeScale = 0;
+        combat = false;
+        while (!Input.GetKeyDown(KeyCode.Return)) {
+            yield return null;
+        }
+        popUp.SetActive(false);
+        Time.timeScale = 1;
+        combat = true;
+    }
 }
+
+
