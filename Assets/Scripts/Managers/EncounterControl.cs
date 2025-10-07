@@ -37,8 +37,11 @@ public class EncounterControl : MonoBehaviour
     public Slider playerHealthBar;
     public Slider enemyHealthBar;
 
+    [SerializeField]
     private SpriteRenderer discardSpriteRenderer;
 
+    //Smoke Screen
+    public GameObject smokeScreen;
 
     public List<GameObject> allObjects = new List<GameObject>();
 
@@ -356,6 +359,7 @@ public class EncounterControl : MonoBehaviour
         {
             Destroy(card);
         }
+        discardSpriteRenderer.sprite = null;
 
         //Deactivate all time slots
         GameObject[] visibleSlots = GameObject.FindGameObjectsWithTag("TimeSlot");
@@ -370,6 +374,9 @@ public class EncounterControl : MonoBehaviour
         {
             Destroy(bullet);
         }
+
+        //Deactive smoke screen
+        smokeScreen.SetActive(false);
 
         DefenseManager.Instance.makeInvisible(Type.Small);
     }
@@ -436,6 +443,21 @@ public class EncounterControl : MonoBehaviour
         reapplyHand();
     }
 
+    //Activate smoke screen
+    public void setUpSmokeScreen() {
+        smokeScreen.SetActive(true);
+    }
+
+    //Deactive smoke screen
+    public void destroySmokeScreen() {
+        smokeScreen.SetActive(false);
+    }
+
+    //Update discard pile sprite
+    public void updateDiscardPile(AbstractCard lastCard) {
+        discardSpriteRenderer.sprite = lastCard.IMAGE;
+        //Set size to match PlaceHolderDeck, remove this line to display full card size
+        discardSpriteRenderer.size = new Vector2(3.875f, 5.85f);
     public IEnumerator endTutorialPopUp(GameObject popUp, TextMeshProUGUI textPopUp)
     {
         Time.timeScale = 0;
