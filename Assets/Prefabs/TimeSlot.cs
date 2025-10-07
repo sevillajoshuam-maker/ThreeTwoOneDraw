@@ -91,6 +91,7 @@ public class TimeSlot : MonoBehaviour
         {
             selectedCard.use(user, totalDuration, this);
             ++counter;
+            EncounterControl.Instance.updateDiscardPile(selectedCard);
         }
 
         //Remove sprite and change the slot to unoccupied

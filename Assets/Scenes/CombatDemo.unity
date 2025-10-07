@@ -296,6 +296,7 @@ MonoBehaviour:
   enemyHealthBarSprite: {fileID: 329496155}
   playerHealthBar: {fileID: 469651224}
   enemyHealthBar: {fileID: 134451786}
+  discardSpriteRenderer: {fileID: 1380360581}
   smokeScreen: {fileID: 1684503680}
   allObjects:
   - {fileID: 1544027551}
@@ -3449,15 +3450,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ef768bfbc2802d24f8b6561f02ea7e04, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3.875, y: 5.55}
+  m_DrawMode: 1
+  m_Size: {x: 3.875, y: 5.85}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1385788331
