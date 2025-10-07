@@ -28,7 +28,6 @@ public abstract class Enemy : AbstractPlayer
         if (deck.Count <= 1 || num >= deck.Count || num < 0)
         {
             this.Shuffle();
-            Debug.Log("Num:" + num + "Deck Count:" + deck.Count);
             return 1;
         }
 

@@ -23,8 +23,10 @@ public class TimeSlot : MonoBehaviour
     //Count what card is playing next to apply multipliers
     public int counter = 0;
 
+    private Sprite defaultSprite;
+
     //Set all the data associated with this slot
-    public void setData(InfoNode info)
+    public void setData(InfoNode info, Sprite numberedSprite)
     {
         thisInfo = info;
 
@@ -33,6 +35,8 @@ public class TimeSlot : MonoBehaviour
 
         timerText = TempTimer.GetComponent<TextMesh>();
         rendr = ImageRender.GetComponent<SpriteRenderer>();
+        rendr.sprite = numberedSprite;
+        defaultSprite = numberedSprite;
         occupied = false;
     }
 
@@ -51,12 +55,13 @@ public class TimeSlot : MonoBehaviour
         }
 
         //If card is a Smoke Screen, set up the smoke screen
-        if (occupyingCard.NAME == "Smoke Screen") {
+        if (occupyingCard.NAME == "Smoke Screen")
+        {
             EncounterControl.Instance.setUpSmokeScreen();
         }
 
         //Set the image to the sprite of the occupying card
-        rendr.sprite = selectedCard.IMAGE;
+        rendr.sprite = selectedCard.ICON;
 
         //Calculate duration
         float duration = sec + thisInfo.diff;
@@ -97,7 +102,7 @@ public class TimeSlot : MonoBehaviour
         //Remove sprite and change the slot to unoccupied
         if (rendr != null)
         {
-            rendr.sprite = null;
+            rendr.sprite = defaultSprite;
         }
         occupyingCard = null;
         occupied = false;

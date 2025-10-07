@@ -4036,6 +4036,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounterController: {fileID: 0}
   ready: 0
+  cactusState: {fileID: 9100000, guid: da1ef3ffaa8c0af4882a827dd83070dc, type: 2}
+  bossBanditState: {fileID: 9100000, guid: b7f49af02a152a743ac938d31ef2c1b8, type: 2}
 --- !u!1 &1684503680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4183,7 +4185,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 201181781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  cactusState: {fileID: 9100000, guid: da1ef3ffaa8c0af4882a827dd83070dc, type: 2}
 --- !u!1 &1705657348
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4351,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   slotBlueprint: {fileID: 1608664124672323962, guid: 02f05f6b6b8af4b4d93e7db0c4b95bb9, type: 3}
+  numberedSprites:
+  - {fileID: 21300000, guid: 9a69eb9e1205a8048930207cca7f974b, type: 3}
+  - {fileID: -6822967811716177053, guid: 517685bdce4f92449800a504538f4b0a, type: 3}
+  - {fileID: -2768651479175972221, guid: b2f5c16f3331e8b47bfdcf2bb0cc1b03, type: 3}
+  - {fileID: -1143568319729512763, guid: f1b9b78e9f009184a82b3c3f72129e1d, type: 3}
+  - {fileID: -5252670816361952577, guid: fcf58ce6ab1efb54d9c8fd06f7f013ce, type: 3}
+  - {fileID: -6494811334650876007, guid: 91a7a8c621552014785b96bdb4ee5bff, type: 3}
 --- !u!4 &1819232899
 Transform:
   m_ObjectHideFlags: 0

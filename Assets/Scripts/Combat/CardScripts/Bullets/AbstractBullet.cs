@@ -15,7 +15,7 @@ public abstract class AbstractBullet : AbstractCard
 
     //Constructor that calls the AbstractCard constructor
     public AbstractBullet(string name, int cost, Sprite image, string desc, int baseDamage, Speed speed, Sprite bullet,
-        Sprite superBullet, SoundType sound) : base(name, cost, image, desc)
+        Sprite superBullet, SoundType sound, Sprite icon = null) : base(name, cost, image, desc, icon)
     {
         this.baseDamage = baseDamage;
         this.speed = speed;

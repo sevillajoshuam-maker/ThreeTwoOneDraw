@@ -5,10 +5,12 @@ using TMPro;
 public class WeaponMono : MonoBehaviour
 {
     //The ten time slots that will be accessed by EncounterControl
-    public TimeSlot[] allSlots = new TimeSlot[10];
+    public TimeSlot[] allSlots = new TimeSlot[6];
 
     [SerializeField]
     private TimeSlot slotBlueprint;
+    [SerializeField]
+    private Sprite[] numberedSprites = new Sprite[6];
 
     //Create a singleton instance
     public static WeaponMono Instance { get; private set; }
@@ -34,7 +36,7 @@ public class WeaponMono : MonoBehaviour
             if (weapon.nodes[i] != null)
             {
                 TimeSlot slot = Instantiate(slotBlueprint, indexToPos[i], Quaternion.identity);
-                slot.setData(weapon.nodes[i]);
+                slot.setData(weapon.nodes[i], numberedSprites[i]);
                 allSlots[i] = slot;
             }
         }
