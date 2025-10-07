@@ -17,9 +17,4 @@ public class WinchesterBullet : AbstractBullet
     {
         BulletManager.Instance.fire(user, this, this.sound);
     }
-
-    public override Vector3 flightPath(float x, float y, float pixelPerSecond)
-    {
-        return new Vector3(pixelPerSecond / 50F, pixelPerSecond / 50F * -0.05F * (float)(1 / Math.Sqrt(12 - x)), 0);
-    }
 }

@@ -27,8 +27,8 @@ public abstract class Enemy : AbstractPlayer
     {
         if (deck.Count <= 1 || num >= deck.Count || num < 0)
         {
-            deck.AddRange(discardPile);
-            discardPile = new List<AbstractCard>();
+            this.Shuffle();
+            Debug.Log("Num:" + num + "Deck Count:" + deck.Count);
             return 1;
         }
 
@@ -36,7 +36,6 @@ public abstract class Enemy : AbstractPlayer
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
         deck.RemoveAt(num);
-        this.Draw();
         updateCardTypeCounts();
         return cost;
     }

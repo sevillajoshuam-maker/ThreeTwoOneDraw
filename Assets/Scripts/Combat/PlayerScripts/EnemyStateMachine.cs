@@ -8,11 +8,17 @@ public class EnemyStateMachine : MonoBehaviour
     public EncounterControl encounterController;
     public bool ready = false;
     public System.Random random = new System.Random();
+    public RuntimeAnimatorController cactusState;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
+        if (encounterController.currEnemy is Cactus)
+        {
+            animator.runtimeAnimatorController = cactusState;
+        }
+
     }
 
     // Update is called once per frame

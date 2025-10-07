@@ -65,7 +65,7 @@ public class OverworldManager : MonoBehaviour
         SoundManager.playSound(SoundType.SixShooterBullet);
         transition = false;
         DisableOverworld.Instance.enableOverworld(false);
-        EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), new Bandit(), weapon));
+        EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), new Cactus(), weapon));
     }
 
 }
