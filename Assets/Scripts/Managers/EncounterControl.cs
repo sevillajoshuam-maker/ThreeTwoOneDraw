@@ -63,6 +63,21 @@ public class EncounterControl : MonoBehaviour
 
     public bool combat;
 
+    //Determines if we are in the tutorial or not
+    public bool tutorial;
+
+    public bool bulletPlayed = false;
+
+    public bool defendPlayed = false;
+
+    public bool takeAimPlayed = false;
+
+    public bool deckRanOut = false;
+
+    public GameObject popUp;
+
+    public TextMeshProUGUI textPopUp;
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -130,7 +145,7 @@ public class EncounterControl : MonoBehaviour
 
         if (currEncounter.player.hand.Count > 1)
         {
-            return new Vector2(((8 * 1.45F) / (float)(8 - 1) * (2*num - ((float)(8) / 3)) + num) + offset, -15);
+            return new Vector2(((8 * 1.45F) / (float)(8 - 1) * (2 * num - ((float)(8) / 3)) + num) + offset, -15);
         }
         else
         {
@@ -369,7 +384,36 @@ public class EncounterControl : MonoBehaviour
     //Play the current card to the time slot at the provided index
     public void playCardToSlot(int index)
     {
-
+        if (tutorial)
+        {
+            if (!bulletPlayed && hoveredCard.thisCard.GetCardType() == "Bullet")
+            {
+                popUp.SetActive(true);
+                textPopUp.enabled = true;
+                textPopUp.text = "You've played a Bullet! This town ain't big enough for a cowboy and a cactus! " +
+                "When the timer hits zero, you'll fire a bullet straight for that darn cactus! But, he might be able to block it! (Press Return)";
+                bulletPlayed = true;
+                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
+            }
+            if (!defendPlayed && hoveredCard.thisCard.GetCardType() == "Defend")
+            {
+                popUp.SetActive(true);
+                textPopUp.enabled = true;
+                textPopUp.text = "You've played a Defend! When the timer hits zero, any bullets within your mouse cursor will be blocked!" +
+                " No clicking required! Just make sure your mouse is in the right space when zeor comes around! (Press Return)";
+                defendPlayed = true;
+                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
+            }
+            if (!takeAimPlayed && hoveredCard.thisCard.NAME == "Take Aim")
+            {
+                popUp.SetActive(true);
+                textPopUp.enabled = true;
+                textPopUp.text = "You've played a Take Aim! Any bullets that are fired within the next two seconds are supercharged!" +
+                " These superchared bullets won't be so easy for this cactus to defend! (Press Return)";
+                takeAimPlayed = true;
+                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
+            }
+        }
         //If the time slot does not exist or if it has a card already in it
         if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
         {
@@ -381,6 +425,18 @@ public class EncounterControl : MonoBehaviour
 
         //Discard the card
         currPlayer.Discard(hoveredCard.thisCard);
+        if (tutorial)
+        {
+            if (!deckRanOut && currPlayer.deck.Count == 0)
+            {
+                popUp.SetActive(true);
+                textPopUp.enabled = true;
+                textPopUp.text = "You've deck has run dry! You won't draw anymore cards because they are all discarded!" +
+                " Don't worry! Just press E and reload! All the cards in the discard will return to the draw pile! (Press Return)";
+                deckRanOut = true;
+                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
+            }
+        }
 
         //Reapply the visuals for the player's hand
         position = (position == 0) ? position + 1 : position - 1;
@@ -402,5 +458,19 @@ public class EncounterControl : MonoBehaviour
         discardSpriteRenderer.sprite = lastCard.IMAGE;
         //Set size to match PlaceHolderDeck, remove this line to display full card size
         discardSpriteRenderer.size = new Vector2(3.875f, 5.85f);
+    public IEnumerator endTutorialPopUp(GameObject popUp, TextMeshProUGUI textPopUp)
+    {
+        Time.timeScale = 0;
+        combat = false;
+        while (!Input.GetKeyDown(KeyCode.Return))
+        {
+            yield return null;
+        }
+        popUp.SetActive(false);
+        textPopUp.enabled = false;
+        Time.timeScale = 1;
+        combat = true;
     }
 }
+
+
