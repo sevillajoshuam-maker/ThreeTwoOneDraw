@@ -19,6 +19,11 @@ public class ImageLibrary : MonoBehaviour
     public static Sprite winchester_bullet_super;
     public static Sprite tomahawk_bullet;
     public static Sprite tomahawk_bullet_super;
+    public static Sprite smallDefendIcon;
+    public static Sprite sixShooterIcon;
+    public static Sprite takeAimIcon;
+    public static Sprite winchesterIcon;
+    public static Sprite tomahawkIcon;
 
 
     //Created static Sprites for all images located in the CardArt folder 
@@ -40,6 +45,13 @@ public class ImageLibrary : MonoBehaviour
         tomahawk_bullet = Resources.Load<Sprite>("CharSprites/Bullets/Tomahawk/TomahawkPixel");
         tomahawk_bullet_super = Resources.Load<Sprite>("CharSprites/Bullets/Tomahawk/ChargedTomahawkPixel");
         bandage_art = Resources.Load<Sprite>("CardArt/bandage_art");
+
+        smallDefendIcon = Resources.Load<Sprite>("TimeSlots/Icons/smallDefendIcon");
+        sixShooterIcon = Resources.Load<Sprite>("TimeSlots/Icons/sixShooterIcon");
+        takeAimIcon = Resources.Load<Sprite>("TimeSlots/Icons/takeAimIcon");
+        winchesterIcon = Resources.Load<Sprite>("TimeSlots/Icons/winchesterRifleIcon");
+        tomahawkIcon = Resources.Load<Sprite>("TimeSlots/Icons/TomahawkIcon");
+
         DontDestroyOnLoad(gameObject);
     }
 }

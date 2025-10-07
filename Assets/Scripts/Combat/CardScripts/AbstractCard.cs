@@ -8,6 +8,8 @@ public abstract class AbstractCard
     public readonly Sprite IMAGE;
     private readonly string DESC;
 
+    public readonly Sprite ICON;
+
     public readonly string[] SkillCards = {
         "Take Aim",
         "Grenade"
@@ -22,12 +24,13 @@ public abstract class AbstractCard
     };
 
     //4 argument constructor
-    public AbstractCard(string name, float cost, Sprite image, string description)
+    public AbstractCard(string name, float cost, Sprite image, string description, Sprite icon = null)
     {
         NAME = name;
         COST = cost;
         IMAGE = image;
         DESC = description;
+        ICON = icon;
     }
 
     //The tostring for all cards, simply returns the card name

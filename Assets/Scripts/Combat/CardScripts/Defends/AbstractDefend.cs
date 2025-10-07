@@ -6,7 +6,7 @@ public abstract class AbstractDefend : AbstractCard
     public readonly Type TYPE;
 
     //Constructor that calls the AbstractCard constructor
-    public AbstractDefend(string name, int cost, Sprite image, string desc, Type type) : base(name, cost, image, desc)
+    public AbstractDefend(string name, int cost, Sprite image, string desc, Type type, Sprite icon = null) : base(name, cost, image, desc, icon)
     {
         TYPE = type;
     }

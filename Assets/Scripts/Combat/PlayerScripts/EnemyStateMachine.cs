@@ -9,6 +9,7 @@ public class EnemyStateMachine : MonoBehaviour
     public bool ready = false;
     public System.Random random = new System.Random();
     public RuntimeAnimatorController cactusState;
+    public RuntimeAnimatorController bossBanditState;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +18,10 @@ public class EnemyStateMachine : MonoBehaviour
         if (encounterController.currEnemy is Cactus)
         {
             animator.runtimeAnimatorController = cactusState;
+        }
+        else if (encounterController.currEnemy is BanditBoss)
+        {
+            animator.runtimeAnimatorController = bossBanditState;
         }
 
     }

@@ -95,9 +95,10 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Begin the passed Encounter instance
-    public void startEncounter(Encounter encounter)
+    public void startEncounter(Encounter encounter, bool tutorialActive)
     {
         setUI(true);
+        tutorial = tutorialActive;
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
@@ -143,7 +144,7 @@ public class EncounterControl : MonoBehaviour
         //x-axis offset for UI layout placement
         int offset = -5;
 
-        if (currEncounter.player.hand.Count > 1)
+        if (currEncounter.player.hand.Count >= 1)
         {
             return new Vector2(((8 * 1.45F) / (float)(8 - 1) * (2 * num - ((float)(8) / 3)) + num) + offset, -15);
         }
@@ -400,7 +401,7 @@ public class EncounterControl : MonoBehaviour
                 popUp.SetActive(true);
                 textPopUp.enabled = true;
                 textPopUp.text = "You've played a Defend! When the timer hits zero, any bullets within your mouse cursor will be blocked!" +
-                " No clicking required! Just make sure your mouse is in the right space when zeor comes around! (Press Return)";
+                " No clicking required! Just make sure your mouse is in the right space when zero comes around! (Press Return)";
                 defendPlayed = true;
                 StartCoroutine(endTutorialPopUp(popUp, textPopUp));
             }
@@ -444,20 +445,24 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Activate smoke screen
-    public void setUpSmokeScreen() {
+    public void setUpSmokeScreen()
+    {
         smokeScreen.SetActive(true);
     }
 
     //Deactive smoke screen
-    public void destroySmokeScreen() {
+    public void destroySmokeScreen()
+    {
         smokeScreen.SetActive(false);
     }
 
     //Update discard pile sprite
-    public void updateDiscardPile(AbstractCard lastCard) {
+    public void updateDiscardPile(AbstractCard lastCard)
+    {
         discardSpriteRenderer.sprite = lastCard.IMAGE;
         //Set size to match PlaceHolderDeck, remove this line to display full card size
         discardSpriteRenderer.size = new Vector2(3.875f, 5.85f);
+    }
     public IEnumerator endTutorialPopUp(GameObject popUp, TextMeshProUGUI textPopUp)
     {
         Time.timeScale = 0;
