@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class OverworldManager : MonoBehaviour
 {
     public static AbstractWeapon weapon = new SixShooter();
+    public static Enemy enemy = new Cactus();
+    public static bool isTutorial = false;
     public GameObject player;
 
     private static bool transition = false;
@@ -24,6 +26,7 @@ public class OverworldManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            starterDeck.Add(new Defend());
             starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
         }
@@ -42,7 +45,7 @@ public class OverworldManager : MonoBehaviour
         }
     }
 
-    public static IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck)
+    public static IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck, Enemy enemy)
     {
         transition = true;
         MusicManager.audioSource.Stop();
@@ -65,7 +68,7 @@ public class OverworldManager : MonoBehaviour
         SoundManager.playSound(SoundType.SixShooterBullet);
         transition = false;
         DisableOverworld.Instance.enableOverworld(false);
-        EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), new Cactus(), weapon), true);
+        EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), enemy, weapon), isTutorial);
     }
 
 }

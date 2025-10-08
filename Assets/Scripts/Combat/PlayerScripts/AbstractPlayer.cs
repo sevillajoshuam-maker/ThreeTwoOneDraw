@@ -68,7 +68,7 @@ public abstract class AbstractPlayer
         }
     }
 
-    //Heal health equal to passed parameter, health cannot exceed 100
+    //Heal health equal to passed parameter, health cannot exceed max health
     public void healDamage(int num)
     {
         if (num >= 0)
@@ -77,7 +77,7 @@ public abstract class AbstractPlayer
         }
         if (health >= maxHealth)
         {
-            health = 100;
+            health = maxHealth;
         }
     }
 

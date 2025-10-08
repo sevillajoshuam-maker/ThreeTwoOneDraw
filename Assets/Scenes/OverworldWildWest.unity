@@ -59440,8 +59440,12 @@ MonoBehaviour:
   - I'm here to help you practice your shooting skills!
   - Do you want to use a Tomahawk (Press 1), a Winchester Rifle (Press 2), or a Six
     Shooter (Press 3)?
+  - Do you want to duel my normal, demo form (Press 1) or my super saiyan, untested
+    form (Press 2)? Probably should only press 2 if you've dueled before...and are
+    a masochist.
   - Alright great! Let's get to it!
   weaponSelectLine: 3
+  enemySelectLine: 4
 --- !u!61 &2103707778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59532,7 +59536,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6, y: 1.5}
+  m_Size: {x: 3.2685652, y: 1.5}
   m_EdgeRadius: 0
 --- !u!212 &2103707780
 SpriteRenderer:

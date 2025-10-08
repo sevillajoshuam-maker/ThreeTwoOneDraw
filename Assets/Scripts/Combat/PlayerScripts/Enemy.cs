@@ -25,7 +25,8 @@ public abstract class Enemy : AbstractPlayer
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
     public float trySomething()
     {
-        if (deck.Count <= 1 || num >= deck.Count || num < 0)
+        if (deck.Count <= 1 || num >= deck.Count || num < 0 ||
+        (BulletManager.Instance.playerBullet <= 0 && deck[num] is AbstractDefend))
         {
             this.Shuffle();
             return 1;
