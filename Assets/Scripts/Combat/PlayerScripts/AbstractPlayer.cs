@@ -98,7 +98,23 @@ public abstract class AbstractPlayer
     {
         if (discardedCard != null)
         {
+            addToDiscardPile(discardedCard);
+            removeFromHand(discardedCard);
+        }
+    }
+
+    public void addToDiscardPile(AbstractCard discardedCard)
+    {
+        if (discardedCard != null)
+        {
             discardPile.Add(discardedCard);
+        }
+    }
+
+    public void removeFromHand(AbstractCard discardedCard)
+    {
+        if (discardedCard != null)
+        {
             hand.Remove(discardedCard);
         }
     }

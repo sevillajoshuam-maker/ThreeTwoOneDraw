@@ -81,6 +81,14 @@ public class EncounterControl : MonoBehaviour
 
     public TextMeshProUGUI timeSlotInfo;
 
+    [SerializeField]
+    private TextMeshProUGUI drawText;
+    [SerializeField]
+    private TextMeshProUGUI discardPileText;
+    [SerializeField]
+    private SpriteRenderer drawPile;
+    private Sprite cardBack;
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -94,6 +102,7 @@ public class EncounterControl : MonoBehaviour
             Instance = this;
             combat = false;
             playerWonLast = false;
+            cardBack = drawPile.sprite;
         }
     }
 
@@ -176,6 +185,17 @@ public class EncounterControl : MonoBehaviour
     {
         if (combat)
         {
+            if (currEncounter.player.deck.Count == 0)
+            {
+                drawPile.sprite = null;
+            }
+            else
+            {
+                drawPile.sprite = cardBack;
+            }
+            drawText.text = currEncounter.player.deck.Count.ToString();
+            discardPileText.text = currEncounter.player.discardPile.Count.ToString();
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit();
@@ -215,6 +235,7 @@ public class EncounterControl : MonoBehaviour
                 //Exit the card selection if the player clicks S
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    discardSpriteRenderer.sprite = null;
                     currPlayer.Shuffle();
                     SoundManager.playSound(SoundType.Reload);
                 }
@@ -441,7 +462,7 @@ public class EncounterControl : MonoBehaviour
         StartCoroutine(WeaponMono.Instance.allSlots[index].wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
 
         //Discard the card
-        currPlayer.Discard(hoveredCard.thisCard);
+        currPlayer.removeFromHand(hoveredCard.thisCard);
         if (tutorial)
         {
             if (!deckRanOut && currPlayer.deck.Count == 0)

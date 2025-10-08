@@ -96,6 +96,7 @@ public class TimeSlot : MonoBehaviour
         {
             selectedCard.use(user, totalDuration, this);
             ++counter;
+            EncounterControl.Instance.currPlayer.addToDiscardPile(selectedCard);
             EncounterControl.Instance.updateDiscardPile(selectedCard);
         }
 
