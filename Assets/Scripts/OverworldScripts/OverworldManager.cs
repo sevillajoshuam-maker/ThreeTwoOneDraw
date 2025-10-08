@@ -13,8 +13,6 @@ public class OverworldManager : MonoBehaviour
     public static bool isTutorial = false;
     public GameObject player;
 
-    private static bool transition = false;
-
     public static List<AbstractCard> starterDeck = new List<AbstractCard>();
 
     void Start()
@@ -30,6 +28,9 @@ public class OverworldManager : MonoBehaviour
             starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
         }
+
+        MusicManager.playSound(MusicType.Theme, 0.5F);
+        MusicManager.audioSource.loop = true;
     }
 
     // Update is called once per frame
@@ -39,15 +40,11 @@ public class OverworldManager : MonoBehaviour
         {
             Application.Quit();
         }
-        if (!MusicManager.audioSource.isPlaying && !transition)
-        {
-            MusicManager.playSound(MusicType.Theme, 0.5F);
-        }
     }
 
     public static IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck, Enemy enemy)
     {
-        transition = true;
+        MusicManager.audioSource.loop = true;
         MusicManager.audioSource.Stop();
         MusicManager.playSound(MusicType.Intro);
 
@@ -66,7 +63,6 @@ public class OverworldManager : MonoBehaviour
         }
 
         SoundManager.playSound(SoundType.SixShooterBullet);
-        transition = false;
         DisableOverworld.Instance.enableOverworld(false);
         EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), enemy, weapon), isTutorial);
     }

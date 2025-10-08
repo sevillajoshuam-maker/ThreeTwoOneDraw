@@ -719,6 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainTheme: {fileID: 8300000, guid: b1e072bbfb00e514d8c9bc90856a4366, type: 3}
   intro: {fileID: 8300000, guid: 7a6d3ad52fcb1a4448cbbcceec5ae24d, type: 3}
+  tutorialTheme: {fileID: 8300000, guid: 02599db9d0e41124d968a40bd9eb09fb, type: 3}
 --- !u!4 &397828536
 Transform:
   m_ObjectHideFlags: 0
