@@ -109,6 +109,8 @@ public class EncounterControl : MonoBehaviour
     //Begin the passed Encounter instance
     public void startEncounter(Encounter encounter, bool tutorialActive)
     {
+        MusicManager.playSound(MusicType.Tutorial, 0.25F);
+        MusicManager.audioSource.loop = true;
         setUI(true);
         tutorial = tutorialActive;
         currEnemy = encounter.enemy;
@@ -389,6 +391,9 @@ public class EncounterControl : MonoBehaviour
     //The encounter ends whenever player or enemy reach 0 health
     public void endEncounter(AbstractPlayer winner)
     {
+        MusicManager.audioSource.Stop();
+        MusicManager.playSound(MusicType.Theme, 0.5F);
+
         setUI(false);
 
         //Deactivate all visible cards

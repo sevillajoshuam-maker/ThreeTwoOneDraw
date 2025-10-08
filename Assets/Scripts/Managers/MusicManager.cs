@@ -8,6 +8,8 @@ public class MusicManager : MonoBehaviour
     private AudioClip mainTheme;
     [SerializeField]
     private AudioClip intro;
+    [SerializeField]
+    private AudioClip tutorialTheme;
 
     private static List<AudioClip> sounds = new List<AudioClip>();
     public static AudioSource audioSource;
@@ -18,6 +20,7 @@ public class MusicManager : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         sounds.Add(mainTheme);
         sounds.Add(intro);
+        sounds.Add(tutorialTheme);
     }
 
     public static void playSound(MusicType sound, float volume = 1)
@@ -34,5 +37,6 @@ public class MusicManager : MonoBehaviour
 public enum MusicType
 {
     Theme,
-    Intro
+    Intro,
+    Tutorial
 }
