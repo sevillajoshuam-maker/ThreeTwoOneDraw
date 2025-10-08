@@ -59440,8 +59440,9 @@ MonoBehaviour:
   - I'm here to help you practice your shooting skills!
   - Do you want to use a Tomahawk (Press 1), a Winchester Rifle (Press 2), or a Six
     Shooter (Press 3)?
-  - Do you want to duel my normal, demo form (Press 1) or my super saiyan, untested
-    form (Press 2)? Probably should only press 2 if you've dueled before...and are
+  - Do you want to duel my demo form with my tutorial tips (Press 1)? Or my basic,
+    demo form without any tutorial (Press 2)? Or you can duel my super saiyan, untested
+    form (Press 3)? Probably should only press 3 if you've dueled before...and are
     a masochist.
   - Alright great! Let's get to it!
   weaponSelectLine: 3
