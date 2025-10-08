@@ -79,6 +79,8 @@ public class EncounterControl : MonoBehaviour
 
     public TextMeshProUGUI textPopUp;
 
+    public TextMeshProUGUI timeSlotInfo;
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -106,6 +108,7 @@ public class EncounterControl : MonoBehaviour
 
         currPlayer.addBullets(encounter.weapon.bullets);
         WeaponMono.Instance.activateWeapon(encounter.weapon);
+        timeSlotInfo.text = encounter.weapon.timeSlotInfo;
 
         EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
         enemyStateMachine.encounterController = this;
@@ -128,7 +131,7 @@ public class EncounterControl : MonoBehaviour
             textPopUp.text = "\nWelcome to the duel! You can use your mouse to select cards and play them to your time slots (those" +
             " little circles on the left)! Just the press the corresponding number key! Your cards will " +
             "sit there until their time is up and then they'll activate! The time it takes is located on the top left of the cards!" +
-            "What are you waiting for? Try a few cards out! (Press Return)";
+            " Some time slots have special powers, they are detailed on the right! What are you waiting for? Try a few cards out! (Press Return)";
             battleStarted = true;
             StartCoroutine(endTutorialPopUp(popUp, textPopUp));
         }

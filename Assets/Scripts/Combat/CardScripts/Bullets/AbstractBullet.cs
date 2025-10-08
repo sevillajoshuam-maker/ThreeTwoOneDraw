@@ -12,6 +12,7 @@ public abstract class AbstractBullet : AbstractCard
     public readonly Sprite bulletSprite;
     public readonly Sprite superBulletSprite;
     public readonly SoundType sound;
+    public readonly string timeSlotInfo;
 
     //Constructor that calls the AbstractCard constructor
     public AbstractBullet(string name, int cost, Sprite image, string desc, int baseDamage, Speed speed, Sprite bullet,
