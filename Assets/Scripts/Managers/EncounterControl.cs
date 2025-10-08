@@ -425,7 +425,7 @@ public class EncounterControl : MonoBehaviour
             {
                 popUp.SetActive(true);
                 textPopUp.enabled = true;
-                textPopUp.text = "You've played a Take Aim! Any bullets that are fired within the next two seconds are supercharged!" +
+                textPopUp.text = "You've played a Take Aim! Any bullets that are fired within the two seconds after this card activates are supercharged!" +
                 " These superchared bullets won't be so easy for this cactus to defend! (Press Return)";
                 takeAimPlayed = true;
                 StartCoroutine(endTutorialPopUp(popUp, textPopUp));

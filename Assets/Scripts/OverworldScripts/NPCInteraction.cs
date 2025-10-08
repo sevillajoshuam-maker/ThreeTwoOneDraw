@@ -74,9 +74,20 @@ public class NPCInteraction : MonoBehaviour
                 {
                     OverworldManager.enemy = new Cactus();
                     OverworldManager.isTutorial = true;
+                    EncounterControl.Instance.bulletPlayed = false;
+                    EncounterControl.Instance.defendPlayed = false;
+                    EncounterControl.Instance.takeAimPlayed = false;
+                    EncounterControl.Instance.deckRanOut = false;
+                    EncounterControl.Instance.battleStarted = false;
                     nextLine();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    OverworldManager.enemy = new Cactus();
+                    OverworldManager.isTutorial = false;
+                    nextLine();
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     OverworldManager.enemy = new BanditBoss();
                     OverworldManager.isTutorial = false;
