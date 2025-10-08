@@ -73,6 +73,7 @@ public class EncounterControl : MonoBehaviour
     public bool takeAimPlayed = false;
 
     public bool deckRanOut = false;
+    public bool battleStarted = false;
 
     public GameObject popUp;
 
@@ -119,6 +120,18 @@ public class EncounterControl : MonoBehaviour
         takeAimActive = false;
 
         reapplyHand();
+
+        if (tutorial && !battleStarted)
+        {
+            popUp.SetActive(true);
+            textPopUp.enabled = true;
+            textPopUp.text = "\nWelcome to the duel! You can use your mouse to select cards and play them to your time slots (those" +
+            " little circles on the left)! Just the press the corresponding number key! Your cards will " +
+            "sit there until their time is up and then they'll activate! The time it takes is located on the top left of the cards!" +
+            "What are you waiting for? Try a few cards out! (Press Return)";
+            battleStarted = true;
+            StartCoroutine(endTutorialPopUp(popUp, textPopUp));
+        }
     }
 
     //Destroy all card prefabs and created a new list of prefabs to visually represent the current hand
