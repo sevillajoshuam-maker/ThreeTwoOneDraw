@@ -22,6 +22,7 @@ public class NPCInteraction : MonoBehaviour
     //Temp variable to indicate if we are testing weapon selection
     //The number corresponds to what line is the one to check, -1 means no line should be checked
     public int weaponSelectLine = 3;
+    public int enemySelectLine = 4;
     private bool demoNPC = true;
 
 
@@ -66,6 +67,22 @@ public class NPCInteraction : MonoBehaviour
                     nextLine();
                 }
             }
+            else if (enemySelectLine == lineNum)
+            {
+                enterPrompt.SetActive(false);
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    OverworldManager.enemy = new Cactus();
+                    OverworldManager.isTutorial = true;
+                    nextLine();
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    OverworldManager.enemy = new BanditBoss();
+                    OverworldManager.isTutorial = false;
+                    nextLine();
+                }
+            }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
                 nextLine();
@@ -107,7 +124,7 @@ public class NPCInteraction : MonoBehaviour
 
             if (demoNPC)
             {
-                StartCoroutine(OverworldManager.startCombat(OverworldManager.weapon, OverworldManager.starterDeck));
+                StartCoroutine(OverworldManager.startCombat(OverworldManager.weapon, OverworldManager.starterDeck, OverworldManager.enemy));
             }
             inDialogue = false;
         }
